@@ -10,7 +10,7 @@ Binoumar | Amine | DEV2
 Godimus | Kilian | DEV2
 Bustamante | Thomas | DEV2
 Carpentier | Tanguy | BD
-... | Elias | Réseau
+Gheeraert | Elias | Réseau
 ## Sujet
 
 _Après validation auprès de M Logé, renseignez votre sujet ci-dessous._
