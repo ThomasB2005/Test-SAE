@@ -1,18 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://duj01am5ha4rk"]
+[gd_scene load_steps=4 format=3 uid="uid://duj01am5ha4rk"]
+
+[sub_resource type="GDScript" id="GDScript_d056k"]
+script/source = "extends Node3D
+
+var speed = 5.0
+
+func _ready():
+	print(\"Dummy initialisé!\")
+
+func _process(delta):
+	get_input(delta)
+
+func get_input(delta):
+	var input_direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	print(\"Input direction: \", input_direction)
+	
+	var direction = Vector3(input_direction.x, 0, input_direction.y)
+	
+	global_position += direction * speed * delta
+	print(\"Global Position: \", global_position)
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d056k"]
+size = Vector3(1.3359375, 1.1094971, 1.1033936)
 
 [sub_resource type="BoxMesh" id="BoxMesh_d056k"]
 
 [node name="Dummy" type="Node3D"]
+script = SubResource("GDScript_d056k")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(0.9925474, 0, 0, 0, 0.99750626, 0, 0, 0, 1, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(0.9925474, 0, 0, 0, 0.99750626, 0, 0, 0, 1, 0, 0.054612007, 0.051696777)
 shape = SubResource("BoxShape3D_d056k")
 debug_color = Color(0.9926644, 0, 0.25531042, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Area3D"]
 mesh = SubResource("BoxMesh_d056k")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
