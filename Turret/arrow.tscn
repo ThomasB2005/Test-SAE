@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://db7f2k85oy6re"]
 
 [ext_resource type="Texture2D" uid="uid://clgqrcut604jt" path="res://Sprite/Archer/arrow.png" id="1_il1bx"]
-[ext_resource type="Script" uid="uid://dl4o8ygnkpa2s" path="res://Turret/arrow.gd" id="1_m30hr"]
+[ext_resource type="Script" uid="uid://dl4o8ygnkpa2s" path="res://Script/arrow.gd" id="1_m30hr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_il1bx"]
 
-[node name="Arrow" type="RigidBody3D"]
+[node name="Arrow" type="Node3D"]
 script = ExtResource("1_m30hr")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

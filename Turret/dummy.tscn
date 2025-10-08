@@ -31,13 +31,13 @@ script = SubResource("GDScript_d056k")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.9925474, 0, 0, 0, 0.99750626, 0, 0, 0, 1, 0, 0.054612007, 0.051696777)
 shape = SubResource("BoxShape3D_d056k")
 debug_color = Color(0.9926644, 0, 0.25531042, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 mesh = SubResource("BoxMesh_d056k")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
