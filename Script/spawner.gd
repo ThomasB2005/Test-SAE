@@ -3,7 +3,6 @@ extends Node3D
 # Enemy spawning settings
 @export var enemy_scene: PackedScene
 @export var path_node: Path3D
-@export var path_highlight: MeshInstance3D
 @export var spawn_interval: float = 2.0
 @export var enemies_per_wave: int = 10
 @export var wave_delay: float = 5.0

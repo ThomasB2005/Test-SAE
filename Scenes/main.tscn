@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dx4y47llvp7fo" path="res://Assets/Tower_tile.glb" id="6_6bp64"]
 [ext_resource type="Script" uid="uid://frvvrwot87wm" path="res://Script/camera_3d.gd" id="6_21xkr"]
-[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="8_344ge"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_jjgbg")
