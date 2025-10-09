@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://djcdo3durjbty"]
+
+[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_wovta"]
+[ext_resource type="PackedScene" uid="uid://bhe7tu4ie6cv7" path="res://Assets/Enemy.glb" id="2_xeo28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1htj"]
+size = Vector3(0.5007324, 0.5003662, 0.501709)
+
+[node name="PathFollow3D" type="PathFollow3D"]
+script = ExtResource("1_wovta")
+
+[node name="Enemy" parent="." instance=ExtResource("2_xeo28")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0.2498169, -0.00036621094)
+shape = SubResource("BoxShape3D_m1htj")
