@@ -1,25 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://duj01am5ha4rk"]
-
-[sub_resource type="GDScript" id="GDScript_d056k"]
-script/source = "extends Node3D
-
-var speed = 5.0
-
-func _ready():
-	print(\"Dummy initialisé!\")
-
-func _process(delta):
-	get_input(delta)
-
-func get_input(delta):
-	var input_direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
-	print(\"Input direction: \", input_direction)
-	
-	var direction = Vector3(input_direction.x, 0, input_direction.y)
-	
-	global_position += direction * speed * delta
-	print(\"Global Position: \", global_position)
-"
+[gd_scene load_steps=3 format=3 uid="uid://duj01am5ha4rk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d056k"]
 size = Vector3(1.3359375, 1.1094971, 1.1033936)
@@ -27,7 +6,6 @@ size = Vector3(1.3359375, 1.1094971, 1.1033936)
 [sub_resource type="BoxMesh" id="BoxMesh_d056k"]
 
 [node name="Dummy" type="Node3D"]
-script = SubResource("GDScript_d056k")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 

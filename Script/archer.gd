@@ -23,11 +23,17 @@ func _ready():
 # Détecte les Area3D qui entrent
 func _on_area_entered(area: Node3D):
 	shoot_at_target(area)
-
+	
 func take_damage(damage: float):
 	healthBar.value -= damage
-	if healthBar.value <= 0.1:
+	print("-----------J'AI ", healthBar.value, " HP -------------") # debug
+	if healthBar.value <= 0:
+		can_shoot = false
 		archer.play("death")
+		print("Je suis mort") # debug
+		await get_tree().create_timer(4.0).timeout
+		queue_free()
+	
 
 func shoot_at_target(target: Node3D):
 	if not can_shoot:
@@ -36,10 +42,9 @@ func shoot_at_target(target: Node3D):
 	while can_shoot:
 		# Animation
 		archer.play("shooting")
+		print("Je tire") # debug
 		await archer.animation_finished
 		archer.play("idle")
 		await get_tree().create_timer(shoot_cooldown).timeout
-		# debug
-		self.take_damage(20.0)
 		
-		
+		self.take_damage(40.0) # debug
