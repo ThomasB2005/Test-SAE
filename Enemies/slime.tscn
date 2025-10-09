@@ -1,0 +1,155 @@
+[gd_scene load_steps=24 format=3 uid="uid://d3b3sws4fod8a"]
+
+[ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/archer.gd" id="1_hdaht"]
+[ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Slimes/slime_die.png" id="2_00swj"]
+[ext_resource type="Texture2D" uid="uid://c02u1tkbyvdxk" path="res://Sprite/Slimes/slime_idle1.png" id="3_87lq7"]
+[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Turret/healthBar.tscn" id="3_i0tc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ora3b"]
+atlas = ExtResource("2_00swj")
+region = Rect2(0, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tjn4"]
+atlas = ExtResource("2_00swj")
+region = Rect2(80, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qq8p"]
+atlas = ExtResource("2_00swj")
+region = Rect2(160, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amke3"]
+atlas = ExtResource("2_00swj")
+region = Rect2(240, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0fv8"]
+atlas = ExtResource("2_00swj")
+region = Rect2(320, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mky3p"]
+atlas = ExtResource("2_00swj")
+region = Rect2(400, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqei6"]
+atlas = ExtResource("2_00swj")
+region = Rect2(480, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq8il"]
+atlas = ExtResource("2_00swj")
+region = Rect2(560, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l26av"]
+atlas = ExtResource("2_00swj")
+region = Rect2(640, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm1u2"]
+atlas = ExtResource("2_00swj")
+region = Rect2(720, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_837lf"]
+atlas = ExtResource("2_00swj")
+region = Rect2(800, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w61c4"]
+atlas = ExtResource("2_00swj")
+region = Rect2(880, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t86m"]
+atlas = ExtResource("2_00swj")
+region = Rect2(960, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgl02"]
+atlas = ExtResource("3_87lq7")
+region = Rect2(0, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiijo"]
+atlas = ExtResource("3_87lq7")
+region = Rect2(80, 432, 80, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o4ycw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ora3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tjn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qq8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amke3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0fv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mky3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqei6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq8il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l26av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm1u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_837lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w61c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t86m")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgl02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiijo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_jud4p"]
+script/source = "extends Area3D
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf7qw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mf7qw"]
+viewport_path = NodePath("SubViewport")
+
+[node name="slime" type="CharacterBody3D"]
+script = ExtResource("1_hdaht")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_o4ycw")
+animation = &"death"
+
+[node name="Area3D" type="Area3D" parent="."]
+script = SubResource("GDScript_jud4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+shape = SubResource("BoxShape3D_mf7qw")
+debug_color = Color(0.99607843, 0, 0, 0.41960785)
+
+[node name="Sprite3D" parent="." instance=ExtResource("3_i0tc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7324661, 1.5176985, 0)
+texture = SubResource("ViewportTexture_mf7qw")
