@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5w48mkko8ubj"]
+
+[ext_resource type="Script" uid="uid://d2wtq8avingar" path="res://Script/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://xrta5qlxdpdp" path="res://Assets/Tile.glb" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://d8ps6rjvqf6k" path="res://Assets/Start_tile.glb" id="3_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="4_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dx4y47llvp7fo" path="res://Assets/Tower_tile.glb" id="6_6bp64"]
+[ext_resource type="Script" uid="uid://frvvrwot87wm" path="res://Script/camera_3d.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy.tscn" id="8_344ge"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_jjgbg")
+path_tile = ExtResource("2_jjvhh")
+tile_start = ExtResource("3_kry3j")
+tile_end = ExtResource("4_21xkr")
+tile_empty = ExtResource("2_bo1nx")
+tower_tile = ExtResource("6_6bp64")
+map_height = 8
+min_path_size = 20
+max_path_size = 100
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 19.486355, 24.295591, 30.41885)
+fov = 60.0
+script = ExtResource("6_21xkr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6937665, 0.72020006, 0, -0.72020006, 0.6937665, 1.9073486e-06, 15.631193, 16.008795)
+
+[node name="Node3D2" parent="." instance=ExtResource("8_344ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
