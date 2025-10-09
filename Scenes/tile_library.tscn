@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce02fljej2fn1"]
+
+[ext_resource type="PackedScene" uid="uid://xrta5qlxdpdp" path="res://Assets/Tile.glb" id="1_srqa0"]
+[ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_tqd15"]
+[ext_resource type="PackedScene" uid="uid://dx4y47llvp7fo" path="res://Assets/Tower_tile.glb" id="3_f312a"]
+[ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="4_yb2lh"]
+[ext_resource type="PackedScene" uid="uid://d8ps6rjvqf6k" path="res://Assets/Start_tile.glb" id="5_e8vot"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Tile" parent="." instance=ExtResource("1_srqa0")]
+
+[node name="Path_tile" parent="." instance=ExtResource("2_tqd15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Tower_tile" parent="." instance=ExtResource("3_f312a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="End_tile" parent="." instance=ExtResource("4_yb2lh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Start_tile" parent="." instance=ExtResource("5_e8vot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
