@@ -1,5 +1,6 @@
 extends "res://Script/entity.gd"
 
+
 @onready var archer: AnimatedSprite3D = $AnimatedSprite3D
 
 func _ready():
@@ -8,6 +9,7 @@ func _ready():
 	damage = 15
 	attack_cd = 2.0
 	team = "ally" # Définir l'équipe
+
 	
 	super._ready()
 	
