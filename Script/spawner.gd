@@ -3,10 +3,10 @@ extends Node3D
 # Enemy spawning settings
 @export var enemy_scene: PackedScene
 @export var path_node: Path3D
+@export var game_manager: Node3D
 @export var spawn_interval: float = 2.0
 @export var enemies_per_wave: int = 10
 @export var wave_delay: float = 5.0
-@export var show_path_before_wave: bool = true
 @export var auto_start: bool = true
 
 # Current wave info
@@ -19,7 +19,6 @@ var wave_timer: float = 0.0
 # Signals
 signal wave_started(wave_number)
 signal wave_completed(wave_number)
-signal all_waves_completed
 
 func _ready():
 	if auto_start:
@@ -40,6 +39,7 @@ func start_spawning():
 	start_next_wave()
 
 func stop_spawning():
+	print("c'est la merde")
 	is_spawning = false
 
 func start_next_wave():
@@ -91,6 +91,10 @@ func complete_wave():
 
 func _on_enemy_reached_end(damage):
 	print("Enemy reached end! Damage: ", damage)
+	if game_manager:
+		game_manager.take_damage(damage)
+	else:
+		print("WARNING: Game manager not assigned to spawner!")
 
 func _on_enemy_died():
 	print("Enemy died!")

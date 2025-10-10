@@ -55,3 +55,4 @@ grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_jud4p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mf7qw")
 value = 100.0
+show_percentage = false
