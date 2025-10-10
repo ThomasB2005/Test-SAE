@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d35pmex876grt"
-path.s3tc="res://.godot/imported/slime_idle2.png-5a1ae8c35904c548289f753f7270eb06.s3tc.ctex"
+uid="uid://diqtrpfularsw"
+path.s3tc="res://.godot/imported/Enemy_enemy.png-214a0b6ca8f4fb057c404d9da8ae0d48.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "794e727eff6b25ff1e3b8d0da3396ab6"
+}
 
 [deps]
 
-source_file="res://Sprite/Slimes/slime_idle2.png"
-dest_files=["res://.godot/imported/slime_idle2.png-5a1ae8c35904c548289f753f7270eb06.s3tc.ctex"]
+source_file="res://Assets/Enemy_enemy.png"
+dest_files=["res://.godot/imported/Enemy_enemy.png-214a0b6ca8f4fb057c404d9da8ae0d48.s3tc.ctex"]
 
 [params]
 

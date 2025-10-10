@@ -2,12 +2,10 @@ extends PathFollow3D
 
 # Enemy properties
 @export var speed: float = 1.0
-@export var health: int = 10
 @export var damage_to_base: int = 1
 
 # Signals
 signal enemy_reached_end(damage)
-signal enemy_died
 
 func _ready():
 	progress = 0
@@ -23,14 +21,4 @@ func _process(delta):
 
 func reach_end():
 	emit_signal("enemy_reached_end", damage_to_base)
-	queue_free()
-
-func take_damage(amount: int):
-	health -= amount
-	print(health)
-	if health <= 0:
-		die()
-
-func die():
-	emit_signal("enemy_died")
 	queue_free()
