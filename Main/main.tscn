@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://7fkd50kkmdmg"]
 
-[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Turret/archer.tscn" id="1_qvhan"]
-[ext_resource type="PackedScene" uid="uid://duj01am5ha4rk" path="res://Turret/dummy.tscn" id="3_k3v36"]
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="1_qvhan"]
+[ext_resource type="PackedScene" uid="uid://duj01am5ha4rk" path="res://Scenes/Turret/dummy.tscn" id="3_k3v36"]
 
 [node name="Main" type="Node3D"]
 
