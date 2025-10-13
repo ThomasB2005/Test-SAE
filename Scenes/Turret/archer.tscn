@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/archer.gd" id="1_jud4p"]
 [ext_resource type="Texture2D" uid="uid://cmqr1ji4bexgg" path="res://Sprite/Archer/GandalfHardcore Archer black sheet.png" id="2_mf7qw"]
-[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Scenes/Turret/healthBar.tscn" id="3_mf7qw"]
+[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Scenes/Turret/healthBar.tscn" id="3_a45n4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djkev"]
 atlas = ExtResource("2_mf7qw")
@@ -182,7 +182,7 @@ script/source = "extends Area3D
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mf7qw"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mf7qw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uhemm"]
 viewport_path = NodePath("SubViewport")
 
 [node name="archer" type="CharacterBody3D"]
@@ -190,7 +190,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_jud4p")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.15, 0.15, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.15, 0.14999998, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_m7fxw")
@@ -200,7 +200,7 @@ animation = &"shooting"
 script = SubResource("GDScript_jud4p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1, 0, -1)
 shape = SubResource("BoxShape3D_mf7qw")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
@@ -208,6 +208,6 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27066398, -0.46247756, 0)
 visible = false
 
-[node name="Sprite3D" parent="." instance=ExtResource("3_mf7qw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.5, 0)
-texture = SubResource("ViewportTexture_mf7qw")
+[node name="Sprite3D" parent="." instance=ExtResource("3_a45n4")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.5, 0)
+texture = SubResource("ViewportTexture_uhemm")
