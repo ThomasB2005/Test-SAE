@@ -1,17 +1,14 @@
-extends CharacterBody3D
+extends "res://Script/entity.gd"
 
 @onready var archer:AnimatedSprite3D = $AnimatedSprite3D
-@onready var healthBar = $Sprite3D/SubViewport/Panel/HealthBar
-@onready var detection_area = $Area3D  # Le Area3D avec la sphère de collision
-
-#@export var healthbar_scene: PackedScene
-@export var maxHealth = 100.0
-@onready var currentHealth = maxHealth
 
 var can_shoot = true
 var shoot_cooldown = 2.0
 
 func _ready():
+	maxHealth = 60.0
+	currentHealth = maxHealth
+	
 	healthBar.max_value = maxHealth
 	healthBar.value = currentHealth
 	

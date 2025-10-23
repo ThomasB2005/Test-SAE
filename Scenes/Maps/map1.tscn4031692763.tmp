@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvplj3rb7fvqi"]
+[gd_scene load_steps=10 format=3 uid="uid://dvplj3rb7fvqi"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="4_duu0g"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="5_2ifef"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
-[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Turret/archer.tscn" id="7_dg61n"]
-[ext_resource type="Script" path="res://Script/game_manager.gd" id="8_duu0g"]
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="7_dg61n"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="8_duu0g"]
 
 [sub_resource type="Curve3D" id="Curve3D_si05j"]
 _data = {
@@ -15,11 +15,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_2ifef"]
-paragraph_spacing = 2.0
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -38,10 +33,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 1.5256133)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.974292, 0.37156576, 0.52781534)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 3.5, 4, 3.5)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.3140753, 0.9493981, 0, -0.9493981, 0.3140753, 3.7774954, 5.512, 3.5)
 current = true
-size = 6.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7510424, 7.606289, 1.0152483)
@@ -50,27 +43,18 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.75
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2058543, 2)
 curve = SubResource("Curve3D_si05j")
 
-[node name="Enemy_spawn" parent="Path3D" node_paths=PackedStringArray("path_node", "game_manager") instance=ExtResource("2_clay5")]
+[node name="Enemy_spawn" parent="Path3D" node_paths=PackedStringArray("path_node") instance=ExtResource("2_clay5")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.2058543, 0)
 script = ExtResource("3_dg61n")
 enemy_scene = ExtResource("4_duu0g")
 path_node = NodePath("..")
-game_manager = NodePath("../../GameManager")
 
 [node name="Base" parent="." instance=ExtResource("5_2ifef")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 1)
 
 [node name="archer" parent="." instance=ExtResource("7_dg61n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
+maxHealth = null
 
-[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_spawner", "ui_label")]
+[node name="GameManager" type="Node3D" parent="."]
 script = ExtResource("8_duu0g")
-enemy_spawner = NodePath("../Path3D/Enemy_spawn")
-ui_label = NodePath("CanvasLayer/Label")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
-
-[node name="Label" type="Label" parent="GameManager/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_2ifef")
