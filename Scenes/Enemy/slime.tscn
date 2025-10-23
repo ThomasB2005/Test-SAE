@@ -1,10 +1,10 @@
 [gd_scene load_steps=44 format=3 uid="uid://ja47hhae7qme"]
 
 [ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Slimes/slime_die.png" id="1_6dj4t"]
-[ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Scenes/Enemy/slime.gd" id="1_qhmas"]
+[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_qatr3"]
 [ext_resource type="Texture2D" uid="uid://crm5sswy0x2bc" path="res://Sprite/Slimes/slime_swallow.png" id="2_qatr3"]
 [ext_resource type="Texture2D" uid="uid://d35pmex876grt" path="res://Sprite/Slimes/slime_idle2.png" id="2_ww8gr"]
-[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Menu/healthBar.tscn" id="3_ww8gr"]
+[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Turret/healthBar.tscn" id="3_ww8gr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0uoc"]
 atlas = ExtResource("2_qatr3")
@@ -272,7 +272,7 @@ script/source = "extends Area3D
 viewport_path = NodePath("SubViewport")
 
 [node name="slime" type="PathFollow3D"]
-script = ExtResource("1_qhmas")
+script = ExtResource("1_qatr3")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1

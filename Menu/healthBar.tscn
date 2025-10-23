@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqt4u70hitem5"]
+[gd_scene load_steps=5 format=3 uid="uid://ce63t4tdxjhr7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jud4p"]
 viewport_path = NodePath("SubViewport")
