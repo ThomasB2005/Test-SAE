@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/archer.gd" id="1_jud4p"]
 [ext_resource type="Texture2D" uid="uid://cmqr1ji4bexgg" path="res://Sprite/Archer/GandalfHardcore Archer black sheet.png" id="2_mf7qw"]
-[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Scenes/Turret/healthBar.tscn" id="3_mf7qw"]
+[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Scenes/Turret/healthBar.tscn" id="3_a45n4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djkev"]
 atlas = ExtResource("2_mf7qw")
@@ -182,7 +182,7 @@ script/source = "extends Area3D
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mf7qw"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mf7qw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uhemm"]
 viewport_path = NodePath("SubViewport")
 
 [node name="archer" type="CharacterBody3D"]
