@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="5_2ifef"]
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="5_dg61n"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
-[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="7_dg61n"]
-[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="8_duu0g"]
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Turret/archer.tscn" id="7_dg61n"]
+[ext_resource type="Script" path="res://Script/game_manager.gd" id="8_duu0g"]
 
 [sub_resource type="Curve3D" id="Curve3D_si05j"]
 _data = {
@@ -38,17 +38,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 1.5256133)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.974292, 0.37156576, 0.52781534)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 0.31407532, 0.9493981, 0, -0.9493981, 0.31407532, 3.7774954, 5.512, 3.5)
-projection = 1
-current = true
-size = 7.0
-=======
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 3.5, 4, 3.5)
 projection = 1
 current = true
 size = 6.0
->>>>>>> 89a4736 (changement de caméra et de l'archer)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7510424, 7.606289, 1.0152483)
@@ -68,9 +61,6 @@ game_manager = NodePath("../../GameManager")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 1)
 
 [node name="archer" parent="." instance=ExtResource("7_dg61n")]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
 
 [node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_spawner", "ui_label")]
@@ -84,4 +74,3 @@ ui_label = NodePath("CanvasLayer/Label")
 offset_right = 40.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_2ifef")
->>>>>>> 89a4736 (changement de caméra et de l'archer)
