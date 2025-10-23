@@ -6,7 +6,6 @@ extends Node3D
 @export var spawn_interval: float = 2.0
 @export var enemies_per_wave: int = 10
 @export var wave_delay: float = 5.0
-@export var show_path_before_wave: bool = true
 @export var auto_start: bool = true
 
 # Current wave info

@@ -59,7 +59,7 @@ func _display_path():
 		add_child(tile)
 		tile.global_position = Vector3(element.x , 0, element.y)
 	
-@onready var enemy_scene = preload("res://scenes/Enemy.tscn")
+@onready var enemy_scene = preload("res://Scenes/Enemy/Enemy.tscn")
 
 func _spawn_enemy():
 	var enemy_instance = enemy_scene.instantiate()
