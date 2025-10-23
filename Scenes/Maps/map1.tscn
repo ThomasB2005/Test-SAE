@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="4_duu0g"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="5_2ifef"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
-[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="7_dg61n"]
-[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="8_duu0g"]
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Turret/archer.tscn" id="7_dg61n"]
+[ext_resource type="Script" path="res://Script/game_manager.gd" id="8_duu0g"]
 
 [sub_resource type="Curve3D" id="Curve3D_si05j"]
 _data = {
