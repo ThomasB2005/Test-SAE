@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="5_2ifef"]
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="5_dg61n"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
-[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Turret/archer.tscn" id="7_dg61n"]
-[ext_resource type="Script" path="res://Script/game_manager.gd" id="8_duu0g"]
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="8_2ifef"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="8_duu0g"]
 
 [sub_resource type="Curve3D" id="Curve3D_si05j"]
 _data = {
@@ -60,8 +60,8 @@ game_manager = NodePath("../../GameManager")
 [node name="Base" parent="." instance=ExtResource("5_2ifef")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 1)
 
-[node name="archer" parent="." instance=ExtResource("7_dg61n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
+[node name="archer" parent="." instance=ExtResource("8_2ifef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1)
 
 [node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_spawner", "ui_label")]
 script = ExtResource("8_duu0g")
