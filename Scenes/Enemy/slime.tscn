@@ -278,7 +278,7 @@ script = ExtResource("1_qatr3")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"die"
+animation = &"idle"
 
 [node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
@@ -290,3 +290,6 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 [node name="Sprite3D" parent="." instance=ExtResource("3_ww8gr")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
 texture = SubResource("ViewportTexture_qhmas")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.64836025)

@@ -13,3 +13,14 @@ config_version=5
 config/name="TowerDefense"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://Scenes/Enemy/": "red",
+"res://Scenes/Maps/": "green",
+"res://Scenes/Menu/": "purple",
+"res://Scenes/Turret/": "blue",
+"res://Script/": "orange",
+"res://Sprite/": "pink"
+}
