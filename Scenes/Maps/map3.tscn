@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b18of3mrpurx5"]
+[gd_scene load_steps=9 format=3 uid="uid://b18of3mrpurx5"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_ho466"]
+[ext_resource type="Script" uid="uid://ujexjqu3nqyq" path="res://Script/menu_pause.gd" id="1_jubti"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_jubti"]
 [ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="3_0plav"]
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="4_adcif"]
@@ -21,6 +22,7 @@ _data = {
 point_count = 4
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_jubti")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.125, 0.5)

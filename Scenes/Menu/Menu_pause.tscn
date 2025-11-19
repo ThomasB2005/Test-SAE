@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8i4hxus5wr6t"]
+
+[ext_resource type="Shader" uid="uid://cpm4as262cdvf" path="res://Assets/Shader/Menu_pause.gdshader" id="1_k58u3"]
+[ext_resource type="Script" uid="uid://bj85p70h3yt1j" path="res://Script/menu_pause.gd" id="1_l1uji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1uji"]
+shader = ExtResource("1_k58u3")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_k58u3"]
+resource_name = "flou"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1uji"]
+_data = {
+&"flou": SubResource("Animation_k58u3")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l1uji")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_l1uji")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 120.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Continuer" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continuer"
+
+[node name="Boutique" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Boutique"
+
+[node name="Quitter" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l1uji")
+}
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continuer" to="." method="_on_continuer_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Boutique" to="." method="_on_boutique_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]

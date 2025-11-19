@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs80bcxars8no"]
+[gd_scene load_steps=13 format=3 uid="uid://cs80bcxars8no"]
 
+[ext_resource type="Script" uid="uid://ujexjqu3nqyq" path="res://Script/menu_pause.gd" id="1_br3tv"]
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="1_dtarm"]
 [ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_br3tv"]
 [ext_resource type="PackedScene" uid="uid://d8ps6rjvqf6k" path="res://Assets/Start_tile.glb" id="3_okdnh"]
@@ -25,6 +26,7 @@ _data = {
 point_count = 7
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_br3tv")
 
 [node name="GridMap" type="GridMap" parent="."]
 
