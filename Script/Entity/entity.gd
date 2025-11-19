@@ -59,6 +59,7 @@ func attack(target: Node3D):
 	# Cooldown
 	await get_tree().create_timer(attack_cd).timeout
 	can_attack = true
+	
 
 func take_damage(amount, attacker):
 	if not is_alive:

@@ -20,7 +20,12 @@ folder_colors={
 "res://Scenes/Enemy/": "red",
 "res://Scenes/Maps/": "green",
 "res://Scenes/Menu/": "purple",
+"res://Scenes/SandBox/": "gray",
 "res://Scenes/Turret/": "blue",
 "res://Script/": "orange",
+"res://Script/Entity/": "teal",
+"res://Script/Entity/Allies/": "blue",
+"res://Script/Entity/Enemies/": "red",
+"res://Script/Menu/": "purple",
 "res://Sprite/": "pink"
 }

@@ -1,13 +1,13 @@
-extends "res://Script/entity.gd"
+extends "res://Script/Entity/entity.gd"
 
 @onready var archer: AnimatedSprite3D = $AnimatedSprite3D
 
 func _ready():
 	animator = archer
-	maxHealth = 60.0
-	damage = 15
+	maxHealth = 40.0
+	damage = 12
 	attack_cd = 2.0
-	team = "ally" # Définir l'équipe
+	team = "ally"
 	
 	super._ready()
 	

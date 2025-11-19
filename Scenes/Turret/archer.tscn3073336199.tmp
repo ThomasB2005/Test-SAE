@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/Entity/Allies/archer.gd" id="1_jud4p"]
 [ext_resource type="Texture2D" uid="uid://cmqr1ji4bexgg" path="res://Sprite/Archer/GandalfHardcore Archer black sheet.png" id="2_mf7qw"]
-[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_a45n4"]
+[ext_resource type="PackedScene" uid="uid://bqt4u70hitem5" path="res://Scenes/Turret/healthBar.tscn" id="3_a45n4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cu0y2"]
 atlas = ExtResource("2_mf7qw")
@@ -189,7 +189,7 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_jud4p")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.5, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_m7fxw")
@@ -204,5 +204,5 @@ shape = SubResource("BoxShape3D_mf7qw")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
 [node name="Sprite3D" parent="." instance=ExtResource("3_a45n4")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.094, 0.5, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.001, 0.3221417, 0)
 texture = SubResource("ViewportTexture_mf7qw")
