@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs80bcxars8no"]
+[gd_scene load_steps=14 format=3 uid="uid://cs80bcxars8no"]
 
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="1_dtarm"]
 [ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_br3tv"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="7_efttf"]
 [ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="8_hidya"]
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="9_mmw27"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="10_map2"]
+[ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="11_map2"]
 
 [sub_resource type="Curve3D" id="Curve3D_5yc7q"]
 _data = {
@@ -23,6 +25,11 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_map2"]
+paragraph_spacing = 2.0
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -194,17 +201,39 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.75
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_5yc7q")
 
-[node name="Enemy_spawn" parent="Path3D" node_paths=PackedStringArray("path_node") instance=ExtResource("7_efttf")]
+[node name="Enemy_spawn" parent="Path3D" node_paths=PackedStringArray("path_node", "game_manager") instance=ExtResource("7_efttf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
 script = ExtResource("8_hidya")
 enemy_scene = ExtResource("9_mmw27")
 path_node = NodePath("..")
+game_manager = NodePath("../../GameManager")
+auto_start = false
 
 [node name="Path3D2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_7sy4k")
 
-[node name="Enemy_spawn2" parent="Path3D2" node_paths=PackedStringArray("path_node") instance=ExtResource("7_efttf")]
+[node name="Enemy_spawn2" parent="Path3D2" node_paths=PackedStringArray("path_node", "game_manager") instance=ExtResource("7_efttf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
 script = ExtResource("8_hidya")
 enemy_scene = ExtResource("9_mmw27")
 path_node = NodePath("..")
+game_manager = NodePath("../../GameManager")
+auto_start = false
+
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
+script = ExtResource("10_map2")
+wave_manager = NodePath("../WaveManager")
+ui_label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+
+[node name="Label" type="Label" parent="GameManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_map2")
+
+[node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
+script = ExtResource("11_map2")
+spawners = [NodePath("../Path3D/Enemy_spawn"), NodePath("../Path3D2/Enemy_spawn2")]
+game_manager = NodePath("../GameManager")
+map_type = "map2"
