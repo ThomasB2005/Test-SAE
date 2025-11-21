@@ -15,3 +15,5 @@ team = null
 
 [node name="archer" parent="." instance=ExtResource("1_3qfw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3212845, 0.47254932, 0)
+maxHealth = null
+team = null

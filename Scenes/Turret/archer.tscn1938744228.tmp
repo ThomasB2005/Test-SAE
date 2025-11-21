@@ -1,10 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://ddtqbl61k6ixn"]
+[gd_scene load_steps=31 format=3 uid="uid://ddtqbl61k6ixn"]
 
 [ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/Entity/Allies/archer.gd" id="1_jud4p"]
 [ext_resource type="Texture2D" uid="uid://cmqr1ji4bexgg" path="res://Sprite/Archer/GandalfHardcore Archer black sheet.png" id="2_mf7qw"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_a45n4"]
-[ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="5_tt67e"]
-[ext_resource type="AudioStream" uid="uid://bc0aibwa4813a" path="res://Sound/SFX/Archer/throw1.ogg" id="5_y1wqa"]
+[ext_resource type="AudioStream" uid="uid://dvin1v0jpplws" path="res://Sound/SFX/arrowhit1.ogg" id="4_uhemm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cu0y2"]
 atlas = ExtResource("2_mf7qw")
@@ -189,6 +188,8 @@ viewport_path = NodePath("SubViewport")
 
 [node name="archer" type="CharacterBody3D"]
 script = ExtResource("1_jud4p")
+maxHealth = null
+team = null
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -209,10 +210,6 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.094, 0.5, 0)
 texture = SubResource("ViewportTexture_mf7qw")
 
-[node name="throw1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_y1wqa")
-bus = &"SFX"
-
-[node name="hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_tt67e")
-bus = &"SFX"
+[node name="arrowhit1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uhemm")
+volume_db = -16.0

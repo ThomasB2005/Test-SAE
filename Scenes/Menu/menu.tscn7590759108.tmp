@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c7vk836w17ha0" path="res://Script/Menu/menu.gd" id="1_rwxi6"]
 
 [sub_resource type="Gradient" id="Gradient_vsb4k"]
-colors = PackedColorArray(0.19215687, 0.13725491, 0.11764706, 1, 0.19215687, 0.13725491, 0.11764706, 1)
+colors = PackedColorArray(0, 0.2573496, 0.30592385, 1, 0, 0.25882354, 0.30588236, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lti8b"]
 gradient = SubResource("Gradient_vsb4k")

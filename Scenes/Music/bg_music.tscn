@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjq6m5rbnw7rq"]
+
+[ext_resource type="AudioStream" uid="uid://dvtdccuqilmqa" path="res://Sound/Music/Lobby_theme.ogg" id="1_vlv33"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_vlv33")
+autoplay = true

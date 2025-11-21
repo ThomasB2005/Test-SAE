@@ -10,8 +10,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7987358, 0.35782933, 2.221
 
 [node name="slime" parent="." instance=ExtResource("2_dqn3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6131482, 0.124901295, 0)
-maxHealth = null
-team = null
 
 [node name="archer" parent="." instance=ExtResource("1_3qfw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3212845, 0.47254932, 0)

@@ -6,6 +6,8 @@ extends Node3D
 @export var team = "" # Ajouter une équipe ("ally", "enemy", etc.)
 
 var animator: AnimatedSprite3D
+var sfx_attck: AudioStreamPlayer
+var sfx_hit: AudioStreamPlayer
 var currentHealth
 var is_alive = true
 var damage = 0
@@ -47,8 +49,12 @@ func attack(target: Node3D):
 	can_attack = false
 	animator.play("attack")
 	print(name, " attaque ", target.name)
-	
+	if sfx_attck:
+		await get_tree().create_timer(0.7).timeout
+		sfx_attck.play()
+		
 	await animator.animation_finished
+	
 	
 	# Vérifier que la cible existe encore
 	if is_instance_valid(target) and target.is_alive:
@@ -65,6 +71,10 @@ func take_damage(amount, attacker):
 	if not is_alive:
 		return
 		
+	if sfx_hit:
+		sfx_hit.play()
+	else:
+		print("cénul")
 	currentHealth -= amount
 	healthBar.value = currentHealth
 	print(name, " prend ", amount, " dégâts. PV: ", currentHealth)
