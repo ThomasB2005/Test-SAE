@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnljyp01p6w43"]
+
+[ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_em06d"]
+[ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="2_pvrog"]
+[ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="3_3yrht"]
+[ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="4_wpuvh"]
+
+[sub_resource type="Curve3D" id="Curve3D_kcsf3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.022226453, 0.8501421, 0, 0, 0, 0, 0, 0, 0, 0.005540848, 0.85017264, 3.0461743, 0, 0, 0, 0, 0, 0, 4.004984, 0.85017264, 3.0461743, 0, 0, 0, 0, 0, 0, 3.9878197, 0.85017264, -2.9846077, 0, 0, 0, 0, 0, 0, 6.04762, 0.85017264, -3.0130696),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_vu81b"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.026235342, 0, 0.018279677, 0, 0, 0, 0, 0, 0, -0.020133495, 0, -3.069868, 0, 0, 0, 0, 0, 0, 4.0695753, 0, -2.9585834, 0, 0, 0, 0, 0, 0, 3.9582913, 0, 2.985869, 0, 0, 0, 0, 0, 0, 6.044877, 0, 2.9580479),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_ut64b"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.0321534, 0, -0.033745583, 0, 0, 0, 0, 0, 0, 1.9438355, 0, -2.9608421, 0, 0, 0, 0, 0, 0, 3.987756, 0, -2.8851411, 0, 0, 0, 0, 0, 0, 4.025606, 0, 3.0195189, 0, 0, 0, 0, 0, 0, 5.9559765, 0, 2.9185848),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_md1qr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.0195363, 0, -0.046362575, 0, 0, 0, 0, 0, 0, 2.0573866, 0, 3.006902, 0, 0, 0, 0, 0, 0, 4.01299, 0, 3.13307, 0, 0, 0, 0, 0, 0, 4.0886908, 0, -2.9229915, 0, 0, 0, 0, 0, 0, 6.0316763, 0, -3.036543),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Map4" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.125, 0.5)
+mesh_library = ExtResource("1_em06d")
+cell_size = Vector3(1, 0.5, 1)
+data = {
+"cells": PackedInt32Array(65535, 65534, 1, 65535, 65535, 4, 65535, 0, 1, 4, 65532, 1, 4, 2, 1, 65535, 65533, 1, 65535, 65532, 1, 0, 65532, 1, 2, 65532, 1, 65535, 1, 1, 65535, 2, 1, 0, 2, 1, 1, 2, 1, 3, 2, 1, 2, 2, 1, 1, 65532, 1, 3, 65532, 1, 5, 65532, 3, 5, 2, 3, 1, 1, 1, 1, 0, 1, 1, 65535, 4, 1, 65534, 1, 1, 65533, 1, 3, 65533, 1, 3, 1, 1, 3, 0, 1, 3, 65535, 1, 3, 65534, 1, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 4, 1, 2, 4, 0, 2, 4, 65535, 2, 4, 65534, 2, 4, 65533, 2, 1, 65531, 2, 1, 3, 2, 65534, 65531, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 65535, 0, 65534, 65534, 0, 65534, 65533, 0, 65534, 65532, 0, 2, 3, 2, 3, 3, 2, 0, 65531, 2, 65535, 65531, 2, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 5, 65531, 0, 6, 65531, 0, 6, 65532, 0, 6, 65533, 0, 5, 65533, 0, 5, 65534, 0, 6, 65534, 0, 6, 65535, 0, 5, 65535, 0, 5, 0, 0, 6, 0, 0, 5, 1, 0, 6, 1, 0, 6, 2, 0, 6, 3, 0, 5, 3, 0, 4, 3, 0, 0, 3, 0, 65535, 3, 0)
+}
+
+[node name="Barrier" parent="GridMap" instance=ExtResource("2_pvrog")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.5, 0.37404764, -3.9443617)
+
+[node name="Barrier2" parent="GridMap" instance=ExtResource("2_pvrog")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5, 0.37404764, -3.9443617)
+
+[node name="Barrier4" parent="GridMap" instance=ExtResource("2_pvrog")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5, 0.37404764, 3.0556383)
+
+[node name="Camera3D" type="Camera3D" parent="GridMap/Barrier4"]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, -3.9999998, 5, 4.818675)
+projection = 1
+size = 8.0
+
+[node name="Barrier3" parent="GridMap" instance=ExtResource("2_pvrog")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5, 0.37404764, -3.9443617)
+
+[node name="Base" parent="." instance=ExtResource("3_3yrht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+
+[node name="Base2" parent="." instance=ExtResource("3_3yrht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+
+[node name="Enemy_spawn" parent="." instance=ExtResource("4_wpuvh")]
+
+[node name="Enemy_spawn2" parent="." instance=ExtResource("4_wpuvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56470644, 0)
+curve = SubResource("Curve3D_kcsf3")
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27779472, 0)
+curve = SubResource("Curve3D_vu81b")
+
+[node name="Path3D3" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29192552, 0)
+curve = SubResource("Curve3D_ut64b")
+
+[node name="Path3D4" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2798487, 0)
+curve = SubResource("Curve3D_md1qr")
