@@ -9,7 +9,7 @@ func _ready():
 	sfx_attck = throw_1
 	sfx_hit = hit
 	maxHealth = 40.0
-	damage = 12
+	damage = 3
 	attack_cd = 2.0
 	team = "ally"
 	

@@ -31,5 +31,6 @@ folder_colors={
 "res://Script/Entity/Allies/": "blue",
 "res://Script/Entity/Enemies/": "red",
 "res://Script/Menu/": "purple",
-"res://Sprite/": "pink"
+"res://Sprite/": "pink",
+"res://Sprite/Bosses/": "red"
 }

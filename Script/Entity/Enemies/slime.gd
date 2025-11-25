@@ -9,8 +9,8 @@ func _ready():
 	sfx_attck = attack_1
 	sfx_hit = hit
 	maxHealth = 30.0 # Initialisation des PV max
-	damage = 13
-	attack_cd = 2.0
+	damage = 2
+	attack_cd = 4.0
 	team = "enemie"
 
 	super._ready()

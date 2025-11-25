@@ -1,0 +1,170 @@
+[gd_scene load_steps=27 format=3 uid="uid://bv2mh6cs5cytm"]
+
+[ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="1_hmtqr"]
+[ext_resource type="Texture2D" uid="uid://bogqd5o7tfe61" path="res://Sprite/Mushroom/Attack.png" id="2_hmtqr"]
+[ext_resource type="Texture2D" uid="uid://de57txno8yokp" path="res://Sprite/Mushroom/Death.png" id="3_mim7a"]
+[ext_resource type="Texture2D" uid="uid://b7jnqfuofk113" path="res://Sprite/Mushroom/Idle.png" id="4_kv0rh"]
+[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_6gnle"]
+[ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_nccge"]
+[ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_oh3xv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwqnh"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gnle"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nccge"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh3xv"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ovgh"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f11k"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llqix"]
+atlas = ExtResource("2_hmtqr")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plea0"]
+atlas = ExtResource("3_mim7a")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfrl0"]
+atlas = ExtResource("3_mim7a")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ichfd"]
+atlas = ExtResource("3_mim7a")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv31l"]
+atlas = ExtResource("3_mim7a")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxqnr"]
+atlas = ExtResource("4_kv0rh")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hddo5"]
+atlas = ExtResource("4_kv0rh")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r1pb"]
+atlas = ExtResource("4_kv0rh")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqjep"]
+atlas = ExtResource("4_kv0rh")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwqnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gnle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nccge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh3xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ovgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f11k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llqix")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plea0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfrl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ichfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv31l")
+}],
+"loop": false,
+"name": &"die",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxqnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hddo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r1pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqjep")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ww8gr"]
+script/source = "extends Area3D
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhmas"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
+viewport_path = NodePath("SubViewport")
+
+[node name="slime" type="PathFollow3D"]
+script = ExtResource("1_hmtqr")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_h0uoc")
+animation = &"idle"
+frame_progress = 0.62482786
+
+[node name="Area3D" type="Area3D" parent="."]
+script = SubResource("GDScript_ww8gr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_qhmas")
+debug_color = Color(0.99607843, 0, 0, 0.41960785)
+
+[node name="Sprite3D" parent="." instance=ExtResource("5_6gnle")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
+texture = SubResource("ViewportTexture_qhmas")
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nccge")
+bus = &"SFX"
+
+[node name="attack1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_oh3xv")
+bus = &"SFX"

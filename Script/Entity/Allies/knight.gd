@@ -5,7 +5,7 @@ extends "res://Script/Entity/entity.gd"
 func _ready():
 	animator = knight
 	maxHealth = 80.0
-	damage = 20
+	damage = 3
 	attack_cd = 4.0
 	team = "ally"
 	
