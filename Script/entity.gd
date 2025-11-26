@@ -1,80 +1,59 @@
-extends Node3D
+# res://Script/entity.gd
+extends Node2D
+class_name Entity
 
-@onready var healthBar = $Sprite3D/SubViewport/Panel/HealthBar
-@onready var detection_area = $Area3D
-@export var maxHealth = 0 
-@export var team = "" # Ajouter une équipe ("ally", "enemy", etc.)
+@export var damage : int = 20
+@export var attack_cooldown : float = 2.0
+@export var attack_range : int = 200
+@export var multi_shot : int = 1
 
-var animator: AnimatedSprite3D
-var currentHealth
-var is_alive = true
-var damage = 0
-var attack_cd = 0
-var can_attack = true # Pour gérer le cooldown
-var current_target = null # Cible actuelle
+var current_target : Node = null
+var attack_timer : Timer
+var strategies : Array[BaseTurretStrategy] = []
+
+signal hit_enemy(turret: Entity, enemy: Node)
 
 func _ready():
-	currentHealth = maxHealth
-	if healthBar:
-		healthBar.max_value = maxHealth
-		healthBar.value = currentHealth
-	if detection_area:
-		detection_area.area_entered.connect(_on_area_entered)
-		detection_area.area_exited.connect(_on_area_exited)
+	attack_timer = Timer.new()
+	attack_timer.wait_time = attack_cooldown
+	attack_timer.autostart = true
+	attack_timer.timeout.connect(_attack)
+	add_child(attack_timer)
+
+func add_strategy(strategy: BaseTurretStrategy):
+	if strategy:
+		strategies.append(strategy)
+		strategy.apply(self)  # Applique immédiatement
 
 func _process(delta):
-	# Attaquer la cible si elle existe et qu'on peut attaquer
-	if current_target and can_attack and is_alive:
-		attack(current_target)
+	for s in strategies:
+		s.update(self, delta)
 
-func _on_area_entered(area: Node3D):
-	var target = area.get_parent()
-	# Vérifier que c'est un ennemi valide
-	if target.has_method("take_damage") and target.is_alive and target.team != team:
-		print(name, " détecte ", target.name)
-		current_target = target
+func _attack():
+	current_target = _find_target()
+	if not current_target: return
+	
+	for i in range(multi_shot):
+		_shoot_at(current_target)
+		await get_tree().create_timer(0.1).timeout  # petit décalage entre tirs
 
-func _on_area_exited(area: Node3D):
-	var target = area.get_parent()
-	if target == current_target:
-		current_target = null
-		print(name, " perd la cible")
+func _shoot_at(target):
+	# Ici tu fais ton tir visuel (AnimatedSprite, particule, etc.)
+	# Exemple pour archer :
+	if has_node("AnimatedSprite3D"):
+		$AnimatedSprite3D.play("attack")
+	
+	# Dégâts
+	target.take_damage(damage)
+	emit_signal("hit_enemy", self, target)
 
-func attack(target: Node3D):
-	if not can_attack or not target.is_alive:
-		return
-		
-	can_attack = false
-	animator.play("attack")
-	print(name, " attaque ", target.name)
-	
-	await animator.animation_finished
-	
-	# Vérifier que la cible existe encore
-	if is_instance_valid(target) and target.is_alive:
-		target.take_damage(damage, self)
-	
-	animator.play("idle")
-	
-	# Cooldown
-	await get_tree().create_timer(attack_cd).timeout
-	can_attack = true
-
-func take_damage(amount, attacker):
-	if not is_alive:
-		return
-		
-	currentHealth -= amount
-	healthBar.value = currentHealth
-	print(name, " prend ", amount, " dégâts. PV: ", currentHealth)
-	
-	if currentHealth <= 0:
-		die()
-
-func die():
-	is_alive = false
-	current_target = null
-	animator.play("die")
-	print(name, " est mort")
-	await get_tree().create_timer(4.0).timeout
-	queue_free()
+func _find_target() -> Node:
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	var closest = null
+	var best = attack_range * attack_range
+	for e in enemies:
+		var d = global_position.distance_squared_to(e.global_position)
+		if d < best:
+			best = d
+			closest = e
+	return closest

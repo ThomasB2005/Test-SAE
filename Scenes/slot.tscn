@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf2hmllupgaum"]
+
+[ext_resource type="Texture2D" uid="uid://d355ph646r0dc" path="res://Assets/Texture/bgtset.png" id="1_luhj6"]
+
+[node name="slot" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.127
+anchor_bottom = 0.22500001
+offset_right = -0.30400085
+offset_bottom = 0.19999695
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_luhj6")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2

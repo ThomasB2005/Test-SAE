@@ -1,22 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8i4hxus5wr6t"]
+[gd_scene load_steps=10 format=3 uid="uid://c8i4hxus5wr6t"]
 
-[ext_resource type="Shader" uid="uid://cpm4as262cdvf" path="res://Assets/Shader/Menu_pause.gdshader" id="1_k58u3"]
 [ext_resource type="Script" uid="uid://bj85p70h3yt1j" path="res://Script/menu_pause.gd" id="1_l1uji"]
+[ext_resource type="PackedScene" uid="uid://cf2hmllupgaum" path="res://Scenes/slot.tscn" id="3_qffp2"]
+[ext_resource type="Texture2D" uid="uid://cerj4xpamei1a" path="res://Assets/Texture/noir.png" id="3_u2gt6"]
+[ext_resource type="Texture2D" uid="uid://d355ph646r0dc" path="res://Assets/Texture/bgtset.png" id="4_qffp2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1uji"]
-shader = ExtResource("1_k58u3")
-shader_parameter/lod = 0.0
+[sub_resource type="Animation" id="Animation_qffp2"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_k58u3"]
 resource_name = "flou"
-length = 0.3
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_kuv32"]
+resource_name = "hide_pause"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_5o7ct"]
+resource_name = "show_pause"
+length = 0.5
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l1uji"]
 _data = {
-&"flou": SubResource("Animation_k58u3")
+&"RESET": SubResource("Animation_qffp2"),
+&"flou": SubResource("Animation_k58u3"),
+&"hide_pause": SubResource("Animation_kuv32"),
+&"show_pause": SubResource("Animation_5o7ct")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("animation_player")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -25,50 +37,149 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l1uji")
+animation_player = NodePath("AnimationPlayer")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_l1uji")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Menupause" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -100.0
-offset_right = 120.0
-offset_bottom = 100.0
+offset_left = -238.09601
+offset_top = -136.0
+offset_right = 238.09601
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_u2gt6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menupause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.54
+offset_top = -6.0
+offset_bottom = -0.040000916
+
+[node name="Label" type="Label" parent="Menupause/VBoxContainer"]
 layout_mode = 2
+text = "
+Menu
+"
+horizontal_alignment = 1
 
-[node name="Continuer" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Continuer" type="Button" parent="Menupause/VBoxContainer"]
 layout_mode = 2
 text = "Continuer"
 
-[node name="Boutique" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Boutique" type="Button" parent="Menupause/VBoxContainer"]
 layout_mode = 2
 text = "Boutique"
 
-[node name="Quitter" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Quitter" type="Button" parent="Menupause/VBoxContainer"]
 layout_mode = 2
 text = "Quitter"
+
+[node name="Boutique" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.292
+offset_top = -154.0
+offset_right = 294.292
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u2gt6")
+
+[node name="GridContainer" type="GridContainer" parent="Boutique"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.291992
+offset_top = -106.0
+offset_right = 250.29199
+offset_bottom = 106.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+
+[node name="slot" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot2" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot3" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot4" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot5" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot6" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot7" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot8" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot9" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot10" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot11" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot12" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot13" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot14" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot15" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="slot16" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+layout_mode = 2
+
+[node name="Description" type="NinePatchRect" parent="Boutique"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -256.292
+offset_top = -114.0
+offset_right = -36.291992
+offset_bottom = 115.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_qffp2")
+region_rect = Rect2(-0.32408142, -0.027770996, 50.84606, 50.252533)
+patch_margin_left = 3
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_l1uji")
 }
-
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Continuer" to="." method="_on_continuer_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Boutique" to="." method="_on_boutique_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]
