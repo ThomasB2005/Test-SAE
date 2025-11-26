@@ -1,23 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbqh7bapguvdr"]
+[gd_scene load_steps=3 format=3 uid="uid://dbqh7bapguvdr"]
 
 [ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="1_3qfw1"]
-[ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="2_dqn3b"]
-[ext_resource type="PackedScene" uid="uid://d636fv68twh2" path="res://Scenes/Enemy/Bat.tscn" id="3_dvny0"]
-[ext_resource type="PackedScene" uid="uid://ewe0f7gj5ye8" path="res://Scenes/Turret/Knight.tscn" id="4_k5rxs"]
+[ext_resource type="PackedScene" uid="uid://b4207wxox0enw" path="res://Scenes/Enemy/Wizard2.tscn" id="2_c8l2v"]
 
 [node name="SandBox" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7987358, 0.35782933, 2.221816)
-
-[node name="slime" parent="." instance=ExtResource("2_dqn3b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3376672, 0.124901295, -0.5535948)
+transform = Transform3D(1, 0, 0, 0, 0.98836416, 0.15210614, 0, -0.15210614, 0.98836416, -1.2485926, 0.62178695, 1.7233166)
 
 [node name="archer" parent="." instance=ExtResource("1_3qfw1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3212845, 0.47254932, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120381355, 0.3302636, 0)
 
-[node name="bat" parent="." instance=ExtResource("3_dvny0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9230375, 0, 0.52417195)
-
-[node name="knight" parent="." instance=ExtResource("4_k5rxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.528514, 0.2892069, 0.40729558)
+[node name="wizard2" parent="." instance=ExtResource("2_c8l2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5571918, 0.40895915, 0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://grfc0htjnfg7"]
 
-[ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="1_cihxb"]
+[ext_resource type="Script" uid="uid://catsbp2ipivy0" path="res://Script/Entity/Enemies/iron_golem.gd" id="1_cihxb"]
 [ext_resource type="Texture2D" uid="uid://buu8toomf8kwg" path="res://Sprite/Bosses/IronGolem/Character_sheet.png" id="2_oj0sp"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_mka41"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_eenpc"]
@@ -222,7 +222,7 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
-[node name="ironGolem" type="PathFollow3D"]
+[node name="iron_golem" type="PathFollow3D"]
 script = ExtResource("1_cihxb")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bv2mh6cs5cytm"]
 
-[ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="1_hmtqr"]
+[ext_resource type="Script" uid="uid://dm3qdgidvxjae" path="res://Script/Entity/Enemies/mushroom.gd" id="1_hmtqr"]
 [ext_resource type="Texture2D" uid="uid://bogqd5o7tfe61" path="res://Sprite/Mushroom/Attack.png" id="2_hmtqr"]
 [ext_resource type="Texture2D" uid="uid://de57txno8yokp" path="res://Sprite/Mushroom/Death.png" id="3_mim7a"]
 [ext_resource type="Texture2D" uid="uid://b7jnqfuofk113" path="res://Sprite/Mushroom/Idle.png" id="4_kv0rh"]
@@ -140,15 +140,16 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
-[node name="slime" type="PathFollow3D"]
+[node name="mushroom" type="PathFollow3D"]
 script = ExtResource("1_hmtqr")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"idle"
-frame_progress = 0.62482786
+animation = &"attack"
+frame = 6
+frame_progress = 1.0
 
 [node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")

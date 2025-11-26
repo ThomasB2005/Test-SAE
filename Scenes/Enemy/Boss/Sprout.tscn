@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpix4tm34tuc7"]
+[gd_scene load_steps=30 format=3 uid="uid://cpix4tm34tuc7"]
 
+[ext_resource type="Script" uid="uid://b002yqypjw2w2" path="res://Script/Entity/Enemies/sprout.gd" id="1_uuvxf"]
 [ext_resource type="Texture2D" uid="uid://5obausosymbl" path="res://Sprite/Bosses/Sprout/Attack/Sprout_attack.png" id="1_x6sip"]
 [ext_resource type="Texture2D" uid="uid://oao3djignl37" path="res://Sprite/Bosses/Sprout/Death/Sprout-death.png" id="2_uuvxf"]
 [ext_resource type="Texture2D" uid="uid://ce326ke4y46br" path="res://Sprite/Bosses/Sprout/Idle/Sprout_idle.png" id="3_t67ra"]
@@ -161,7 +162,8 @@ script/source = "extends Area3D
 viewport_path = NodePath("SubViewport")
 
 [node name="sprout" type="PathFollow3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_uuvxf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1

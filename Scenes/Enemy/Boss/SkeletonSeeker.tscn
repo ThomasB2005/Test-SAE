@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://dypfcx3fh1atc"]
 
-[ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="1_xj6v2"]
+[ext_resource type="Script" uid="uid://bdkc5uoqq3lvh" path="res://Script/Entity/Enemies/skeleton_seeker.gd" id="1_bb5sf"]
 [ext_resource type="Texture2D" uid="uid://woihrbycsiu1" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_skeleton_attack.png" id="2_bb5sf"]
 [ext_resource type="Texture2D" uid="uid://d2xtoy2hxnrcv" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_seeker_death.png" id="3_a12jw"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_bb5sf"]
@@ -182,18 +182,18 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
-[node name="skeletonSeeker" type="PathFollow3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-script = ExtResource("1_xj6v2")
+[node name="skeleton_seeker" type="PathFollow3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_bb5sf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"idle"
-frame_progress = 0.9375077
+animation = &"die"
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = SubResource("GDScript_ww8gr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

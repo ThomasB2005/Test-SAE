@@ -206,17 +206,18 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_4rf7h")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_m7fxw")
 animation = &"attack"
+frame = 5
+frame_progress = 1.0
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 script = SubResource("GDScript_jud4p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_mf7qw")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 

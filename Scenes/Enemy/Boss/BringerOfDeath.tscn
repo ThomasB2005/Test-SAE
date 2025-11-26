@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://3mbmtjrtlt75"]
 
-[ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="1_jr6gr"]
+[ext_resource type="Script" uid="uid://6cfwhpxoca35" path="res://Script/Entity/Enemies/bringer_of_death.gd" id="1_jr6gr"]
 [ext_resource type="Texture2D" uid="uid://84q2e3you3qs" path="res://Sprite/BringerOfDeath/Bringer-of-Death-SpritSheet.png" id="2_3dvf8"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_8888w"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_jgvn8"]
@@ -250,8 +250,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
-[node name="bringerOfDeath" type="PathFollow3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+[node name="bringer_of_death" type="PathFollow3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_jr6gr")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

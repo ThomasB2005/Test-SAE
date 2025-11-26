@@ -14,6 +14,7 @@ var damage = 0
 var attack_cd = 0
 var can_attack = true # Pour gérer le cooldown
 var current_target = null # Cible actuelle
+var facing_right = true # Orientation actuelle de l'entité
 
 func _ready():
 	currentHealth = maxHealth
@@ -42,10 +43,27 @@ func _on_area_exited(area: Node3D):
 		current_target = null
 		print(name, " perd la cible")
 
+func face_target(target: Node3D):
+	# Déterminer la direction vers la cible
+	var direction_to_target = target.global_position - global_position
+	
+	# Déterminer si la cible est à gauche ou à droite
+	var should_face_right = direction_to_target.x > 0
+	
+	# Si l'orientation doit changer
+	if should_face_right != facing_right:
+		facing_right = should_face_right
+		# Utiliser flip_h pour inverser le sprite
+		animator.flip_h = not facing_right  # flip_h = true quand on regarde à gauche
+		print(name, " se tourne vers la ", "DROITE" if facing_right else "GAUCHE")
+
 func attack(target: Node3D):
 	if not can_attack or not target.is_alive:
 		return
-		
+	
+	# Se tourner vers la cible avant d'attaquer
+	face_target(target)
+	
 	can_attack = false
 	animator.play("attack")
 	print(name, " attaque ", target.name)

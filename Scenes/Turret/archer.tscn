@@ -191,7 +191,6 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_jud4p")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_m7fxw")
