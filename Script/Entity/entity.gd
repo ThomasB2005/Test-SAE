@@ -15,6 +15,7 @@ var attack_cd = 0
 var can_attack = true # Pour gérer le cooldown
 var current_target = null # Cible actuelle
 var facing_right = true # Orientation actuelle de l'entité
+var targets: Array = [] # Liste des cibles présentes dans la zone
 
 func _ready():
 	currentHealth = maxHealth
@@ -35,13 +36,25 @@ func _on_area_entered(area: Node3D):
 	# Vérifier que c'est un ennemi valide
 	if target.has_method("take_damage") and target.is_alive and target.team != team:
 		print(name, " détecte ", target.name)
-		current_target = target
+		if not targets.has(target):
+			targets.append(target)
+		# Si on n'a pas de cible actuelle valide, en choisir une
+		if not is_instance_valid(current_target) or not current_target or not current_target.is_alive:
+			current_target = choose_target()
+			if current_target:
+				print(name, " vise maintenant ", current_target.name)
 
 func _on_area_exited(area: Node3D):
 	var target = area.get_parent()
+	# Retirer la cible de la liste
+	if targets.has(target):
+		targets.erase(target)
+	# Si c'était la cible actuelle, en choisir une autre
 	if target == current_target:
-		current_target = null
+		current_target = choose_target()
 		print(name, " perd la cible")
+		if current_target:
+			print(name, " change de cible vers ", current_target.name)
 
 func face_target(target: Node3D):
 	# Déterminer la direction vers la cible
@@ -56,6 +69,13 @@ func face_target(target: Node3D):
 		# Utiliser flip_h pour inverser le sprite
 		animator.flip_h = not facing_right  # flip_h = true quand on regarde à gauche
 		print(name, " se tourne vers la ", "DROITE" if facing_right else "GAUCHE")
+
+func choose_target() -> Node3D:
+	# Retourne la première cible valide et vivante dans la zone, sinon null
+	for t in targets:
+		if is_instance_valid(t) and t.is_alive:
+			return t
+	return null
 
 func attack(target: Node3D):
 	if not can_attack or not target.is_alive:
@@ -77,6 +97,13 @@ func attack(target: Node3D):
 	# Vérifier que la cible existe encore
 	if is_instance_valid(target) and target.is_alive:
 		target.take_damage(damage, self)
+	# Si la cible est morte après l'attaque ou n'est plus valide, la retirer et en choisir une autre
+	if not (is_instance_valid(target) and target.is_alive):
+		if targets.has(target):
+			targets.erase(target)
+		current_target = choose_target()
+		if current_target:
+			print(name, " change de cible vers ", current_target.name)
 	
 	animator.play("idle")
 	
@@ -85,7 +112,7 @@ func attack(target: Node3D):
 	can_attack = true
 	
 
-func take_damage(amount, attacker):
+func take_damage(amount, _attacker):
 	if not is_alive:
 		return
 		

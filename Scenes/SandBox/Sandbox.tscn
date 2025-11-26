@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbqh7bapguvdr"]
+[gd_scene load_steps=4 format=3 uid="uid://dbqh7bapguvdr"]
 
 [ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="1_3qfw1"]
-[ext_resource type="PackedScene" uid="uid://b4207wxox0enw" path="res://Scenes/Enemy/Wizard2.tscn" id="2_c8l2v"]
+[ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="2_c8l2v"]
+[ext_resource type="PackedScene" uid="uid://bv2mh6cs5cytm" path="res://Scenes/Enemy/Mushroom.tscn" id="3_dvny0"]
 
 [node name="SandBox" type="Node3D"]
 
@@ -9,7 +10,10 @@
 transform = Transform3D(1, 0, 0, 0, 0.98836416, 0.15210614, 0, -0.15210614, 0.98836416, -1.2485926, 0.62178695, 1.7233166)
 
 [node name="archer" parent="." instance=ExtResource("1_3qfw1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120381355, 0.3302636, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0812821, 0.3302636, 0)
 
-[node name="wizard2" parent="." instance=ExtResource("2_c8l2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5571918, 0.40895915, 0)
+[node name="slime" parent="." instance=ExtResource("2_c8l2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79287285, 0.12869036, 0)
+
+[node name="mushroom" parent="." instance=ExtResource("3_dvny0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23653495, 0.2372719, 0)
