@@ -7,6 +7,7 @@ class_name WaveManager
 @export var spawners: Array[Node] = []  # Array of spawner nodes
 @export var game_manager: Node
 @export var map_type: String = "map1"
+@export var endless: bool = false
 
 var waves: Array[Wave] = []
 var current_wave_index: int = -1
@@ -41,11 +42,6 @@ func _ready():
 		if spawner:
 			spawner.is_spawning = false
 			spawner.auto_start = false
-			# Connect spawner signals
-			# Previously attempted to disconnect any existing 'wave_completed' callable here,
-			# but disconnect requires a valid Callable (not null). Removing the disconnect
-			# avoids the runtime error; if you need to remove specific connections,
-			# do so by tracking the target Callable or using is_connected checks.
 	
 	print("Wave Manager initialized with ", waves.size(), " waves for ", map_type)
 
@@ -105,16 +101,19 @@ func spawn_next_enemy():
 		return
 	
 	var enemy_type = spawn_queue.pop_front()
-	
-	# Select which spawner to use (round-robin or random)
-	var spawner = get_next_spawner()
-	
-	if spawner == null:
-		push_error("No valid spawner available!")
+
+	# Determine which spawners should spawn this enemy according to rules:
+	# - First wave: always use spawner 0
+	# - Middle waves: map certain enemy types to specific spawners (enemy2 -> spawner 0, enemy3 -> spawner 1)
+	# - Last two waves: spawn the enemy on all spawners simultaneously
+	var target_spawners: Array = get_spawners_for_enemy(enemy_type)
+	if target_spawners.is_empty():
+		push_error("No valid spawner available for enemy: " + enemy_type)
 		return
-	
-	# Spawn the enemy through the selected spawner
-	spawn_enemy_on_spawner(spawner, enemy_type)
+
+	# Spawn the enemy on each selected spawner
+	for spawner in target_spawners:
+		spawn_enemy_on_spawner(spawner, enemy_type)
 	
 	# Check if wave spawning is complete
 	if spawn_queue.is_empty():
@@ -123,8 +122,8 @@ func spawn_next_enemy():
 func get_next_spawner() -> Node:
 	if spawners.is_empty():
 		return null
-	
-	# Round-robin distribution
+
+	# Round-robin distribution (fallback)
 	current_spawner_index = (current_spawner_index + 1) % spawners.size()
 	return spawners[current_spawner_index]
 	
@@ -157,6 +156,42 @@ func spawn_enemy_on_spawner(spawner: Node, enemy_type: String):
 	
 	enemies_alive += 1
 	print("Spawned ", enemy_type, " on spawner. Enemies alive: ", enemies_alive)
+
+
+func get_spawners_for_enemy(enemy_type: String) -> Array:
+	var result: Array = []
+	if spawners.is_empty():
+		return result
+
+	var two_spawners: bool = spawners.size() >= 2
+
+	if current_wave_index == 0:
+		result.append(spawners[0])
+		return result
+
+	var last_two_start: int = waves.size() - 2
+	if last_two_start < 0:
+		last_two_start = 0
+	if current_wave_index >= last_two_start:
+		for s in spawners:
+			result.append(s)
+		return result
+
+	# Middle waves: map enemy types to spawners
+	match enemy_type:
+		"enemy2":
+			result.append(spawners[0])
+			return result
+		"enemy3":
+			if two_spawners:
+				result.append(spawners[1])
+			else:
+				result.append(spawners[0])
+			return result
+		_:
+			# Fallback: round-robin
+			result.append(get_next_spawner())
+			return result
 
 func get_enemy_scene(enemy_type: String) -> PackedScene:
 	# Map enemy type names to actual scene paths
@@ -212,6 +247,15 @@ func complete_all_waves():
 	print("All waves completed! Victory!")
 	emit_signal("all_waves_completed")
 
+	# If endless mode is enabled, restart wave progression from the beginning
+	if endless:
+		print("WaveManager: endless mode enabled, restarting waves...")
+		# small delay before restarting
+		await get_tree().create_timer(2.0).timeout
+		# reset wave index so start_next_wave increments to first wave
+		current_wave_index = -1
+		start_next_wave()
+
 func _on_enemy_reached_end(damage: int):
 	enemies_alive -= 1
 	print("Enemy reached end! Damage: ", damage, " Enemies alive: ", enemies_alive)
@@ -227,7 +271,6 @@ func _on_enemy_died():
 	check_wave_completion()
 
 func stop_waves():
-	# Stop all future spawning and clear queues
 	stopped = true
 	is_wave_active = false
 	spawn_queue.clear()
@@ -238,3 +281,7 @@ func get_current_wave_number() -> int:
 
 func get_total_waves() -> int:
 	return waves.size()
+
+func is_endless() -> bool:
+	# Checks if the game is running on endless mode
+	return endless
