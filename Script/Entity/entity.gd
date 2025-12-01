@@ -1,9 +1,10 @@
 extends Node3D
 
 @onready var healthBar = $Sprite3D/SubViewport/Panel/HealthBar
+@onready var BossHealthBar: Node2D = $HealthBar
 @onready var detection_area = $Area3D
 @export var maxHealth = 0 
-@export var team = "" # Ajouter une équipe ("ally", "enemy", etc.)
+@export var team = "" # Ajouter une équipe ("ally", "enemy")
 
 var animator: AnimatedSprite3D
 var sfx_attck: AudioStreamPlayer
@@ -12,6 +13,10 @@ var currentHealth
 var is_alive = true
 var damage = 0
 var attack_cd = 0
+var cost = 0
+var reward = 0
+var score = 0
+var is_boss = false
 var can_attack = true # Pour gérer le cooldown
 var current_target = null # Cible actuelle
 var facing_right = true # Orientation actuelle de l'entité
@@ -120,8 +125,12 @@ func take_damage(amount, _attacker):
 		sfx_hit.play()
 	else:
 		print("cénul")
-	currentHealth -= amount
-	healthBar.value = currentHealth
+	if is_boss != true:
+		currentHealth -= amount
+		healthBar.value = currentHealth
+	else:
+		BossHealthBar -= amount
+		BossHealthBar.value = currentHealth
 	print(name, " prend ", amount, " dégâts. PV: ", currentHealth)
 	
 	if currentHealth <= 0:

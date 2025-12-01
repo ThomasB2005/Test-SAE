@@ -4,9 +4,9 @@ extends "res://Script/Entity/entity.gd"
 
 func _ready():
 	animator = slime # Liaison de la variable générique de la classe mère
-	maxHealth = 20.0 # Initialisation des PV max
+	maxHealth = 20 # Initialisation des PV max
 	damage = 2
-	attack_cd = 2.0
+	attack_cd = 2
 	team = "enemie"
 
 	super._ready()
