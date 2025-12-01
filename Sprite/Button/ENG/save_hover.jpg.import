@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdol7nn8ld2j0"
-path="res://.godot/imported/settings.png-39e73d83335d7948b45e03ebb6e6e781.ctex"
+uid="uid://cw2qm51uh21pi"
+path="res://.godot/imported/save_hover.jpg-fbe54e4d93fe25773223a6283a991daa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/Button/ENG/settings.png"
-dest_files=["res://.godot/imported/settings.png-39e73d83335d7948b45e03ebb6e6e781.ctex"]
+source_file="res://Sprite/Button/ENG/save_hover.jpg"
+dest_files=["res://.godot/imported/save_hover.jpg-fbe54e4d93fe25773223a6283a991daa.ctex"]
 
 [params]
 
