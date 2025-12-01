@@ -8,7 +8,7 @@ func _ready():
 	animator = skeleton_seeker # Liaison de la variable générique de la classe mère
 	sfx_attck = attack_1
 	sfx_hit = hit
-	maxHealth = 30 # Initialisation des PV max
+	maxHealth = 400 # Initialisation des PV max
 	damage = 2
 	attack_cd = 4
 	team = "enemie"

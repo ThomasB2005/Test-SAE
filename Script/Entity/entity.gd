@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var healthBar = $Sprite3D/SubViewport/Panel/HealthBar
-@onready var BossHealthBar: Node2D = $HealthBar
+@onready var BossHealthBar: TextureProgressBar = $HealthBar/CanvasLayer/TextureProgressBar
 @onready var detection_area = $Area3D
 @export var maxHealth = 0 
 @export var team = "" # Ajouter une équipe ("ally", "enemy")
@@ -129,8 +129,9 @@ func take_damage(amount, _attacker):
 		currentHealth -= amount
 		healthBar.value = currentHealth
 	else:
-		BossHealthBar -= amount
+		currentHealth -= amount
 		BossHealthBar.value = currentHealth
+		
 	print(name, " prend ", amount, " dégâts. PV: ", currentHealth)
 	
 	if currentHealth <= 0:
