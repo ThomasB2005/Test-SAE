@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvplj3rb7fvqi"]
+[gd_scene load_steps=12 format=3 uid="uid://dvplj3rb7fvqi"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
@@ -81,4 +81,3 @@ label_settings = SubResource("LabelSettings_2ifef")
 script = ExtResource("9_2ifef")
 spawners = [NodePath("../Path3D/Enemy_spawn")]
 game_manager = NodePath("../GameManager")
-map_type = "map1"

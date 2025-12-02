@@ -110,7 +110,12 @@ func update_ui():
 	if ui_label:
 		var current_wave = wave_manager.get_current_wave_number() if wave_manager else 0
 		var total_waves = wave_manager.get_total_waves() if wave_manager else 0
-		ui_label.text = "HP: " + str(player_hp) + "\nWave: " + str(current_wave) + "/" + str(total_waves)
+		var wave_text: String = str(current_wave)
+		# If this map is using an endless WaveManager, only show the current wave number
+		if wave_manager and wave_manager.has_method("is_endless") and wave_manager.is_endless():
+			ui_label.text = "HP: " + str(player_hp) + "\nWave: " + wave_text
+		else:
+			ui_label.text = "HP: " + str(player_hp) + "\nWave: " + wave_text + "/" + str(total_waves)
 
 func get_player_hp() -> int:
 	return player_hp

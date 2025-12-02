@@ -22,7 +22,6 @@ func set_reason(text: String) -> void:
 func _on_restart_pressed():
 	print("GameOver: Restart pressed")
 	get_tree().paused = false
-	# Try to reload the current scene; fallback if API differs
 	if get_tree().has_method("reload_current_scene"):
 		get_tree().reload_current_scene()
 	else:

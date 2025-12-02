@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs80bcxars8no"]
+[gd_scene load_steps=14 format=3 uid="uid://map2_endless"]
 
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="1_dtarm"]
 [ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_br3tv"]
@@ -237,3 +237,4 @@ script = ExtResource("11_map2")
 spawners = [NodePath("../Path3D/Enemy_spawn"), NodePath("../Path3D2/Enemy_spawn2")]
 game_manager = NodePath("../GameManager")
 map_type = "map2"
+endless = true
