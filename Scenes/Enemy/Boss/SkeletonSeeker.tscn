@@ -1,12 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://dypfcx3fh1atc"]
+[gd_scene load_steps=36 format=3 uid="uid://dypfcx3fh1atc"]
 
 [ext_resource type="Script" uid="uid://bdkc5uoqq3lvh" path="res://Script/Entity/Enemies/skeleton_seeker.gd" id="1_bb5sf"]
 [ext_resource type="Texture2D" uid="uid://woihrbycsiu1" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_skeleton_attack.png" id="2_bb5sf"]
 [ext_resource type="Texture2D" uid="uid://d2xtoy2hxnrcv" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_seeker_death.png" id="3_a12jw"]
 [ext_resource type="Texture2D" uid="uid://dtcgpf1shx0a5" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_seeker_idle.png" id="4_3rigy"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_a12jw"]
-[ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="5_3rigy"]
 [ext_resource type="PackedScene" uid="uid://dv3halvl65c80" path="res://Scenes/Menu/Boss/SkeletonSeeker/HealthBar.tscn" id="7_bb5sf"]
+[ext_resource type="AudioStream" uid="uid://jfctcs7cstkb" path="res://Sound/SFX/Bosses/SkeletonSeeker/attack.ogg" id="8_3rigy"]
+[ext_resource type="AudioStream" uid="uid://deysetbf7umwo" path="res://Sound/SFX/Bosses/BossSpawn.ogg" id="9_3rigy"]
+[ext_resource type="AudioStream" uid="uid://bv8t33sq81grl" path="res://Sound/SFX/Bosses/SkeletonSeeker/death.ogg" id="9_4g7gc"]
+[ext_resource type="AudioStream" uid="uid://bn8implq4q6v3" path="res://Sound/SFX/Bosses/BossFelled.ogg" id="10_4g7gc"]
+[ext_resource type="AudioStream" uid="uid://dk7tshk6faret" path="res://Sound/Music/Vordt of the Boreal Valley.mp3" id="11_wb707"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4g7gc"]
 atlas = ExtResource("2_bb5sf")
@@ -201,11 +205,23 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 stream = ExtResource("4_a12jw")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_3rigy")
-bus = &"SFX"
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.06142506, 1.1031507)
 
 [node name="HealthBar" parent="." instance=ExtResource("7_bb5sf")]
+
+[node name="attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3rigy")
+
+[node name="death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_4g7gc")
+
+[node name="bossSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3rigy")
+
+[node name="bossFelled" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4g7gc")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wb707")
+parameters/looping = true

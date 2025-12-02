@@ -1,7 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjq6m5rbnw7rq"]
 
 [ext_resource type="AudioStream" uid="uid://dvtdccuqilmqa" path="res://Sound/Music/Lobby_theme.ogg" id="1_vlv33"]
+[ext_resource type="Script" uid="uid://script_bg_music" path="res://Script/Music/bg_music.gd" id="2_bgscript"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+script = ExtResource("2_bgscript")
 stream = ExtResource("1_vlv33")
-autoplay = true
+autoplay = false

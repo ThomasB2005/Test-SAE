@@ -9,6 +9,10 @@ extends Node3D
 var animator: AnimatedSprite3D
 var sfx_attck: AudioStreamPlayer
 var sfx_hit: AudioStreamPlayer
+var sfx_death: AudioStreamPlayer
+var sfx_spawn: AudioStreamPlayer
+var sfx_felled: AudioStreamPlayer
+var music: AudioStreamPlayer
 var currentHealth
 var is_alive = true
 var damage = 0
@@ -23,6 +27,10 @@ var facing_right = true # Orientation actuelle de l'entité
 var targets: Array = [] # Liste des cibles présentes dans la zone
 
 func _ready():
+	if is_boss:
+		sfx_spawn.play()
+	if is_boss:
+		music.play()
 	currentHealth = maxHealth
 	if healthBar:
 		healthBar.max_value = maxHealth
@@ -141,6 +149,18 @@ func die():
 	is_alive = false
 	current_target = null
 	animator.play("die")
+	if is_boss:
+		sfx_felled.play()
+		if music:
+			music.stop()
+	if sfx_death:
+		sfx_death.play()
+	else:
+		print("cénul")
 	print(name, " est mort")
-	await get_tree().create_timer(4.0).timeout
+	if is_boss != true:
+		await get_tree().create_timer(2.0).timeout
+	else: 
+		await get_tree().create_timer(10.0).timeout
 	queue_free()
+	
