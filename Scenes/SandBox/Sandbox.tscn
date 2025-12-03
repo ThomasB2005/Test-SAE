@@ -13,7 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 0.98836416, 0.15210614, 0, -0.15210614, 0.98
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0812821, 0.3302636, 0)
 
 [node name="warrior" parent="." instance=ExtResource("4_k5rxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33966446, 0.2732224, -0.021107674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33966446, 0.31662887, -0.021107674)
 
 [node name="skeleton_seeker" parent="." instance=ExtResource("3_dvny0")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.7615432, 0.70021915, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.9018755, 0.6908699, 0)

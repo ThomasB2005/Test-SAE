@@ -1,12 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://cpix4tm34tuc7"]
+[gd_scene load_steps=33 format=3 uid="uid://cpix4tm34tuc7"]
 
 [ext_resource type="Script" uid="uid://b002yqypjw2w2" path="res://Script/Entity/Enemies/sprout.gd" id="1_uuvxf"]
 [ext_resource type="Texture2D" uid="uid://5obausosymbl" path="res://Sprite/Bosses/Sprout/Attack/Sprout_attack.png" id="1_x6sip"]
 [ext_resource type="Texture2D" uid="uid://oao3djignl37" path="res://Sprite/Bosses/Sprout/Death/Sprout-death.png" id="2_uuvxf"]
 [ext_resource type="Texture2D" uid="uid://ce326ke4y46br" path="res://Sprite/Bosses/Sprout/Idle/Sprout_idle.png" id="3_t67ra"]
-[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_g6liy"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_4h23o"]
-[ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_u8tct"]
+[ext_resource type="AudioStream" uid="uid://d2g537fgfv733" path="res://Sound/SFX/Bosses/Sprout/attack.ogg" id="7_n3b8c"]
+[ext_resource type="AudioStream" uid="uid://bdlk3rbpt1ltd" path="res://Sound/SFX/Bosses/Sprout/death.ogg" id="8_g6liy"]
+[ext_resource type="AudioStream" uid="uid://bn8implq4q6v3" path="res://Sound/SFX/Bosses/BossFelled.ogg" id="9_4h23o"]
+[ext_resource type="AudioStream" uid="uid://deysetbf7umwo" path="res://Sound/SFX/Bosses/BossSpawn.ogg" id="10_u8tct"]
+[ext_resource type="AudioStream" uid="uid://dg5dpkpeno5b8" path="res://Sound/Music/Dragonlord Placidusax.ogg" id="11_g6liy"]
+[ext_resource type="PackedScene" uid="uid://cjao6or42krfr" path="res://Scenes/Menu/Boss/Sprout/HealthBar.tscn" id="12_4h23o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ensue"]
 atlas = ExtResource("1_x6sip")
@@ -103,7 +107,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 9.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,9 +162,6 @@ script/source = "extends Area3D
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhmas"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
-viewport_path = NodePath("SubViewport")
-
 [node name="sprout" type="PathFollow3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_uuvxf")
@@ -169,8 +170,9 @@ script = ExtResource("1_uuvxf")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"idle"
-frame_progress = 0.64160764
+animation = &"attack"
+frame = 5
+frame_progress = 1.0
 
 [node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
@@ -179,14 +181,27 @@ script = SubResource("GDScript_ww8gr")
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="." instance=ExtResource("5_g6liy")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
-texture = SubResource("ViewportTexture_qhmas")
-
-[node name="hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4h23o")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_u8tct")
-bus = &"SFX"
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.469625)
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_n3b8c")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g6liy")
+volume_db = 10.214
+
+[node name="BossFelled" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_4h23o")
+
+[node name="BossSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_u8tct")
+
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_g6liy")
+
+[node name="HealthBar" parent="." instance=ExtResource("12_4h23o")]
