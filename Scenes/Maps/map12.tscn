@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dosc2jwae3j7g"]
+
+[ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_r55yt"]
+[ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="2_hhdnn"]
+[ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="3_7tajn"]
+
+[sub_resource type="Curve3D" id="Curve3D_6dsdq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.9807043, 0, 3.9914687, 0, 0, 0, 0, 0, 0, 3.0205698, 0, -0.91205525, 0, 0, 0, 0, 0, 0, -1.0591612, 0, -0.9708975, 0, 0, 0, 0, 0, 0, -0.8434067, 0, 1.1474247, 0, 0, 0, 0, 0, 0, -1.9417953, 0, 1.1278104, 0, 0, 0, 0, 0, 0, -2.0594797, 0, 3.8737843, 0, 0, 0, 0, 0, 0, -4.099346, 0, 4.0699244, 0, 0, 0, 0, 0, 0, -4.079732, 0, -0.93166965),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_10jm5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.040185, 0, 3.95224, 0, 0, 0, 0, 0, 0, 1.0591621, 0, -1.0101259, 0, 0, 0, 0, 0, 0, -1.0199327, 0, -1.0885825, 0, 0, 0, 0, 0, 0, -1.0199327, 0, 0.91205573, 0, 0, 0, 0, 0, 0, -2.0398655, 0, 1.0297402, 0, 0, 0, 0, 0, 0, -2.000638, 0, 3.9326265, 0, 0, 0, 0, 0, 0, -4.001276, 0, 4.011082, 0, 0, 0, 0, 0, 0, -4.02089, 0, -1.1278104),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_sb486"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.0398655, 0, 3.9718544, 0, 0, 0, 0, 0, 0, 1.0003185, 0, 2.0104449, 0, 0, 0, 0, 0, 0, 3.0009565, 0, 1.9516027, 0, 0, 0, 0, 0, 0, 1.9417953, 0, -1.0101259, 0, 0, 0, 0, 0, 0, -1.039547, 0, -1.0885825, 0, 0, 0, 0, 0, 0, -0.94147587, 0, 0.9512836, 0, 0, 0, 0, 0, 0, -2.177165, 0, 0.9512836, 0, 0, 0, 0, 0, 0, -2.0398655, 0, 3.95224, 0, 0, 0, 0, 0, 0, -4.079732, 0, 3.95224, 0, 0, 0, 0, 0, 0, -3.9816608, 0, -1.0101259),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[node name="Map12" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.125, 0.5)
+mesh_library = ExtResource("1_r55yt")
+cell_size = Vector3(1, 0.5, 1)
+data = {
+"cells": PackedInt32Array(65531, 65534, 3, 65531, 65535, 1, 65531, 0, 1, 65531, 1, 1, 65531, 2, 1, 65531, 3, 1, 65532, 3, 1, 65533, 3, 1, 65533, 2, 1, 65533, 1, 1, 65533, 0, 1, 65534, 0, 1, 65534, 65535, 1, 65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 2, 0, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 0, 2, 1, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 2, 65534, 1, 2, 65535, 1, 0, 3, 4, 1, 3, 4, 2, 3, 4, 65530, 65533, 0, 65530, 65534, 0, 65530, 65535, 0, 65530, 0, 2, 65530, 1, 2, 65530, 2, 2, 65530, 3, 0, 65530, 4, 0, 65531, 4, 0, 65532, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 3, 3, 0, 3, 2, 0, 3, 1, 0, 3, 0, 0, 3, 65535, 0, 3, 65534, 0, 3, 65533, 0, 2, 65533, 0, 1, 65533, 0, 0, 65533, 0, 65535, 65533, 0, 65534, 65533, 2, 65533, 65533, 2, 65532, 65533, 0, 65531, 65533, 0, 65532, 65534, 0, 65533, 65534, 2, 65533, 65535, 0, 65532, 65535, 0, 65532, 0, 2, 65532, 1, 2, 65532, 2, 2, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65535, 3, 0, 65535, 2, 0, 65535, 1, 0, 65535, 0, 2, 65535, 65535, 2, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65529, 65535, 0, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Base" parent="." instance=ExtResource("2_hhdnn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -1)
+
+[node name="Enemy_spawn" parent="." instance=ExtResource("3_7tajn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 4)
+
+[node name="Enemy_spawn2" parent="." instance=ExtResource("3_7tajn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 4)
+
+[node name="Enemy_spawn3" parent="." instance=ExtResource("3_7tajn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, 4)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_6dsdq")
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_10jm5")
+
+[node name="Path3D3" type="Path3D" parent="."]
+curve = SubResource("Curve3D_sb486")

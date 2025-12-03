@@ -2,9 +2,13 @@ extends Node
 
 @export var path_tile:PackedScene
 @export var tile_start:PackedScene
+@export var tile_spawn:PackedScene
 @export var tile_end:PackedScene
+@export var tile_base:PackedScene
 @export var tile_empty:PackedScene
 @export var tower_tile:PackedScene
+
+@export var path:Path3D
 
 @export var map_length:int = 16
 @export var map_height:int = 9
@@ -50,6 +54,7 @@ func _display_path():
 		var tile_score:int = _pg.get_tile_score(element)
 		#print(tile_score)
 		var tile:Node3D = path_tile.instantiate()
+		path.curve.add_point(Vector3(element.x, 0, element.y))
 		
 		if tile_score == 2:
 			tile = tile_start.instantiate()
