@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbqh7bapguvdr"]
+[gd_scene load_steps=3 format=3 uid="uid://cnagpt1hafb2l"]
 
 [ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="1_3qfw1"]
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="2_dqn3b"]
