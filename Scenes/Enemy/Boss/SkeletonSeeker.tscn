@@ -211,19 +211,24 @@ bus = &"SFX"
 
 [node name="Attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_3rigy")
+bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_4g7gc")
 volume_db = 10.214
+bus = &"SFX"
 
 [node name="BossSpawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_3rigy")
+bus = &"SFX"
 
 [node name="BossFelled" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_4g7gc")
+bus = &"SFX"
 
 [node name="Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_wb707")
+bus = &"Music"
 parameters/looping = true
 
 [node name="HitBox" type="Area3D" parent="."]

@@ -207,9 +207,11 @@ texture = SubResource("ViewportTexture_mf7qw")
 
 [node name="swip1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_h2teo")
+bus = &"SFX"
 
 [node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_hbun6")
+bus = &"SFX"
 
 [node name="HitBox" type="Area3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

@@ -200,5 +200,6 @@ stream = ExtResource("10_u8tct")
 
 [node name="Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_g6liy")
+bus = &"Music"
 
 [node name="HealthBar" parent="." instance=ExtResource("12_4h23o")]
