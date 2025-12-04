@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var healthBar = $Sprite3D/SubViewport/Panel/HealthBar
 @onready var BossHealthBar: TextureProgressBar = $HealthBar/CanvasLayer/TextureProgressBar
-@onready var detection_area = $Area3D
+@onready var detection_area = $AttackBox
 @export var maxHealth = 0 
 @export var team = "" # Ajouter une équipe ("ally", "enemy")
 
@@ -45,6 +45,10 @@ func _process(delta):
 		attack(current_target)
 
 func _on_area_entered(area: Node3D):
+	# Vérifier que la zone détectée est une HitBox (pas une AttackBox)
+	if area.name != "HitBox":
+		return
+	
 	var target = area.get_parent()
 	# Vérifier que c'est un ennemi valide
 	if target.has_method("take_damage") and target.is_alive and target.team != team:

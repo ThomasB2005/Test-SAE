@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbqh7bapguvdr"]
+[gd_scene load_steps=3 format=3 uid="uid://dbqh7bapguvdr"]
 
 [ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="1_3qfw1"]
+[ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="2_c8l2v"]
 
 [node name="SandBox" type="Node3D"]
 
@@ -8,3 +9,7 @@
 transform = Transform3D(1, 0, 0, 0, 0.98836416, 0.15210614, 0, -0.15210614, 0.98836416, -1.2485926, 0.62178695, 1.7233166)
 
 [node name="archer" parent="." instance=ExtResource("1_3qfw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1585627, 0.31910235, 0)
+
+[node name="slime" parent="." instance=ExtResource("2_c8l2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4736304, 0.24592072, 0)
