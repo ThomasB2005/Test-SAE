@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ja47hhae7qme"]
+[gd_scene load_steps=47 format=3 uid="uid://ja47hhae7qme"]
 
 [ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Slimes/slime_die.png" id="1_6dj4t"]
 [ext_resource type="Texture2D" uid="uid://crm5sswy0x2bc" path="res://Sprite/Slimes/slime_swallow.png" id="2_qatr3"]
@@ -273,6 +273,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ipaxs"]
+
 [node name="slime" type="PathFollow3D"]
 script = ExtResource("5_pqdc7")
 
@@ -300,3 +302,9 @@ bus = &"SFX"
 [node name="attack1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ipaxs")
 bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_ipaxs")

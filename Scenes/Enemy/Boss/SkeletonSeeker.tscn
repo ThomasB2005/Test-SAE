@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dypfcx3fh1atc"]
+[gd_scene load_steps=37 format=3 uid="uid://dypfcx3fh1atc"]
 
 [ext_resource type="Script" uid="uid://bdkc5uoqq3lvh" path="res://Script/Entity/Enemies/skeleton_seeker.gd" id="1_bb5sf"]
 [ext_resource type="Texture2D" uid="uid://woihrbycsiu1" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_skeleton_attack.png" id="2_bb5sf"]
@@ -183,6 +183,8 @@ script/source = "extends Area3D
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhmas"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb707"]
+
 [node name="skeleton_seeker" type="PathFollow3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_bb5sf")
@@ -205,9 +207,6 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 stream = ExtResource("4_a12jw")
 bus = &"SFX"
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.06142506, 1.1031507)
-
 [node name="HealthBar" parent="." instance=ExtResource("7_bb5sf")]
 
 [node name="Attack" type="AudioStreamPlayer" parent="."]
@@ -226,3 +225,9 @@ stream = ExtResource("10_4g7gc")
 [node name="Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_wb707")
 parameters/looping = true
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_wb707")

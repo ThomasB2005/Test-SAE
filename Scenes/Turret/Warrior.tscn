@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://immidmo6cfoa"]
+[gd_scene load_steps=32 format=3 uid="uid://immidmo6cfoa"]
 
 [ext_resource type="Script" uid="uid://dk2oc3batmcix" path="res://Script/Entity/Allies/warrior.gd" id="1_h2teo"]
 [ext_resource type="Texture2D" uid="uid://c347c47mn0m5e" path="res://Sprite/Warrior/GandalfHardcore Warrior.png" id="2_kb3hd"]
@@ -181,6 +181,8 @@ size = Vector3(0.28320313, 0.23144531, 0.24689484)
 [sub_resource type="ViewportTexture" id="ViewportTexture_mf7qw"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbun6"]
+
 [node name="warrior" type="CharacterBody3D"]
 script = ExtResource("1_h2teo")
 
@@ -208,3 +210,9 @@ stream = ExtResource("4_h2teo")
 
 [node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_hbun6")
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_hbun6")
