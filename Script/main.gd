@@ -24,5 +24,23 @@ func _ready() -> void:
 	get_tree().change_scene_to_packed(menu_scene)
 	
 	
+
+	while _pg.get_path().size() < min_path_size or _pg.get_path().size() > max_path_size:
+		_pg.generate_path()
+	
+	for element in _path:
+		var tile_score:int = _pg.get_tile_score(element)
+		#print(tile_score)
+		var tile:Node3D = path_tile.instantiate()
+		path.curve.add_point(Vector3(element.x, 0, element.y))
+		
+		if tile_score == 2:
+			tile = tile_start.instantiate()
+		elif tile_score == 8:
+			tile = tile_end.instantiate()
+		
+		add_child(tile)
+		tile.global_position = Vector3(element.x , 0, element.y)
+
 	
 @onready var enemy_scene = preload("res://Scenes/Enemy/Enemy.tscn")

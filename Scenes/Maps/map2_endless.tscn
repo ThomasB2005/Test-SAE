@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-[gd_scene load_steps=13 format=3 uid="uid://cs80bcxars8no"]
-=======
-[gd_scene load_steps=15 format=3 uid="uid://cs80bcxars8no"]
->>>>>>> 8d53ec6c1f7d36beee67df1f45e924962fbdb326
+[gd_scene load_steps=14 format=3 uid="uid://map2_endless"]
 
-[ext_resource type="Script" uid="uid://ujexjqu3nqyq" path="res://Script/menu_pause.gd" id="1_br3tv"]
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="1_dtarm"]
 [ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_br3tv"]
 [ext_resource type="PackedScene" uid="uid://d8ps6rjvqf6k" path="res://Assets/Start_tile.glb" id="3_okdnh"]
@@ -37,7 +32,6 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_br3tv")
 
 [node name="GridMap" type="GridMap" parent="."]
 
@@ -243,3 +237,4 @@ script = ExtResource("11_map2")
 spawners = [NodePath("../Path3D/Enemy_spawn"), NodePath("../Path3D2/Enemy_spawn2")]
 game_manager = NodePath("../GameManager")
 map_type = "map2"
+endless = true
