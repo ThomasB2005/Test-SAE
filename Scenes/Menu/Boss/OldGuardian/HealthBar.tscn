@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkto1n6y4obhu"]
 
-[ext_resource type="Texture2D" uid="uid://d3gt1smko3dfs" path="res://Sprite/Bosses/HealthBar/OldGuardian/Old_GuardianHB.png" id="1_bp08e"]
-[ext_resource type="Texture2D" uid="uid://cv65fb7hmrqrc" path="res://Sprite/Bosses/HealthBar/Bar.png" id="2_x8kn6"]
+[ext_resource type="Texture2D" uid="uid://d3gt1smko3dfs" path="res://Sprite/Enemies/Bosses/HealthBar/OldGuardian/Old_GuardianHB.png" id="1_bp08e"]
+[ext_resource type="Texture2D" uid="uid://cv65fb7hmrqrc" path="res://Sprite/Enemies/Bosses/HealthBar/Bar.png" id="2_x8kn6"]
 [ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="3_7y7s4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fqkuk"]
