@@ -47,7 +47,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 2)
 script = ExtResource("4_spawner")
 enemy_scene = ExtResource("5_enemy")
-path_nodes = [null]
+path_nodes = [null, NodePath("../Enemy_spawn2/Path3D2")]
 game_manager = NodePath("../GameManager")
 
 [node name="Path3D" type="Path3D" parent="Enemy_spawn"]

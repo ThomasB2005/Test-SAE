@@ -6,7 +6,7 @@ extends "res://Script/Entity/entity.gd"
 @onready var death: AudioStreamPlayer = $Death
 @onready var boss_spawn: AudioStreamPlayer = $BossSpawn
 @onready var boss_felled: AudioStreamPlayer = $BossFelled
-@onready var theme: AudioStreamPlayer = $Theme
+@onready var theme: AudioStreamPlayer = get_node_or_null("music")
 
 func _ready():
 	

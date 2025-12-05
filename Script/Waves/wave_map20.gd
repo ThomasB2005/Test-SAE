@@ -14,6 +14,6 @@ static func get_waves() -> Array[Wave]:
 	waves.append(Wave.new(7, [{"enemy_type":"enemy9","count":30},{"enemy_type":"bat","count":12}], 0.9, 7.0))
 	waves.append(Wave.new(8, [{"enemy_type":"enemy9","count":26},{"enemy_type":"bat","count":10}], 0.8, 7.0))
 	waves.append(Wave.new(9, [{"enemy_type":"enemy9","count":28},{"enemy_type":"bat","count":12}], 0.7, 8.0))
-	waves.append(Wave.new(10, [{"enemy_type":"enemy9","count":20},{"enemy_type":"boss3","count":1}], 0.6, 0.0))
+	waves.append(Wave.new(10, [{"enemy_type":"enemy9","count":20},{"enemy_type":"boss4","count":1}], 0.6, 0.0))
 
 	return waves

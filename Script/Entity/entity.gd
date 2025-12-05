@@ -1,8 +1,8 @@
 extends Node3D
 
-@onready var healthBar = $Sprite3D/SubViewport/Panel/HealthBar
-@onready var BossHealthBar: TextureProgressBar = $HealthBar/CanvasLayer/TextureProgressBar
-@onready var detection_area = $AttackBox
+@onready var healthBar = get_node_or_null("Sprite3D/SubViewport/Panel/HealthBar")
+@onready var BossHealthBar: TextureProgressBar = get_node_or_null("HealthBar/CanvasLayer/TextureProgressBar")
+@onready var detection_area = get_node_or_null("AttackBox")
 @export var maxHealth = 0 
 @export var team = "" # Ajouter une équipe ("ally", "enemy")
 
@@ -27,14 +27,17 @@ var facing_right = true # Orientation actuelle de l'entité
 var targets: Array = [] # Liste des cibles présentes dans la zone
 
 func _ready():
-	if is_boss:
+	if is_boss and sfx_spawn:
 		sfx_spawn.play()
-	if is_boss:
+	if is_boss and music:
 		music.play()
 	currentHealth = maxHealth
 	if healthBar:
 		healthBar.max_value = maxHealth
 		healthBar.value = currentHealth
+	if BossHealthBar:
+		BossHealthBar.max_value = maxHealth
+		BossHealthBar.value = currentHealth
 	if detection_area:
 		detection_area.area_entered.connect(_on_area_entered)
 		detection_area.area_exited.connect(_on_area_exited)
@@ -102,13 +105,15 @@ func attack(target: Node3D):
 	face_target(target)
 	
 	can_attack = false
-	animator.play("attack")
+	if animator:
+		animator.play("attack")
 	print(name, " attaque ", target.name)
 	if sfx_attck:
 		await get_tree().create_timer(0.7).timeout
 		sfx_attck.play()
 		
-	await animator.animation_finished
+	if animator:
+		await animator.animation_finished
 	
 	
 	# Vérifier que la cible existe encore
@@ -122,7 +127,8 @@ func attack(target: Node3D):
 		if current_target:
 			print(name, " change de cible vers ", current_target.name)
 	
-	animator.play("idle")
+	if animator:
+		animator.play("idle")
 	
 	# Cooldown
 	await get_tree().create_timer(attack_cd).timeout
@@ -139,10 +145,12 @@ func take_damage(amount, _attacker):
 		print("cénul")
 	if is_boss != true:
 		currentHealth -= amount
-		healthBar.value = currentHealth
+		if healthBar:
+			healthBar.value = currentHealth
 	else:
 		currentHealth -= amount
-		BossHealthBar.value = currentHealth
+		if BossHealthBar:
+			BossHealthBar.value = currentHealth
 		
 	print(name, " prend ", amount, " dégâts. PV: ", currentHealth)
 	
@@ -152,7 +160,8 @@ func take_damage(amount, _attacker):
 func die():
 	is_alive = false
 	current_target = null
-	animator.play("die")
+	if animator:
+		animator.play("die")
 	if is_boss:
 		sfx_felled.play()
 		if music:

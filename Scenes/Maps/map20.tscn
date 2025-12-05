@@ -31,10 +31,10 @@ point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_jr0k3"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.011163473, 0, -0.03151226, 0, 0, 0, 0, 0, 0, -0.011162996, 0, 9.973845),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.011163473, 0, -0.03151226, 0, 0, 0, 0, 0, 0, -0.011163235, 0, 5.9910583, 0, 0, 0, 0, 0, 0, 3.0246136, 0, 5.9920864, 0, 0, 0, 0, 0, 0, 3.0246139, 0, 7.0221205, 0, 0, 0, 0, 0, 0, 5.03047, 0, 7.043805, 0, 0, 0, 0, 0, 0, 5.0413127, 0, 3.0104074, 0, 0, 0, 0, 0, 0, 3.0029283, 0, 3.0537777, 0, 0, 0, 0, 0, 0, 3.0354557, 0, 1.9586878, 0, 0, 0, 0, 0, 0, -0.024411201, 4.7683716e-07, 1.9765186, 0, 0, 0, 0, 0, 0, 0.010407805, 0, 9.9712715),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 2
+point_count = 10
 
 [node name="Map20" type="Node3D"]
 
@@ -49,6 +49,7 @@ data = {
 [node name="Camera3D" type="Camera3D" parent="GridMap"]
 transform = Transform3D(1, 8.8817826e-16, 1.5383701e-15, -1.7763567e-15, 0.49999994, 0.86602545, 0, -0.8660255, 0.4999999, -0.4636526, 5.4990478, 2.9101996)
 projection = 1
+fov = 37.849285
 size = 8.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="GridMap"]
@@ -113,6 +114,6 @@ offset_bottom = 23.0
 
 [node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
 script = ExtResource("7_wave_manager")
-spawners = [NodePath("../Enemy_spawn"), NodePath("../Enemy_spawn4"), NodePath("../Enemy_spawn3"), NodePath("../Enemy_spawn2")]
+spawners = [NodePath("../Enemy_spawn"), NodePath("../Enemy_spawn3"), NodePath("../Enemy_spawn4"), NodePath("../Enemy_spawn2")]
 game_manager = NodePath("../GameManager")
 map_type = "map20"

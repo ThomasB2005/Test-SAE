@@ -1,11 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://3nplgxkgcb04"]
+[gd_scene load_steps=42 format=3 uid="uid://3nplgxkgcb04"]
 
 [ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_l4g8t"]
 [ext_resource type="Script" uid="uid://chtwgdy38fl0d" path="res://Script/Entity/Enemies/old_guardian.gd" id="1_y6ukm"]
-[ext_resource type="Texture2D" uid="uid://gwkt143glqm5" path="res://Sprite/Bosses/OldGuardian/Old_Guardian_attack_1.png" id="2_y6ukm"]
-[ext_resource type="Texture2D" uid="uid://batgalunlxbu8" path="res://Sprite/Bosses/OldGuardian/Old_Guardian_death.png" id="3_l4g8t"]
-[ext_resource type="Texture2D" uid="uid://dw1xmkuwae28f" path="res://Sprite/Bosses/OldGuardian/Old_Guardian_idle.png" id="4_2csdk"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="5_1yo3o"]
+[ext_resource type="Texture2D" uid="uid://gwkt143glqm5" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_attack_1.png" id="2_y6ukm"]
+[ext_resource type="Texture2D" uid="uid://batgalunlxbu8" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_death.png" id="3_l4g8t"]
+[ext_resource type="Texture2D" uid="uid://dw1xmkuwae28f" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_idle.png" id="4_2csdk"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_y3i87"]
 [ext_resource type="AudioStream" uid="uid://d3hm5hfdvdcy0" path="res://Sound/SFX/Bosses/OldGuardian/death.ogg" id="7_tpvaw"]
 [ext_resource type="AudioStream" uid="uid://bn8implq4q6v3" path="res://Sound/SFX/Bosses/BossFelled.ogg" id="8_1yo3o"]
@@ -241,27 +240,27 @@ script = SubResource("GDScript_ww8gr")
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="Node3D" instance=ExtResource("5_1yo3o")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
-texture = SubResource("ViewportTexture_qhmas")
-
-[node name="hit" type="AudioStreamPlayer" parent="Node3D"]
+[node name="Hit" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("6_y3i87")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
-stream = ExtResource("7_vpbkt")
+[node name="Attack" type="AudioStreamPlayer" parent="Node3D"]
+stream = ExtResource("7_tpvaw")
 bus = &"SFX"
 
-[node name="BossFelled" type="AudioStreamPlayer" parent="."]
+[node name="Death" type="AudioStreamPlayer" parent="Node3D"]
+stream = ExtResource("7_tpvaw")
+bus = &"SFX"
+
+[node name="BossFelled" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("8_1yo3o")
 bus = &"SFX"
 
-[node name="BossSpawn" type="AudioStreamPlayer" parent="."]
+[node name="BossSpawn" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("9_y3i87")
 bus = &"SFX"
 
-[node name="Theme" type="AudioStreamPlayer" parent="."]
+[node name="Theme" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("10_tpvaw")
 bus = &"Music"
 

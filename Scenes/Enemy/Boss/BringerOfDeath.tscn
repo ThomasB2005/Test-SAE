@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_3dvf8"]
 [ext_resource type="Script" uid="uid://6cfwhpxoca35" path="res://Script/Entity/Enemies/bringer_of_death.gd" id="1_jr6gr"]
-[ext_resource type="Texture2D" uid="uid://84q2e3you3qs" path="res://Sprite/BringerOfDeath/Bringer-of-Death-SpritSheet.png" id="2_3dvf8"]
+[ext_resource type="Texture2D" uid="uid://84q2e3you3qs" path="res://Sprite/Enemies/Bosses/BringerOfDeath/Bringer-of-Death-SpritSheet.png" id="2_3dvf8"]
 [ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_8888w"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_jgvn8"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="5_dr7lm"]

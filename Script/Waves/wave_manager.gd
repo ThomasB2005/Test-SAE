@@ -191,49 +191,10 @@ func spawn_enemy_on_spawner(spawner: Node, enemy_type: String):
 	# Determine which path to use for this spawn.
 	var chosen_path = null
 
-	# If the spawner exposes multiple paths, and we're before wave 8, prefer the first path only.
-	var before_wave_8 := true
-	if current_wave:
-		before_wave_8 = current_wave.wave_number < 8
-
-	if ("path_nodes" in spawner) and spawner.path_nodes and spawner.path_nodes.size() >= 1:
-		# If multiple paths and we're still before wave 8, force the first path.
-		if spawner.path_nodes.size() >= 2 and before_wave_8:
-			var entry0 = spawner.path_nodes[0]
-			if entry0 is Path3D:
-				chosen_path = entry0
-			else:
-				var resolved0 = null
-				if typeof(entry0) == TYPE_NODE_PATH or typeof(entry0) == TYPE_STRING:
-					resolved0 = spawner.get_node_or_null(entry0)
-				if resolved0 and resolved0 is Path3D:
-					chosen_path = resolved0
-		else:
-			# Otherwise, prefer letting the spawner decide if it has a helper method, fallback to first path
-			if spawner.has_method("get_spawn_path"):
-				chosen_path = spawner.call("get_spawn_path")
-			else:
-				var entry_fallback = spawner.path_nodes[0]
-				if entry_fallback is Path3D:
-					chosen_path = entry_fallback
-				else:
-					var resolved_fb = null
-					if typeof(entry_fallback) == TYPE_NODE_PATH or typeof(entry_fallback) == TYPE_STRING:
-						resolved_fb = spawner.get_node_or_null(entry_fallback)
-					if resolved_fb and resolved_fb is Path3D:
-						chosen_path = resolved_fb
-	else:
-		# Try to use a direct `path_node` property if present on the spawner
-		if spawner.has_method("get_spawn_path"):
-			chosen_path = spawner.call("get_spawn_path")
-		else:
-			if "path_node" in spawner:
-				chosen_path = spawner.path_node
-
-	# Special-case: map4 locks second spawner until wave 5 (handled earlier in get_spawners_for_enemy),
-	# and map5 requires the boss to use the second path on the single spawner.
-	if map_type == "map5" or "map20" or "map15" or "map20" or "map25" and enemy_type.to_lower().find("boss") >= 0:
-		# Force the boss to use the second path regardless of the before_wave_8 rule.
+	# Special-case: Bosses on certain maps always use the second path
+	var is_boss_spawn = is_enemy_boss(enemy_type)
+	if is_boss_spawn and (map_type == "map5" or map_type == "map10" or map_type == "map15" or map_type == "map20" or map_type == "map25"):
+		# Force the boss to use the second path regardless of other rules
 		if ("path_nodes" in spawner) and spawner.path_nodes and spawner.path_nodes.size() >= 2:
 			var entry = spawner.path_nodes[1]
 			if entry is Path3D:
@@ -245,6 +206,47 @@ func spawn_enemy_on_spawner(spawner: Node, enemy_type: String):
 					resolved = spawner.get_node_or_null(entry)
 				if resolved and resolved is Path3D:
 					chosen_path = resolved
+
+	# If path not chosen yet (not a boss or boss logic didn't apply), use normal logic
+	if chosen_path == null:
+		# If the spawner exposes multiple paths, and we're before wave 8, prefer the first path only.
+		var before_wave_8 := true
+		if current_wave:
+			before_wave_8 = current_wave.wave_number < 8
+
+		if ("path_nodes" in spawner) and spawner.path_nodes and spawner.path_nodes.size() >= 1:
+			# If multiple paths and we're still before wave 8, force the first path.
+			if spawner.path_nodes.size() >= 2 and before_wave_8:
+				var entry0 = spawner.path_nodes[0]
+				if entry0 is Path3D:
+					chosen_path = entry0
+				else:
+					var resolved0 = null
+					if typeof(entry0) == TYPE_NODE_PATH or typeof(entry0) == TYPE_STRING:
+						resolved0 = spawner.get_node_or_null(entry0)
+					if resolved0 and resolved0 is Path3D:
+						chosen_path = resolved0
+			else:
+				# Otherwise, prefer letting the spawner decide if it has a helper method, fallback to first path
+				if spawner.has_method("get_spawn_path"):
+					chosen_path = spawner.call("get_spawn_path")
+				else:
+					var entry_fallback = spawner.path_nodes[0]
+					if entry_fallback is Path3D:
+						chosen_path = entry_fallback
+					else:
+						var resolved_fb = null
+						if typeof(entry_fallback) == TYPE_NODE_PATH or typeof(entry_fallback) == TYPE_STRING:
+							resolved_fb = spawner.get_node_or_null(entry_fallback)
+						if resolved_fb and resolved_fb is Path3D:
+							chosen_path = resolved_fb
+		else:
+			# Try to use a direct `path_node` property if present on the spawner
+			if spawner.has_method("get_spawn_path"):
+				chosen_path = spawner.call("get_spawn_path")
+			else:
+				if "path_node" in spawner:
+					chosen_path = spawner.path_node
 
 	if chosen_path == null:
 		push_error("Path node not assigned to spawner!")
@@ -267,6 +269,39 @@ func spawn_enemy_on_spawner(spawner: Node, enemy_type: String):
 	enemies_alive += 1
 	print("Spawned ", enemy_type, " on spawner. Enemies alive: ", enemies_alive)
 
+# Helper function to check if an enemy type is a boss by loading its scene
+func is_enemy_boss(enemy_type: String) -> bool:
+	var enemy_scene = get_enemy_scene(enemy_type)
+	if enemy_scene == null:
+		print("DEBUG is_enemy_boss: enemy_scene is null for ", enemy_type)
+		return false
+	
+	# Instantiate temporarily to check the is_boss variable
+	var temp_instance = enemy_scene.instantiate()
+	var is_boss_value = false
+	
+	print("DEBUG is_enemy_boss: instantiated ", enemy_type)
+	
+	# Add to tree so _ready() is called
+	add_child(temp_instance)
+	
+	# The script might be on a child node (Node3D), not the root
+	# Check the root first
+	if "is_boss" in temp_instance:
+		is_boss_value = temp_instance.is_boss
+		print("DEBUG is_enemy_boss: Found is_boss on root, value=", is_boss_value)
+	else:
+		# Check children (especially Node3D)
+		for child in temp_instance.get_children():
+			if "is_boss" in child:
+				is_boss_value = child.is_boss
+				print("DEBUG is_enemy_boss: Found is_boss on child ", child.name, ", value=", is_boss_value)
+				break
+	
+	# Clean up the temporary instance
+	temp_instance.queue_free()
+	
+	return is_boss_value
 
 func get_spawners_for_enemy(enemy_type: String) -> Array:
 	var result: Array = []
@@ -275,6 +310,19 @@ func get_spawners_for_enemy(enemy_type: String) -> Array:
 		return result
 
 	var two_spawners: bool = spawners.size() >= 2
+
+	var is_boss_enemy = is_enemy_boss(enemy_type)
+	print("DEBUG get_spawners_for_enemy: enemy_type=", enemy_type, " is_boss=", is_boss_enemy, " map_type=", map_type, " spawners.size()=", spawners.size(), " wave_index=", current_wave_index)
+	if is_boss_enemy:
+		# Map20: boss uses Enemy_spawn4 (index 2 in array)
+		if map_type == "map20" and spawners.size() >= 4:
+			print("DEBUG: Boss on map20, using spawner[2] =", spawners[2].name if spawners[2] else "null")
+			result.append(spawners[2])
+			return result
+		# Map25: boss uses spawner9 (index 8)
+		if map_type == "map25" and spawners.size() >= 10:
+			result.append(spawners[8])
+			return result
 
 	if current_wave_index == 0:
 		result.append(spawners[0])
@@ -291,10 +339,10 @@ func get_spawners_for_enemy(enemy_type: String) -> Array:
 			result.append(spawners[0])
 			return result
 	
-	# Special logic for map20 spawner4 (index 3) - only for bat
+	# Special logic for bat
 	if map_type == "map20" and spawners.size() >= 4:
 		if enemy_type.to_lower() == "bat":
-			result.append(spawners[3])  # spawner4
+			result.append(spawners[3])
 			return result
 	
 	# Special logic for map25 spawner7 (index 6), spawner8 (index 7), spawner9 (index 8) and spawner10 (index 9)
@@ -306,11 +354,6 @@ func get_spawners_for_enemy(enemy_type: String) -> Array:
 				result.append(spawners[6])  # spawner7
 			else:
 				result.append(spawners[7])  # spawner8
-			return result
-		
-		# Spawner9 is only for boss
-		if enemy_type.to_lower().contains("boss"):
-			result.append(spawners[8])  # spawner9
 			return result
 		
 		# Spawner10 logic
