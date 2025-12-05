@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://bu82hf1hhnk3k"]
 
 [ext_resource type="Script" uid="uid://cwbhngvebsduh" path="res://Script/Entity/Enemies/spider.gd" id="1_u3gvp"]
-[ext_resource type="Texture2D" uid="uid://bax441wxp406h" path="res://Sprite/Spider/Cave Spider Spritesheet.png" id="2_u3gvp"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_recip"]
+[ext_resource type="Texture2D" uid="uid://bax441wxp406h" path="res://Sprite/Enemies/Spider/Cave Spider Spritesheet.png" id="2_u3gvp"]
+[ext_resource type="PackedScene" uid="uid://mljbx83fn2o0" path="res://Scenes/Menu/healthBar.tscn" id="3_recip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygg7j"]
 atlas = ExtResource("2_u3gvp")

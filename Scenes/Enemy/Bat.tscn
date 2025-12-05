@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://d636fv68twh2"]
 
 [ext_resource type="Script" uid="uid://d1o5fdfooays3" path="res://Script/Entity/Enemies/bat.gd" id="1_6k34c"]
-[ext_resource type="Texture2D" uid="uid://38glcvmhlast" path="res://Sprite/Bat/Bat_Sprite_Sheet.png" id="2_6k34c"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_413kf"]
+[ext_resource type="Texture2D" uid="uid://38glcvmhlast" path="res://Sprite/Enemies/Bat/Bat_Sprite_Sheet.png" id="2_6k34c"]
+[ext_resource type="PackedScene" uid="uid://mljbx83fn2o0" path="res://Scenes/Menu/healthBar.tscn" id="3_413kf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gdmm"]
 atlas = ExtResource("2_6k34c")

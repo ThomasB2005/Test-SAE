@@ -1,9 +1,9 @@
 [gd_scene load_steps=33 format=3 uid="uid://cpix4tm34tuc7"]
 
 [ext_resource type="Script" uid="uid://b002yqypjw2w2" path="res://Script/Entity/Enemies/sprout.gd" id="1_uuvxf"]
-[ext_resource type="Texture2D" uid="uid://5obausosymbl" path="res://Sprite/Bosses/Sprout/Attack/Sprout_attack.png" id="1_x6sip"]
-[ext_resource type="Texture2D" uid="uid://oao3djignl37" path="res://Sprite/Bosses/Sprout/Death/Sprout-death.png" id="2_uuvxf"]
-[ext_resource type="Texture2D" uid="uid://ce326ke4y46br" path="res://Sprite/Bosses/Sprout/Idle/Sprout_idle.png" id="3_t67ra"]
+[ext_resource type="Texture2D" uid="uid://5obausosymbl" path="res://Sprite/Enemies/Bosses/Sprout/Attack/Sprout_attack.png" id="1_x6sip"]
+[ext_resource type="Texture2D" uid="uid://oao3djignl37" path="res://Sprite/Enemies/Bosses/Sprout/Death/Sprout-death.png" id="2_uuvxf"]
+[ext_resource type="Texture2D" uid="uid://ce326ke4y46br" path="res://Sprite/Enemies/Bosses/Sprout/Idle/Sprout_idle.png" id="3_t67ra"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_4h23o"]
 [ext_resource type="AudioStream" uid="uid://d2g537fgfv733" path="res://Sound/SFX/Bosses/Sprout/attack.ogg" id="7_n3b8c"]
 [ext_resource type="AudioStream" uid="uid://bdlk3rbpt1ltd" path="res://Sound/SFX/Bosses/Sprout/death.ogg" id="8_g6liy"]

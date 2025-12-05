@@ -1,9 +1,9 @@
 [gd_scene load_steps=37 format=3 uid="uid://dypfcx3fh1atc"]
 
 [ext_resource type="Script" uid="uid://bdkc5uoqq3lvh" path="res://Script/Entity/Enemies/skeleton_seeker.gd" id="1_bb5sf"]
-[ext_resource type="Texture2D" uid="uid://woihrbycsiu1" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_skeleton_attack.png" id="2_bb5sf"]
-[ext_resource type="Texture2D" uid="uid://d2xtoy2hxnrcv" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_seeker_death.png" id="3_a12jw"]
-[ext_resource type="Texture2D" uid="uid://dtcgpf1shx0a5" path="res://Sprite/Bosses/SkeletonSeeker/skeleton_seeker_idle.png" id="4_3rigy"]
+[ext_resource type="Texture2D" uid="uid://woihrbycsiu1" path="res://Sprite/Enemies/Bosses/SkeletonSeeker/skeleton_skeleton_attack.png" id="2_bb5sf"]
+[ext_resource type="Texture2D" uid="uid://d2xtoy2hxnrcv" path="res://Sprite/Enemies/Bosses/SkeletonSeeker/skeleton_seeker_death.png" id="3_a12jw"]
+[ext_resource type="Texture2D" uid="uid://dtcgpf1shx0a5" path="res://Sprite/Enemies/Bosses/SkeletonSeeker/skeleton_seeker_idle.png" id="4_3rigy"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_a12jw"]
 [ext_resource type="PackedScene" uid="uid://dv3halvl65c80" path="res://Scenes/Menu/Boss/SkeletonSeeker/HealthBar.tscn" id="7_bb5sf"]
 [ext_resource type="AudioStream" uid="uid://jfctcs7cstkb" path="res://Sound/SFX/Bosses/SkeletonSeeker/attack.ogg" id="8_3rigy"]

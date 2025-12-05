@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=3 uid="uid://cud1lwdw1biry"]
 
 [ext_resource type="Script" uid="uid://j2ytpwebltaq" path="res://Script/Entity/Enemies/piranha_plant.gd" id="1_gag4f"]
-[ext_resource type="Texture2D" uid="uid://ba5aah5lxli2c" path="res://Sprite/Bosses/Plant/Attack1.png" id="2_wr0jl"]
-[ext_resource type="Texture2D" uid="uid://dk1wurvouoycm" path="res://Sprite/Bosses/Plant/Death.png" id="3_skuwy"]
-[ext_resource type="Texture2D" uid="uid://c05oolsj7ets8" path="res://Sprite/Bosses/Plant/Idle.png" id="4_7vf2e"]
+[ext_resource type="Texture2D" uid="uid://ba5aah5lxli2c" path="res://Sprite/Enemies/Bosses/Plant/Attack1.png" id="2_wr0jl"]
+[ext_resource type="Texture2D" uid="uid://dk1wurvouoycm" path="res://Sprite/Enemies/Bosses/Plant/Death.png" id="3_skuwy"]
+[ext_resource type="Texture2D" uid="uid://c05oolsj7ets8" path="res://Sprite/Enemies/Bosses/Plant/Idle.png" id="4_7vf2e"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_4p5dk"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_qhgw7"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_677ma"]

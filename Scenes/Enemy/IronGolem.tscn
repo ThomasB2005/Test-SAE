@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://grfc0htjnfg7"]
 
 [ext_resource type="Script" uid="uid://catsbp2ipivy0" path="res://Script/Entity/Enemies/iron_golem.gd" id="1_cihxb"]
-[ext_resource type="Texture2D" uid="uid://buu8toomf8kwg" path="res://Sprite/Bosses/IronGolem/Character_sheet.png" id="2_oj0sp"]
+[ext_resource type="Texture2D" uid="uid://buu8toomf8kwg" path="res://Sprite/Enemies/Bosses/IronGolem/Character_sheet.png" id="2_oj0sp"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_mka41"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_eenpc"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="5_gnx6t"]
