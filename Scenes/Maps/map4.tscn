@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnljyp01p6w43"]
+[gd_scene load_steps=14 format=3 uid="uid://cnljyp01p6w43"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_em06d"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="2_pvrog"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="3_3yrht"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="4_wpuvh"]
+[ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="5_3yrht"]
+[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="6_kcsf3"]
+[ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="6_wpuvh"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="7_kcsf3"]
 
 [sub_resource type="Curve3D" id="Curve3D_kcsf3"]
 _data = {
@@ -33,6 +37,11 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="LabelSettings" id="LabelSettings_kcsf3"]
+paragraph_spacing = 2.0
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Map4" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -52,13 +61,13 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5,
 [node name="Barrier4" parent="GridMap" instance=ExtResource("2_pvrog")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5, 0.37404764, 3.0556383)
 
-[node name="Camera3D" type="Camera3D" parent="GridMap/Barrier4"]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, -3.9999998, 5, 4.818675)
-projection = 1
-size = 8.0
-
 [node name="Barrier3" parent="GridMap" instance=ExtResource("2_pvrog")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5, 0.37404764, -3.9443617)
+
+[node name="Camera3D" type="Camera3D" parent="GridMap"]
+transform = Transform3D(-4.371139e-08, 0.86602545, -0.49999997, 0, 0.49999997, 0.86602545, 1, 3.7855173e-08, -2.1855692e-08, -0.31867504, 5.3740478, -0.9443617)
+projection = 1
+size = 8.0
 
 [node name="Base" parent="." instance=ExtResource("3_3yrht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
@@ -66,23 +75,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
 [node name="Base2" parent="." instance=ExtResource("3_3yrht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
 
-[node name="Enemy_spawn" parent="." instance=ExtResource("4_wpuvh")]
+[node name="Enemy_spawn" parent="." node_paths=PackedStringArray("path_node", "path_nodes", "game_manager") instance=ExtResource("4_wpuvh")]
+script = ExtResource("5_3yrht")
+enemy_scene = ExtResource("6_kcsf3")
+path_node = NodePath("Path3D")
+path_nodes = [NodePath("Path3D"), NodePath("Path3D2")]
+game_manager = NodePath("../GameManager")
+
+[node name="Path3D" type="Path3D" parent="Enemy_spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56470644, 0)
+curve = SubResource("Curve3D_kcsf3")
+
+[node name="Path3D2" type="Path3D" parent="Enemy_spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27779472, 0)
+curve = SubResource("Curve3D_vu81b")
 
 [node name="Enemy_spawn2" parent="." instance=ExtResource("4_wpuvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56470644, 0)
-curve = SubResource("Curve3D_kcsf3")
-
-[node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27779472, 0)
-curve = SubResource("Curve3D_vu81b")
-
-[node name="Path3D3" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29192552, 0)
+[node name="Path3D3" type="Path3D" parent="Enemy_spawn2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.29192552, 0)
 curve = SubResource("Curve3D_ut64b")
 
-[node name="Path3D4" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2798487, 0)
+[node name="Path3D4" type="Path3D" parent="Enemy_spawn2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.2798487, 0)
 curve = SubResource("Curve3D_md1qr")
+
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
+script = ExtResource("7_kcsf3")
+wave_manager = NodePath("../WaveManager")
+ui_label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+
+[node name="Label" type="Label" parent="GameManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_kcsf3")
+
+[node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
+script = ExtResource("6_wpuvh")
+spawners = [NodePath("../Enemy_spawn"), NodePath("../Enemy_spawn2")]
+game_manager = NodePath("../GameManager")
+map_type = "map3"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7510424, 7.606289, 1.0152483)

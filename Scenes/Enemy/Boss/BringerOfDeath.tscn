@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://3mbmtjrtlt75"]
+[gd_scene load_steps=42 format=3 uid="uid://3mbmtjrtlt75"]
 
+[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_3dvf8"]
 [ext_resource type="Script" uid="uid://6cfwhpxoca35" path="res://Script/Entity/Enemies/bringer_of_death.gd" id="1_jr6gr"]
-[ext_resource type="Texture2D" uid="uid://84q2e3you3qs" path="res://Sprite/Enemies/Bosses/BringerOfDeath/Bringer-of-Death-SpritSheet.png" id="2_3dvf8"]
-[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_8888w"]
+[ext_resource type="Texture2D" uid="uid://84q2e3you3qs" path="res://Sprite/BringerOfDeath/Bringer-of-Death-SpritSheet.png" id="2_3dvf8"]
+[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_8888w"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_jgvn8"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="5_dr7lm"]
 
@@ -252,30 +253,33 @@ viewport_path = NodePath("SubViewport")
 
 [node name="bringer_of_death" type="PathFollow3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_3dvf8")
+
+[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_jr6gr")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
 animation = &"idle"
 frame_progress = 0.8210518
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="Node3D"]
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="." instance=ExtResource("3_8888w")]
+[node name="Sprite3D" parent="Node3D" instance=ExtResource("3_8888w")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
 texture = SubResource("ViewportTexture_qhmas")
 
-[node name="hit" type="AudioStreamPlayer" parent="."]
+[node name="hit" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("4_jgvn8")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="."]
+[node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("5_dr7lm")
 bus = &"SFX"
