@@ -116,4 +116,3 @@ script = ExtResource("7_wave_manager")
 spawners = [NodePath("../Enemy_spawn"), NodePath("../Enemy_spawn4"), NodePath("../Enemy_spawn3"), NodePath("../Enemy_spawn2")]
 game_manager = NodePath("../GameManager")
 map_type = "map20"
-endless = null
