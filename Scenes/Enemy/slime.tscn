@@ -274,6 +274,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ipaxs"]
+
 [node name="slime" type="PathFollow3D"]
 script = ExtResource("1_fwn0s")
 
@@ -304,3 +306,9 @@ bus = &"SFX"
 [node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("7_ipaxs")
 bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_ipaxs")

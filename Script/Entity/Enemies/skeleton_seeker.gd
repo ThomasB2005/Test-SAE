@@ -1,12 +1,12 @@
 extends "res://Script/Entity/entity.gd"
 
 @onready var skeleton_seeker: AnimatedSprite3D = $AnimatedSprite3D
-@onready var attack_1: AudioStreamPlayer = $attack
-@onready var hit: AudioStreamPlayer = $hit
-@onready var death: AudioStreamPlayer = $death
-@onready var boss_spawn: AudioStreamPlayer = $bossSpawn
-@onready var boss_felled: AudioStreamPlayer = $bossFelled
-@onready var theme: AudioStreamPlayer = $music
+@onready var attack_1: AudioStreamPlayer = $Attack
+@onready var hit: AudioStreamPlayer = $Hit
+@onready var death: AudioStreamPlayer = $Death
+@onready var boss_spawn: AudioStreamPlayer = $BossSpawn
+@onready var boss_felled: AudioStreamPlayer = $BossFelled
+@onready var theme: AudioStreamPlayer = $Theme
 
 func _ready():
 	
@@ -18,8 +18,8 @@ func _ready():
 	sfx_felled = boss_felled
 	music = theme
 	maxHealth = 100 # Initialisation des PV max
-	damage = 2
-	attack_cd = 4
+	damage = 15
+	attack_cd = 3
 	team = "enemie"
 	is_boss = true
 

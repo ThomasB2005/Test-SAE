@@ -184,6 +184,8 @@ script/source = "extends Area3D
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhmas"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb707"]
+
 [node name="skeleton_seeker" type="PathFollow3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_wb707")
@@ -217,16 +219,28 @@ transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0, 0.
 
 [node name="attack" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("8_3rigy")
+bus = &"SFX"
 
 [node name="death" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("9_4g7gc")
+volume_db = 10.214
+bus = &"SFX"
 
 [node name="bossSpawn" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("9_3rigy")
+bus = &"SFX"
 
 [node name="bossFelled" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("10_4g7gc")
+bus = &"SFX"
 
 [node name="music" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("11_wb707")
+bus = &"Music"
 parameters/looping = true
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_wb707")
