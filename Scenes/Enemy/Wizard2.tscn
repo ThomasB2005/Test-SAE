@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://b4207wxox0enw"]
+[gd_scene load_steps=45 format=3 uid="uid://b4207wxox0enw"]
 
 [ext_resource type="Script" uid="uid://dok2x1wy4a33u" path="res://Script/Entity/Enemies/wizard_2.gd" id="1_dibop"]
 [ext_resource type="Texture2D" uid="uid://dydbb8qq5h7x6" path="res://Sprite/Enemies/Wizards/Wizard2/Attack2.png" id="2_dibop"]
 [ext_resource type="Texture2D" uid="uid://cpkbi502mos4d" path="res://Sprite/Enemies/Wizards/Wizard2/Death.png" id="3_hb1bj"]
 [ext_resource type="Texture2D" uid="uid://dnse1v7rohv2o" path="res://Sprite/Enemies/Wizards/Wizard2/Idle.png" id="4_pv2tb"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_gupc7"]
+[ext_resource type="Texture2D" uid="uid://d3bgcf7gn1e5u" path="res://Sprite/Enemies/Wizards/Wizard2/Run.png" id="5_hb1bj"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_jdrvn"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_5o40f"]
 
@@ -100,6 +101,38 @@ region = Rect2(1500, 0, 250, 250)
 atlas = ExtResource("4_pv2tb")
 region = Rect2(1750, 0, 250, 250)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv2tb"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibbmn"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewc3y"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys3ea"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkp38"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(1000, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqfsm"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(1250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dhh1"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(1500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwoqe"]
+atlas = ExtResource("5_hb1bj")
+region = Rect2(1750, 0, 250, 250)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -185,6 +218,35 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv2tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibbmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewc3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys3ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkp38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqfsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dhh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwoqe")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -196,6 +258,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bycqu"]
+
 [node name="wizard2" type="PathFollow3D"]
 script = ExtResource("1_dibop")
 
@@ -203,8 +267,8 @@ script = ExtResource("1_dibop")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"idle"
-frame_progress = 0.21985689
+animation = &"move"
+frame_progress = 0.58433336
 
 [node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
@@ -224,3 +288,9 @@ bus = &"SFX"
 [node name="attack1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5o40f")
 bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_bycqu")

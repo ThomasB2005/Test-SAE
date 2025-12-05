@@ -1,9 +1,10 @@
-[gd_scene load_steps=42 format=3 uid="uid://3nplgxkgcb04"]
+[gd_scene load_steps=51 format=3 uid="uid://3nplgxkgcb04"]
 
 [ext_resource type="Script" uid="uid://chtwgdy38fl0d" path="res://Script/Entity/Enemies/old_guardian.gd" id="1_y6ukm"]
 [ext_resource type="Texture2D" uid="uid://gwkt143glqm5" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_attack_1.png" id="2_y6ukm"]
 [ext_resource type="Texture2D" uid="uid://batgalunlxbu8" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_death.png" id="3_l4g8t"]
 [ext_resource type="Texture2D" uid="uid://dw1xmkuwae28f" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_idle.png" id="4_2csdk"]
+[ext_resource type="Texture2D" uid="uid://cqc1i1eip2g1y" path="res://Sprite/Enemies/Bosses/OldGuardian/Old_Guardian_walk.png" id="5_y3i87"]
 [ext_resource type="AudioStream" uid="uid://byemkm0o4mv3p" path="res://Sound/SFX/Bosses/OldGuardian/attack.ogg" id="6_2csdk"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_y3i87"]
 [ext_resource type="AudioStream" uid="uid://d3hm5hfdvdcy0" path="res://Sound/SFX/Bosses/OldGuardian/death.ogg" id="7_tpvaw"]
@@ -116,6 +117,38 @@ region = Rect2(0, 480, 120, 120)
 atlas = ExtResource("4_2csdk")
 region = Rect2(0, 600, 120, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bbp3"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o3ea"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 120, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huw51"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 240, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wusgv"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 360, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wunds"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 480, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plrsm"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 600, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxvwk"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 720, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qywwq"]
+atlas = ExtResource("5_y3i87")
+region = Rect2(0, 840, 120, 120)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -210,6 +243,35 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bbp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o3ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huw51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wusgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wunds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plrsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxvwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qywwq")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -228,7 +290,8 @@ script = ExtResource("1_y6ukm")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"attack"
+animation = &"move"
+frame_progress = 0.29307535
 
 [node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")

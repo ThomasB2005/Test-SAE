@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://bv2mh6cs5cytm"]
+[gd_scene load_steps=36 format=3 uid="uid://bv2mh6cs5cytm"]
 
 [ext_resource type="Script" uid="uid://dm3qdgidvxjae" path="res://Script/Entity/Enemies/mushroom.gd" id="1_hmtqr"]
-[ext_resource type="Texture2D" uid="uid://bogqd5o7tfe61" path="res://Sprite/Mushroom/Attack.png" id="2_hmtqr"]
-[ext_resource type="Texture2D" uid="uid://de57txno8yokp" path="res://Sprite/Mushroom/Death.png" id="3_mim7a"]
-[ext_resource type="Texture2D" uid="uid://b7jnqfuofk113" path="res://Sprite/Mushroom/Idle.png" id="4_kv0rh"]
+[ext_resource type="Texture2D" uid="uid://bogqd5o7tfe61" path="res://Sprite/Enemies/Mushroom/Attack.png" id="2_hmtqr"]
+[ext_resource type="Texture2D" uid="uid://de57txno8yokp" path="res://Sprite/Enemies/Mushroom/Death.png" id="3_mim7a"]
+[ext_resource type="Texture2D" uid="uid://b7jnqfuofk113" path="res://Sprite/Enemies/Mushroom/Idle.png" id="4_kv0rh"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_6gnle"]
+[ext_resource type="Texture2D" uid="uid://bag8j4jvgv6hr" path="res://Sprite/Enemies/Mushroom/Run.png" id="5_mim7a"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_nccge"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_oh3xv"]
 
@@ -68,6 +69,34 @@ region = Rect2(300, 0, 150, 150)
 atlas = ExtResource("4_kv0rh")
 region = Rect2(450, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv0rh"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kruub"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjr36"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th2d7"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6dxv"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sav80"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrn1o"]
+atlas = ExtResource("5_mim7a")
+region = Rect2(1050, 0, 150, 150)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -129,6 +158,32 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv0rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kruub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjr36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th2d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6dxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sav80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrn1o")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -140,6 +195,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_plgy0"]
+
 [node name="mushroom" type="PathFollow3D"]
 script = ExtResource("1_hmtqr")
 
@@ -147,9 +204,8 @@ script = ExtResource("1_hmtqr")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"attack"
-frame = 6
-frame_progress = 1.0
+animation = &"move"
+frame_progress = 0.19315965
 
 [node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
@@ -169,3 +225,9 @@ bus = &"SFX"
 [node name="attack1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_oh3xv")
 bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_plgy0")
