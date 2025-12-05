@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://bv2mh6cs5cytm"]
+[gd_scene load_steps=28 format=3 uid="uid://bv2mh6cs5cytm"]
 
 [ext_resource type="Script" uid="uid://dm3qdgidvxjae" path="res://Script/Entity/Enemies/mushroom.gd" id="1_hmtqr"]
+[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_mim7a"]
 [ext_resource type="Texture2D" uid="uid://bogqd5o7tfe61" path="res://Sprite/Mushroom/Attack.png" id="2_hmtqr"]
 [ext_resource type="Texture2D" uid="uid://de57txno8yokp" path="res://Sprite/Mushroom/Death.png" id="3_mim7a"]
 [ext_resource type="Texture2D" uid="uid://b7jnqfuofk113" path="res://Sprite/Mushroom/Idle.png" id="4_kv0rh"]
-[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_6gnle"]
+[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="5_6gnle"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_nccge"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_oh3xv"]
 
@@ -141,9 +142,12 @@ script/source = "extends Area3D
 viewport_path = NodePath("SubViewport")
 
 [node name="mushroom" type="PathFollow3D"]
+script = ExtResource("1_mim7a")
+
+[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_hmtqr")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
@@ -151,21 +155,21 @@ animation = &"attack"
 frame = 6
 frame_progress = 1.0
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="Node3D"]
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="." instance=ExtResource("5_6gnle")]
+[node name="Sprite3D" parent="Node3D" instance=ExtResource("5_6gnle")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
 texture = SubResource("ViewportTexture_qhmas")
 
-[node name="hit" type="AudioStreamPlayer" parent="."]
+[node name="hit" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("6_nccge")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="."]
+[node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("7_oh3xv")
 bus = &"SFX"

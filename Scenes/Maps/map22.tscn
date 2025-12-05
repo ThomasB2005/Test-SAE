@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://26nfk2l87cs4"]
+[gd_scene load_steps=11 format=3 uid="uid://b4o7qo4gqlhhm"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_yw1ug"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_qfr5r"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="3_4iirn"]
+[ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="4_spawner"]
+[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="5_enemy"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="6_game_manager"]
+[ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="7_wave_manager"]
 
 [sub_resource type="Curve3D" id="Curve3D_x1jtc"]
 _data = {
@@ -35,23 +39,60 @@ data = {
 "cells": PackedInt32Array(65535, 65535, 1, 65535, 65534, 1, 65535, 0, 1, 65534, 0, 1, 65533, 0, 1, 65532, 0, 1, 65531, 0, 1, 65534, 65534, 1, 65533, 65534, 1, 65532, 65534, 1, 65531, 65534, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 2, 0, 1, 3, 0, 1, 3, 65535, 1, 3, 65534, 1, 3, 65533, 1, 65535, 65533, 1, 65534, 65535, 2, 65533, 65533, 2, 65534, 65533, 2, 0, 65535, 2, 0, 0, 2, 65535, 1, 2, 1, 2, 2, 3, 1, 2, 1, 65533, 1, 2, 65533, 1, 2, 65534, 2, 0, 65533, 1, 1, 65534, 2, 2, 65535, 2, 0, 65534, 1, 4, 65533, 3, 65531, 2, 4, 65530, 0, 4, 65530, 65534, 4, 1, 65535, 0, 1, 0, 0, 2, 2, 0, 2, 3, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 65534, 3, 0, 65533, 3, 0, 65532, 3, 0, 65531, 3, 0, 65530, 3, 0, 65530, 2, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65529, 1, 0, 65529, 65535, 0, 65530, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65529, 0, 0, 65529, 65534, 0, 65529, 65533, 0, 65530, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 5, 65532, 0, 5, 65533, 0, 5, 65534, 0, 4, 65534, 0, 4, 65535, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 3, 2, 0)
 }
 
-[node name="Enemy_spawn" parent="." instance=ExtResource("2_qfr5r")]
+[node name="Camera3D" type="Camera3D" parent="GridMap"]
+transform = Transform3D(1, 8.8817826e-16, 1.5383701e-15, -1.7763567e-15, 0.49999994, 0.86602545, 0, -0.8660255, 0.4999999, -0.4636526, 5.4990478, 3.1328874)
+projection = 1
+size = 8.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.7510424, 7.856289, 0.015248299)
+
+[node name="Enemy_spawn" parent="." node_paths=PackedStringArray("path_nodes", "game_manager") instance=ExtResource("2_qfr5r")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -1)
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_enemy")
+path_nodes = [NodePath("Path3D")]
+game_manager = NodePath("../GameManager")
 
 [node name="Path3D" type="Path3D" parent="Enemy_spawn"]
 curve = SubResource("Curve3D_x1jtc")
 
-[node name="Enemy_spawn2" parent="." instance=ExtResource("2_qfr5r")]
+[node name="Enemy_spawn2" parent="." node_paths=PackedStringArray("path_nodes", "game_manager") instance=ExtResource("2_qfr5r")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 1)
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_enemy")
+path_nodes = [NodePath("Path3D")]
+game_manager = NodePath("../GameManager")
 
 [node name="Path3D" type="Path3D" parent="Enemy_spawn2"]
 curve = SubResource("Curve3D_w3olp")
 
-[node name="Enemy_spawn3" parent="." instance=ExtResource("2_qfr5r")]
+[node name="Enemy_spawn3" parent="." node_paths=PackedStringArray("path_nodes", "game_manager") instance=ExtResource("2_qfr5r")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, 3)
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_enemy")
+path_nodes = [NodePath("Path3D")]
+game_manager = NodePath("../GameManager")
 
 [node name="Path3D" type="Path3D" parent="Enemy_spawn3"]
 curve = SubResource("Curve3D_nlek6")
+
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
+script = ExtResource("6_game_manager")
+wave_manager = NodePath("../WaveManager")
+ui_label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+
+[node name="Label" type="Label" parent="GameManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
+script = ExtResource("7_wave_manager")
+spawners = [NodePath("../Enemy_spawn3"), NodePath("../Enemy_spawn2"), NodePath("../Enemy_spawn")]
+game_manager = NodePath("../GameManager")
+map_type = "map22"
 
 [node name="Base" parent="." instance=ExtResource("3_4iirn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -2)

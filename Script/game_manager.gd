@@ -1,7 +1,7 @@
 extends Node3D
 
 # Game settings
-@export var starting_hp: int = 5
+@export var starting_hp: int = 50000000000
 @export var wave_manager: Node  # Changed from enemy_spawner to wave_manager
 @export var ui_label: Label
 

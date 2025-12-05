@@ -1,19 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://o18x6m6uaneg"]
+[gd_scene load_steps=11 format=3 uid="uid://cyjyo87gnicc2"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_t6l08"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="2_re3pg"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="3_qou3d"]
+[ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="4_spawner"]
+[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="5_cmhuo"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="5_game_manager"]
+[ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="6_wave_manager"]
 
 [sub_resource type="Curve3D" id="Curve3D_il3b2"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.019615173, 0, -4.050311, 0, 0, 0, 0, 0, 0, -6.0411415, 0, -4.0110826, 0, 0, 0, 0, 0, 0, -6.021527, 0, 0.009806712, 0, 0, 0, 0, 0, 0, 0, 0, -0.02942112),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
-[sub_resource type="Curve3D" id="Curve3D_2jtsa"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 4.972173, 0, 0, 0, 0, 0, 0, -9.022484, 0, 4.952559, 0, 0, 0, 0, 0, 0, -8.983255, 0, 0.02942112, 0, 0, 0, 0, 0, 0, 0.03922844, 0, 0.009806712),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -25,6 +22,13 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve3D" id="Curve3D_2jtsa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 4.972173, 0, 0, 0, 0, 0, 0, -9.022484, 0, 4.952559, 0, 0, 0, 0, 0, 0, -8.983255, 0, 0.02942112, 0, 0, 0, 0, 0, 0, 0.03922844, 0, 0.009806712),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="Map6" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -35,20 +39,57 @@ data = {
 "cells": PackedInt32Array(65535, 65535, 3, 65534, 65531, 1, 65533, 65531, 1, 65532, 65531, 1, 65531, 65531, 1, 65530, 65531, 1, 65529, 65531, 1, 65529, 65532, 1, 65529, 65533, 1, 65529, 65534, 1, 65529, 65535, 1, 65530, 65535, 1, 65531, 65535, 1, 65532, 65535, 1, 65533, 65535, 1, 65534, 65535, 1, 65529, 0, 1, 65529, 1, 1, 65529, 2, 1, 65529, 3, 1, 65529, 4, 1, 65530, 4, 1, 65531, 4, 1, 65532, 4, 1, 65533, 4, 1, 65534, 4, 1, 65528, 65535, 1, 65527, 65535, 1, 65526, 65535, 1, 65526, 0, 1, 65526, 1, 1, 65526, 2, 1, 65526, 3, 1, 65526, 4, 1, 65527, 4, 1, 65528, 4, 1, 65527, 1, 2, 65527, 2, 2, 65528, 2, 2, 65528, 1, 2, 65527, 0, 2, 65528, 0, 2, 65528, 3, 2, 65527, 3, 2, 65530, 65534, 2, 65530, 65533, 2, 65530, 65532, 2, 65530, 2, 2, 65530, 1, 2, 65530, 0, 2, 65531, 0, 2, 65532, 0, 2, 65533, 0, 2, 65533, 65534, 2, 65535, 65531, 4, 65535, 4, 4, 65535, 65530, 0, 65534, 65530, 0, 65533, 65530, 0, 65532, 65530, 0, 65531, 65530, 0, 65530, 65530, 0, 65529, 65530, 0, 65528, 65530, 0, 65528, 65531, 0, 65528, 65532, 0, 65528, 65533, 0, 65528, 65534, 0, 65527, 65534, 0, 65526, 65534, 0, 65525, 65534, 0, 65525, 65535, 0, 65525, 0, 0, 65525, 1, 0, 65525, 2, 0, 65525, 3, 0, 65525, 4, 0, 65525, 5, 0, 65526, 5, 0, 65527, 5, 0, 65528, 5, 0, 65529, 5, 0, 65530, 5, 0, 65531, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 0, 4, 0, 0, 3, 0, 65535, 3, 0, 65534, 3, 0, 65533, 3, 0, 65532, 3, 0, 65531, 3, 0, 65530, 3, 0, 65531, 2, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 0, 65535, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65534, 65533, 0, 65533, 65533, 0, 65532, 65533, 0, 65532, 65534, 0, 65531, 65534, 0, 65531, 65533, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0)
 }
 
+[node name="Camera3D" type="Camera3D" parent="GridMap"]
+transform = Transform3D(-4.371139e-08, 0.8660255, -0.4999999, 0, 0.49999994, 0.86602545, 1, 3.7855177e-08, -2.185569e-08, -7.9050074, 5.3740478, 0.055638313)
+projection = 1
+size = 11.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.2510424, 7.731289, 0.5152483)
+
 [node name="Base" parent="." instance=ExtResource("2_re3pg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Enemy_spawn" parent="." instance=ExtResource("3_qou3d")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -4)
+[node name="Enemy_spawn" parent="." node_paths=PackedStringArray("path_nodes", "game_manager") instance=ExtResource("3_qou3d")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -4)
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_cmhuo")
+path_nodes = [NodePath("Path3D"), NodePath("Path3D3")]
+game_manager = NodePath("../GameManager")
 
-[node name="Enemy_spawn2" parent="." instance=ExtResource("3_qou3d")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 5)
-
-[node name="Path3D" type="Path3D" parent="."]
+[node name="Path3D" type="Path3D" parent="Enemy_spawn"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.496911e-07, 0, -4)
 curve = SubResource("Curve3D_il3b2")
 
-[node name="Path3D2" type="Path3D" parent="."]
+[node name="Path3D3" type="Path3D" parent="Enemy_spawn"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.496911e-07, 0, -4)
+curve = SubResource("Curve3D_cmhuo")
+
+[node name="Enemy_spawn2" parent="." node_paths=PackedStringArray("path_node", "path_nodes", "game_manager") instance=ExtResource("3_qou3d")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 5)
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_cmhuo")
+path_node = NodePath("Path3D2")
+path_nodes = [NodePath("Path3D2")]
+game_manager = NodePath("../GameManager")
+
+[node name="Path3D2" type="Path3D" parent="Enemy_spawn2"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.371139e-07, 0, 5)
 curve = SubResource("Curve3D_2jtsa")
 
-[node name="Path3D3" type="Path3D" parent="."]
-curve = SubResource("Curve3D_cmhuo")
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
+script = ExtResource("5_game_manager")
+wave_manager = NodePath("../WaveManager")
+ui_label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+
+[node name="Label" type="Label" parent="GameManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
+script = ExtResource("6_wave_manager")
+spawners = [NodePath("../Enemy_spawn2"), NodePath("../Enemy_spawn")]
+game_manager = NodePath("../GameManager")
+map_type = "map6"
