@@ -1,8 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8i4hxus5wr6t"]
+[gd_scene load_steps=10 format=3 uid="uid://c8i4hxus5wr6t"]
 
 [ext_resource type="Script" uid="uid://bj85p70h3yt1j" path="res://Script/menu_pause.gd" id="1_l1uji"]
-[ext_resource type="Resource" uid="uid://smw4b1grgnbv" path="res://Script/Resources/damage_upgrade.tres" id="2_5o7ct"]
-[ext_resource type="Script" uid="uid://bc21il2pnhfm7" path="res://Script/Resources/Item.gd" id="2_kuv32"]
 [ext_resource type="PackedScene" uid="uid://cf2hmllupgaum" path="res://Scenes/shop_slot.tscn" id="3_qffp2"]
 [ext_resource type="Texture2D" uid="uid://cerj4xpamei1a" path="res://Assets/Texture/noir.png" id="3_u2gt6"]
 [ext_resource type="Texture2D" uid="uid://d355ph646r0dc" path="res://Assets/Texture/bgtset.png" id="4_qffp2"]
@@ -30,7 +28,7 @@ _data = {
 &"show_pause": SubResource("Animation_5o7ct")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("animation_player")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -39,10 +37,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l1uji")
-upgrade_items = Array[ExtResource("2_kuv32")]([ExtResource("2_5o7ct")])
-shop_slot_scene = ExtResource("3_qffp2")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="Menupause" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,18 +179,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="retour" type="Button" parent="Boutique"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Retour"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_l1uji")
 }
-
-[connection signal="pressed" from="Menupause/VBoxContainer/Continuer" to="." method="_on_continuer_pressed"]
-[connection signal="pressed" from="Menupause/VBoxContainer/Boutique" to="." method="_on_boutique_pressed"]
-[connection signal="pressed" from="Menupause/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]
-[connection signal="pressed" from="Boutique/retour" to="." method="_on_retour_pressed"]

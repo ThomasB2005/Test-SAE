@@ -16,15 +16,37 @@ extends Node
 @export var min_path_size:int
 @export var max_path_size:int
 
-@onready var menu_scene = preload("res://Scenes/Menu/menu.tscn")
-
 var _pg:PathGenerator
 
 func _ready() -> void:
-	get_tree().change_scene_to_packed(menu_scene)
-	
-	
+	_pg = PathGenerator.new(map_length, map_height)
+	_display_path()
+	_complete_grid()
+	_display_tower_tile()
 
+func _complete_grid():
+	for x in range(map_length):
+		for y in range(map_height):
+			if not _pg.get_path().has(Vector2i(x,y)) and not _pg.get_tower_tile().has(Vector2i(x,y)):
+				var tile:Node3D = tile_empty.instantiate()
+				add_child(tile)
+				tile.global_position = Vector3(x, 0, y)
+				
+
+func _display_tower_tile():
+	var _tower_tiles:Array[Vector2i] = _pg.generate_tower_tile()
+	print("Tower tiles generated: ", _tower_tiles.size())
+	
+	for element in _tower_tiles:
+		var tile:Node3D = tower_tile.instantiate()
+		add_child(tile)
+		tile.global_position = Vector3(element.x, 0, element.y)
+
+func _display_path():
+	var _path:Array[Vector2i] = _pg.generate_path()
+	print(_path)
+	print(_path[0])
+	
 	while _pg.get_path().size() < min_path_size or _pg.get_path().size() > max_path_size:
 		_pg.generate_path()
 	
@@ -41,6 +63,12 @@ func _ready() -> void:
 		
 		add_child(tile)
 		tile.global_position = Vector3(element.x , 0, element.y)
-
 	
 @onready var enemy_scene = preload("res://Scenes/Enemy/Enemy.tscn")
+
+func _spawn_enemy():
+	var enemy_instance = enemy_scene.instantiate()
+	add_child(enemy_instance)
+	print('Enemy spawned')
+	
+	enemy_instance.path = _pg.get_path()

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=9 format=3 uid="uid://b18of3mrpurx5"]
-=======
 [gd_scene load_steps=10 format=3 uid="uid://b18of3mrpurx5"]
->>>>>>> 8d53ec6c1f7d36beee67df1f45e924962fbdb326
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_ho466"]
 [ext_resource type="Script" uid="uid://ujexjqu3nqyq" path="res://Script/menu_pause.gd" id="1_jubti"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://smw4b1grgnbv"]
+
+[ext_resource type="Texture2D" uid="uid://beiouyu8e31fx" path="res://Assets/Icon/Icon24.png" id="1_6n0hx"]
+[ext_resource type="Script" uid="uid://bc21il2pnhfm7" path="res://Script/Resources/Item.gd" id="1_udtha"]
+[ext_resource type="Script" uid="uid://b5iahj65j8btl" path="res://Script/Strategy/DamageTurretStrategy.gd" id="3_woc7d"]
+
+[sub_resource type="Resource" id="Resource_8frqm"]
+script = ExtResource("3_woc7d")
+metadata/_custom_type_script = "uid://b5iahj65j8btl"
+
+[resource]
+script = ExtResource("1_udtha")
+title = "Dégat+15"
+icon = ExtResource("1_6n0hx")
+price = 80
+strategy = SubResource("Resource_8frqm")
+metadata/_custom_type_script = "uid://bc21il2pnhfm7"
