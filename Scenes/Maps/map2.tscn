@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs80bcxars8no"]
+[gd_scene load_steps=16 format=3 uid="uid://cs80bcxars8no"]
 
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="1_dtarm"]
 [ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_br3tv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="9_mmw27"]
 [ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="10_map2"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="11_map2"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="12_kgi2c"]
 
 [sub_resource type="Curve3D" id="Curve3D_5yc7q"]
 _data = {
@@ -237,3 +238,6 @@ script = ExtResource("11_map2")
 spawners = [NodePath("../Path3D/Enemy_spawn"), NodePath("../Path3D2/Enemy_spawn2")]
 game_manager = NodePath("../GameManager")
 map_type = "map2"
+
+[node name="Background" parent="." instance=ExtResource("12_kgi2c")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 4, -7.174141, -11.790375)

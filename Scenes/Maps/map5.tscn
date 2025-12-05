@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvqwx6vdkd6sr"]
+[gd_scene load_steps=11 format=3 uid="uid://cvqwx6vdkd6sr"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_gfs4p"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_lako4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="4_spawner"]
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="5_enemy"]
 [ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="6_game_manager"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="6_jqi33"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="7_wave_manager"]
 
 [sub_resource type="Curve3D" id="Curve3D_o7jlk"]
@@ -75,3 +76,6 @@ script = ExtResource("7_wave_manager")
 spawners = [NodePath("../Enemy_spawn")]
 game_manager = NodePath("../GameManager")
 map_type = "map5"
+
+[node name="Background" parent="." instance=ExtResource("6_jqi33")]
+transform = Transform3D(-4.371139e-08, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 1, 3.090862e-08, -3.090862e-08, 7, -7.174141, 1.2096252)

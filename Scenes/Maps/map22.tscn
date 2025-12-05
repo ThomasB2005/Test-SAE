@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4o7qo4gqlhhm"]
+[gd_scene load_steps=12 format=3 uid="uid://b4o7qo4gqlhhm"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_yw1ug"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_qfr5r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="5_enemy"]
 [ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="6_game_manager"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="7_wave_manager"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="8_b71pk"]
 
 [sub_resource type="Curve3D" id="Curve3D_x1jtc"]
 _data = {
@@ -96,3 +97,6 @@ map_type = "map22"
 
 [node name="Base" parent="." instance=ExtResource("3_4iirn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -2)
+
+[node name="Background" parent="." instance=ExtResource("8_b71pk")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 4, -7.174141, -11.790375)

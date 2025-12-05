@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvplj3rb7fvqi"]
+[gd_scene load_steps=13 format=3 uid="uid://dvplj3rb7fvqi"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="3_bg"]
 [ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="3_dg61n"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="5_2ifef"]
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="5_dg61n"]
@@ -23,6 +24,9 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Background" parent="." instance=ExtResource("3_bg")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 4, -7.174141, -11.790375)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.25, 0.5)
