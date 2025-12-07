@@ -1,0 +1,243 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxiwbk00pmxyw"]
+
+[ext_resource type="Script" uid="uid://cepgudcsloexa" path="res://Script/Menu/menu.gd" id="1_3elw3"]
+[ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="2_ovoh8"]
+[ext_resource type="AudioStream" uid="uid://gn11h03xjt3a" path="res://Sound/UI/click.ogg" id="12_eqc8y"]
+[ext_resource type="Texture2D" uid="uid://bv0mfh3tqjn40" path="res://Sprite/Button/ENG/Maps/map1.jpg" id="13_rxxsw"]
+[ext_resource type="Texture2D" uid="uid://12i5bhqoo0sn" path="res://Sprite/Button/ENG/Maps/map1_pressed.jpg" id="14_3trc5"]
+[ext_resource type="Texture2D" uid="uid://0qt14gahddwj" path="res://Sprite/Button/ENG/Maps/map1_hover.jpg" id="15_u542l"]
+
+[sub_resource type="Gradient" id="Gradient_vsb4k"]
+colors = PackedColorArray(0.19215687, 0.13725491, 0.11764706, 1, 0.19215687, 0.13725491, 0.11764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lti8b"]
+gradient = SubResource("Gradient_vsb4k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
+font = ExtResource("2_ovoh8")
+font_size = 48
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3elw3")
+
+[node name="imgMenuBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lti8b")
+
+[node name="lblTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -489.0
+offset_top = 86.0
+offset_right = 489.0
+offset_bottom = 164.0
+grow_horizontal = 2
+text = "Choose your map"
+label_settings = SubResource("LabelSettings_ouk20")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_eqc8y")
+bus = &"SFX"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.0
+offset_top = -95.0
+offset_right = 508.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="btnMap1" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap2" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap3" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap4" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap5" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap6" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap7" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap8" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap9" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap10" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap11" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap12" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap13" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap14" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap15" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap16" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap17" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap18" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap19" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap20" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap21" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap22" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap23" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap24" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
+
+[node name="btnMap25" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_rxxsw")
+texture_pressed = ExtResource("14_3trc5")
+texture_hover = ExtResource("15_u542l")
