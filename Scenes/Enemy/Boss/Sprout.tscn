@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cpix4tm34tuc7"]
+[gd_scene load_steps=39 format=3 uid="uid://cpix4tm34tuc7"]
 
 [ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_uuvxf"]
 [ext_resource type="Texture2D" uid="uid://5obausosymbl" path="res://Sprite/Enemies/Bosses/Sprout/Attack/Sprout_attack.png" id="1_x6sip"]
