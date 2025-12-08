@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxiwbk00pmxyw"]
+[gd_scene load_steps=14 format=3 uid="uid://cxiwbk00pmxyw"]
 
-[ext_resource type="Script" uid="uid://cepgudcsloexa" path="res://Script/Menu/menu.gd" id="1_3elw3"]
+[ext_resource type="Script" uid="uid://cr6wf4hdeeahf" path="res://Script/Menu/map_selection.gd" id="1_4usf1"]
 [ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="2_ovoh8"]
+[ext_resource type="Texture2D" uid="uid://b58lhe6gbwnde" path="res://Sprite/Button/ENG/Maps/button.jpg" id="4_g0xlo"]
+[ext_resource type="Texture2D" uid="uid://ccspguhp6geag" path="res://Sprite/Button/ENG/Maps/button_pressed.jpg" id="5_2ht8w"]
+[ext_resource type="Texture2D" uid="uid://b42iipoyhu7b" path="res://Sprite/Button/ENG/Maps/button_hover.jpg" id="6_tja8e"]
+[ext_resource type="Texture2D" uid="uid://yeip7k7pho0y" path="res://Sprite/Button/ENG/back.jpg" id="7_4usf1"]
+[ext_resource type="Texture2D" uid="uid://bmlq5qh3230et" path="res://Sprite/Button/ENG/back_pressed.jpg" id="8_hbjc1"]
+[ext_resource type="Texture2D" uid="uid://cf84hjsvxeyok" path="res://Sprite/Button/ENG/back_hover.jpg" id="9_86sr4"]
 [ext_resource type="AudioStream" uid="uid://gn11h03xjt3a" path="res://Sound/UI/click.ogg" id="12_eqc8y"]
-[ext_resource type="Texture2D" uid="uid://bv0mfh3tqjn40" path="res://Sprite/Button/ENG/Maps/map1.jpg" id="13_rxxsw"]
-[ext_resource type="Texture2D" uid="uid://12i5bhqoo0sn" path="res://Sprite/Button/ENG/Maps/map1_pressed.jpg" id="14_3trc5"]
-[ext_resource type="Texture2D" uid="uid://0qt14gahddwj" path="res://Sprite/Button/ENG/Maps/map1_hover.jpg" id="15_u542l"]
 
 [sub_resource type="Gradient" id="Gradient_vsb4k"]
 colors = PackedColorArray(0.19215687, 0.13725491, 0.11764706, 1, 0.19215687, 0.13725491, 0.11764706, 1)
@@ -15,16 +18,19 @@ gradient = SubResource("Gradient_vsb4k")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
 font = ExtResource("2_ovoh8")
-font_size = 48
+font_size = 40
 
-[node name="Menu" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_4usf1"]
+font = ExtResource("2_ovoh8")
+
+[node name="MapSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3elw3")
+script = ExtResource("1_4usf1")
 
 [node name="imgMenuBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -37,16 +43,19 @@ texture = SubResource("GradientTexture2D_lti8b")
 
 [node name="lblTitle" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.024691358
 anchor_right = 0.5
+anchor_bottom = 0.024691358
 offset_left = -489.0
-offset_top = 86.0
+offset_top = 96.0
 offset_right = 489.0
-offset_bottom = 164.0
+offset_bottom = 174.0
 grow_horizontal = 2
 text = "Choose your map"
 label_settings = SubResource("LabelSettings_ouk20")
+horizontal_alignment = 1
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_eqc8y")
@@ -60,9 +69,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -508.0
-offset_top = -95.0
+offset_top = -109.0
 offset_right = 508.0
-offset_bottom = 281.0
+offset_bottom = 267.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 5
@@ -70,174 +79,641 @@ columns = 5
 [node name="btnMap1" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TUTO"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap2" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 1"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap3" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 2"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap4" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 3"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap5" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 4"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap6" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 5"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap7" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 6"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap8" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 7"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap9" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap9"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 8"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap10" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap10"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 9"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap11" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap11"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 10"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap12" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap12"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 11"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap13" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap13"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 12"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap14" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap14"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 13"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap15" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap15"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 14"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap16" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap16"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 15"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap17" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap17"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 16"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap18" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap18"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 17"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap19" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap19"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 18"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap20" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap20"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 19"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap21" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap21"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 20"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap22" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap22"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 21"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap23" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap23"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 22"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap24" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap24"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 23"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="btnMap25" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("13_rxxsw")
-texture_pressed = ExtResource("14_3trc5")
-texture_hover = ExtResource("15_u542l")
+texture_normal = ExtResource("4_g0xlo")
+texture_pressed = ExtResource("5_2ht8w")
+texture_hover = ExtResource("6_tja8e")
+
+[node name="Label" type="Label" parent="GridContainer/btnMap25"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP 24"
+label_settings = SubResource("LabelSettings_4usf1")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="btnBack" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 88.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_4usf1")
+texture_pressed = ExtResource("8_hbjc1")
+texture_hover = ExtResource("9_86sr4")
+
+[connection signal="pressed" from="btnBack" to="." method="_on_btn_back_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0qt14gahddwj"
-path="res://.godot/imported/map1_hover.jpg-b7c21acf20619229a4190659e5f875ba.ctex"
+uid="uid://b58lhe6gbwnde"
+path="res://.godot/imported/button.jpg-d8886f9978c9d6a12fb9959cf63b6e93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/Button/ENG/Maps/map1_hover.jpg"
-dest_files=["res://.godot/imported/map1_hover.jpg-b7c21acf20619229a4190659e5f875ba.ctex"]
+source_file="res://Sprite/Button/ENG/Maps/button.jpg"
+dest_files=["res://.godot/imported/button.jpg-d8886f9978c9d6a12fb9959cf63b6e93.ctex"]
 
 [params]
 

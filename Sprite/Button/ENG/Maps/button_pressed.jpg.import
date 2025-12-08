@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0mfh3tqjn40"
-path="res://.godot/imported/map1.jpg-a037a6eef026d1c59cec5c1246292b5b.ctex"
+uid="uid://ccspguhp6geag"
+path="res://.godot/imported/button_pressed.jpg-47650de78d9f680aa647237c74aad82f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/Button/ENG/Maps/map1.jpg"
-dest_files=["res://.godot/imported/map1.jpg-a037a6eef026d1c59cec5c1246292b5b.ctex"]
+source_file="res://Sprite/Button/ENG/Maps/button_pressed.jpg"
+dest_files=["res://.godot/imported/button_pressed.jpg-47650de78d9f680aa647237c74aad82f.ctex"]
 
 [params]
 
