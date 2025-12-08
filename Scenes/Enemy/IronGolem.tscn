@@ -212,6 +212,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aak67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxtvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_midcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b0hx")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -223,6 +240,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cihxb"]
+
 [node name="iron_golem" type="PathFollow3D"]
 script = ExtResource("1_oj0sp")
 
@@ -233,8 +252,8 @@ script = ExtResource("1_cihxb")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"idle"
-frame_progress = 0.79029554
+animation = &"move"
+frame_progress = 0.9508396
 
 [node name="Area3D" type="Area3D" parent="Node3D"]
 script = SubResource("GDScript_ww8gr")
@@ -254,3 +273,9 @@ bus = &"SFX"
 [node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("5_gnx6t")
 bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_cihxb")

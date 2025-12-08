@@ -1,11 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cud1lwdw1biry"]
+[gd_scene load_steps=36 format=3 uid="uid://cud1lwdw1biry"]
 
 [ext_resource type="Script" uid="uid://j2ytpwebltaq" path="res://Script/Entity/Enemies/piranha_plant.gd" id="1_gag4f"]
-[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_wr0jl"]
-[ext_resource type="Texture2D" uid="uid://ba5aah5lxli2c" path="res://Sprite/Bosses/Plant/Attack1.png" id="2_wr0jl"]
-[ext_resource type="Texture2D" uid="uid://dk1wurvouoycm" path="res://Sprite/Bosses/Plant/Death.png" id="3_skuwy"]
-[ext_resource type="Texture2D" uid="uid://c05oolsj7ets8" path="res://Sprite/Bosses/Plant/Idle.png" id="4_7vf2e"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="5_4p5dk"]
+[ext_resource type="Texture2D" uid="uid://ba5aah5lxli2c" path="res://Sprite/Enemies/Bosses/Plant/Attack1.png" id="2_wr0jl"]
+[ext_resource type="Texture2D" uid="uid://dk1wurvouoycm" path="res://Sprite/Enemies/Bosses/Plant/Death.png" id="3_skuwy"]
+[ext_resource type="Texture2D" uid="uid://c05oolsj7ets8" path="res://Sprite/Enemies/Bosses/Plant/Idle.png" id="4_7vf2e"]
+[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_4p5dk"]
+[ext_resource type="Texture2D" uid="uid://bgce03gsnt71f" path="res://Sprite/Enemies/Bosses/Plant/Walk.png" id="5_wr0jl"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_qhgw7"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_677ma"]
 
@@ -73,6 +73,30 @@ region = Rect2(192, 0, 96, 96)
 atlas = ExtResource("4_7vf2e")
 region = Rect2(288, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_skuwy"]
+atlas = ExtResource("5_wr0jl")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vf2e"]
+atlas = ExtResource("5_wr0jl")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p5dk"]
+atlas = ExtResource("5_wr0jl")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhgw7"]
+atlas = ExtResource("5_wr0jl")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_677ma"]
+atlas = ExtResource("5_wr0jl")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjcts"]
+atlas = ExtResource("5_wr0jl")
+region = Rect2(480, 0, 96, 96)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -137,6 +161,29 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skuwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vf2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p5dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhgw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_677ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjcts")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -148,6 +195,8 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5sb8"]
+
 [node name="piranha_plant" type="PathFollow3D"]
 script = ExtResource("1_wr0jl")
 
@@ -158,9 +207,7 @@ script = ExtResource("1_gag4f")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"attack"
-frame = 5
-frame_progress = 1.0
+animation = &"move"
 
 [node name="Area3D" type="Area3D" parent="Node3D"]
 script = SubResource("GDScript_ww8gr")
@@ -180,3 +227,9 @@ bus = &"SFX"
 [node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
 stream = ExtResource("7_677ma")
 bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_b5sb8")

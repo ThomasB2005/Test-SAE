@@ -13,8 +13,7 @@ func _on_btn_settings_button_down() -> void:
 	await click.finished
 	get_tree().change_scene_to_file("res://Scenes/Menu/settings.tscn")
 	
-
 func _on_btn_start_button_down() -> void:
 	click.play()
 	await click.finished
-	get_tree().change_scene_to_file("res://Scenes/SandBox/Sandbox.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menu/MapSelection.tscn")

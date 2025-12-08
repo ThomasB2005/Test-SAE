@@ -1,10 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://ja47hhae7qme"]
+[gd_scene load_steps=55 format=3 uid="uid://ja47hhae7qme"]
 
-[ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Slimes/slime_die.png" id="1_6dj4t"]
-[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_fwn0s"]
-[ext_resource type="Texture2D" uid="uid://crm5sswy0x2bc" path="res://Sprite/Slimes/slime_swallow.png" id="2_qatr3"]
-[ext_resource type="Texture2D" uid="uid://d35pmex876grt" path="res://Sprite/Slimes/slime_idle2.png" id="2_ww8gr"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_ww8gr"]
+[ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Enemies/Slimes/slime_die.png" id="1_6dj4t"]
+[ext_resource type="Texture2D" uid="uid://crm5sswy0x2bc" path="res://Sprite/Enemies/Slimes/slime_swallow.png" id="2_qatr3"]
+[ext_resource type="Texture2D" uid="uid://d35pmex876grt" path="res://Sprite/Enemies/Slimes/slime_idle2.png" id="2_ww8gr"]
+[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_ww8gr"]
+[ext_resource type="Texture2D" uid="uid://cl2u3bbx27hk8" path="res://Sprite/Enemies/Slimes/slime_move.png" id="5_fwn0s"]
 [ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="5_pqdc7"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_pqdc7"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_ipaxs"]
@@ -145,6 +145,34 @@ region = Rect2(400, 432, 80, 72)
 atlas = ExtResource("2_ww8gr")
 region = Rect2(480, 432, 80, 72)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvbug"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(0, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h2a5"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(80, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gysoq"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(160, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdlub"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(240, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd7es"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(320, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_novyn"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(400, 432, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5f2p"]
+atlas = ExtResource("5_fwn0s")
+region = Rect2(480, 432, 80, 72)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -263,6 +291,32 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvbug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h2a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gysoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdlub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd7es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_novyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5f2p")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -286,7 +340,8 @@ script = ExtResource("5_pqdc7")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"idle"
+animation = &"move"
+frame_progress = 0.81368995
 
 [node name="Area3D" type="Area3D" parent="Node3D"]
 script = SubResource("GDScript_ww8gr")

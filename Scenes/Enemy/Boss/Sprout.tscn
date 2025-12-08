@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b002yqypjw2w2" path="res://Script/Entity/Enemies/sprout.gd" id="2_4h23o"]
 [ext_resource type="Texture2D" uid="uid://oao3djignl37" path="res://Sprite/Enemies/Bosses/Sprout/Death/Sprout-death.png" id="2_uuvxf"]
 [ext_resource type="Texture2D" uid="uid://ce326ke4y46br" path="res://Sprite/Enemies/Bosses/Sprout/Idle/Sprout_idle.png" id="3_t67ra"]
+[ext_resource type="Texture2D" uid="uid://ij68g4fhohpl" path="res://Sprite/Enemies/Bosses/Sprout/Move/Sprout_move.png" id="5_4h23o"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_4h23o"]
 [ext_resource type="AudioStream" uid="uid://d2g537fgfv733" path="res://Sound/SFX/Bosses/Sprout/attack.ogg" id="7_n3b8c"]
 [ext_resource type="AudioStream" uid="uid://bdlk3rbpt1ltd" path="res://Sound/SFX/Bosses/Sprout/death.ogg" id="8_g6liy"]
@@ -85,6 +86,26 @@ region = Rect2(0, 192, 96, 96)
 atlas = ExtResource("3_t67ra")
 region = Rect2(0, 288, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjubp"]
+atlas = ExtResource("5_4h23o")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m541u"]
+atlas = ExtResource("5_4h23o")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3rhj"]
+atlas = ExtResource("5_4h23o")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxyud"]
+atlas = ExtResource("5_4h23o")
+region = Rect2(0, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx6cf"]
+atlas = ExtResource("5_4h23o")
+region = Rect2(0, 384, 96, 96)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -155,6 +176,26 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjubp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m541u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3rhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxyud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx6cf")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -174,9 +215,8 @@ script = ExtResource("2_4h23o")
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
-animation = &"attack"
-frame = 5
-frame_progress = 1.0
+animation = &"move"
+frame_progress = 0.1586992
 
 [node name="Area3D" type="Area3D" parent="Node3D"]
 script = SubResource("GDScript_ww8gr")
