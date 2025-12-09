@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dv3halvl65c80"]
 
-[ext_resource type="Texture2D" uid="uid://dddrmch5kowfm" path="res://Sprite/Enemies/Bosses/HealthBar/SkeletonSeeker/Skeleton_SeekerHB.png" id="1_db1bd"]
-[ext_resource type="Texture2D" uid="uid://cv65fb7hmrqrc" path="res://Sprite/Enemies/Bosses/HealthBar/Bar.png" id="2_uukte"]
+[ext_resource type="Texture2D" uid="uid://dddrmch5kowfm" path="res://Sprite/Bosses/HealthBar/SkeletonSeeker/Skeleton_SeekerHB.png" id="1_db1bd"]
+[ext_resource type="Texture2D" uid="uid://cv65fb7hmrqrc" path="res://Sprite/Bosses/HealthBar/Bar.png" id="2_uukte"]
 [ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="3_uukte"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fqkuk"]

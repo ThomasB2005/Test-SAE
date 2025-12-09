@@ -1,9 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://grfc0htjnfg7"]
+[gd_scene load_steps=42 format=3 uid="uid://grfc0htjnfg7"]
 
 [ext_resource type="Script" uid="uid://catsbp2ipivy0" path="res://Script/Entity/Enemies/iron_golem.gd" id="1_cihxb"]
-[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_oj0sp"]
 [ext_resource type="Texture2D" uid="uid://buu8toomf8kwg" path="res://Sprite/Bosses/IronGolem/Character_sheet.png" id="2_oj0sp"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_mka41"]
+[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_mka41"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="4_eenpc"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="5_gnx6t"]
 
@@ -115,6 +114,22 @@ region = Rect2(200, 0, 100, 100)
 atlas = ExtResource("2_oj0sp")
 region = Rect2(300, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cihxb"]
+atlas = ExtResource("2_oj0sp")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj0sp"]
+atlas = ExtResource("2_oj0sp")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mka41"]
+atlas = ExtResource("2_oj0sp")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eenpc"]
+atlas = ExtResource("2_oj0sp")
+region = Rect2(300, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
 "frames": [{
@@ -215,16 +230,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aak67")
+"texture": SubResource("AtlasTexture_cihxb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jxtvs")
+"texture": SubResource("AtlasTexture_oj0sp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_midcg")
+"texture": SubResource("AtlasTexture_mka41")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1b0hx")
+"texture": SubResource("AtlasTexture_eenpc")
 }],
 "loop": true,
 "name": &"move",
@@ -243,39 +258,36 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cihxb"]
 
 [node name="iron_golem" type="PathFollow3D"]
-script = ExtResource("1_oj0sp")
-
-[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_cihxb")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
 animation = &"move"
-frame_progress = 0.9508396
+frame_progress = 0.85166955
 
-[node name="Area3D" type="Area3D" parent="Node3D"]
+[node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="Node3D" instance=ExtResource("3_mka41")]
+[node name="Sprite3D" parent="." instance=ExtResource("3_mka41")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
 texture = SubResource("ViewportTexture_qhmas")
 
-[node name="hit" type="AudioStreamPlayer" parent="Node3D"]
+[node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_eenpc")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
+[node name="attack1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gnx6t")
 bus = &"SFX"
 
 [node name="HitBox" type="Area3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_cihxb")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://immidmo6cfoa"]
 
 [ext_resource type="Script" uid="uid://dk2oc3batmcix" path="res://Script/Entity/Allies/warrior.gd" id="1_h2teo"]
-[ext_resource type="Texture2D" uid="uid://c347c47mn0m5e" path="res://Sprite/Turret/Warrior/GandalfHardcore Warrior.png" id="2_kb3hd"]
+[ext_resource type="Texture2D" uid="uid://c347c47mn0m5e" path="res://Sprite/Warrior/GandalfHardcore Warrior.png" id="2_kb3hd"]
 [ext_resource type="AudioStream" uid="uid://ip4fuq85yc3e" path="res://Sound/SFX/Warrior/swip1.ogg" id="4_h2teo"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="5_hbun6"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_swivg"]

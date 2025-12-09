@@ -1,10 +1,10 @@
 [gd_scene load_steps=55 format=3 uid="uid://ja47hhae7qme"]
 
-[ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Enemies/Slimes/slime_die.png" id="1_6dj4t"]
-[ext_resource type="Texture2D" uid="uid://crm5sswy0x2bc" path="res://Sprite/Enemies/Slimes/slime_swallow.png" id="2_qatr3"]
-[ext_resource type="Texture2D" uid="uid://d35pmex876grt" path="res://Sprite/Enemies/Slimes/slime_idle2.png" id="2_ww8gr"]
+[ext_resource type="Texture2D" uid="uid://ds2vmwgw1avl4" path="res://Sprite/Slimes/slime_die.png" id="1_6dj4t"]
+[ext_resource type="Texture2D" uid="uid://crm5sswy0x2bc" path="res://Sprite/Slimes/slime_swallow.png" id="2_qatr3"]
+[ext_resource type="Texture2D" uid="uid://d35pmex876grt" path="res://Sprite/Slimes/slime_idle2.png" id="2_ww8gr"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_ww8gr"]
-[ext_resource type="Texture2D" uid="uid://cl2u3bbx27hk8" path="res://Sprite/Enemies/Slimes/slime_move.png" id="5_fwn0s"]
+[ext_resource type="Texture2D" uid="uid://cl2u3bbx27hk8" path="res://Sprite/Slimes/slime_move.png" id="5_fwn0s"]
 [ext_resource type="Script" uid="uid://bn7gvjlrfk7k6" path="res://Script/Entity/Enemies/slime.gd" id="5_pqdc7"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="6_pqdc7"]
 [ext_resource type="AudioStream" uid="uid://bpb8i7kq5yb0y" path="res://Sound/SFX/Slime/attack1.ogg" id="7_ipaxs"]
@@ -316,7 +316,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -328,42 +328,39 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_qhmas"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ipaxs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qooi"]
 
 [node name="slime" type="PathFollow3D"]
-script = ExtResource("1_fwn0s")
-
-[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("5_pqdc7")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
 animation = &"move"
-frame_progress = 0.81368995
+frame_progress = 0.89084953
 
-[node name="Area3D" type="Area3D" parent="Node3D"]
+[node name="Area3D" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="Node3D" instance=ExtResource("3_ww8gr")]
+[node name="Sprite3D" parent="." instance=ExtResource("3_ww8gr")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.39430654, 0)
 texture = SubResource("ViewportTexture_qhmas")
 
-[node name="hit" type="AudioStreamPlayer" parent="Node3D"]
+[node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_pqdc7")
 bus = &"SFX"
 
-[node name="attack1" type="AudioStreamPlayer" parent="Node3D"]
+[node name="attack1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ipaxs")
 bus = &"SFX"
 
 [node name="HitBox" type="Area3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-shape = SubResource("BoxShape3D_ipaxs")
+shape = SubResource("BoxShape3D_8qooi")

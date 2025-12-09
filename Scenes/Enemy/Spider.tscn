@@ -1,9 +1,8 @@
 [gd_scene load_steps=31 format=3 uid="uid://bu82hf1hhnk3k"]
 
 [ext_resource type="Script" uid="uid://cwbhngvebsduh" path="res://Script/Entity/Enemies/spider.gd" id="1_u3gvp"]
-[ext_resource type="Script" uid="uid://38q4gxjnkgf6" path="res://Script/enemy_path_follower.gd" id="1_ygg7j"]
 [ext_resource type="Texture2D" uid="uid://bax441wxp406h" path="res://Sprite/Spider/Cave Spider Spritesheet.png" id="2_u3gvp"]
-[ext_resource type="PackedScene" uid="uid://ce63t4tdxjhr7" path="res://Scenes/Menu/healthBar.tscn" id="3_recip"]
+[ext_resource type="PackedScene" uid="uid://mljbx83fn2o0" path="res://Scenes/Menu/healthBar.tscn" id="3_recip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygg7j"]
 atlas = ExtResource("2_u3gvp")
@@ -71,27 +70,27 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3gvp"]
 atlas = ExtResource("2_u3gvp")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(0, 40, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34iog"]
 atlas = ExtResource("2_u3gvp")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(32, 40, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eq8um"]
 atlas = ExtResource("2_u3gvp")
-region = Rect2(64, 32, 32, 32)
+region = Rect2(64, 40, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5pav"]
 atlas = ExtResource("2_u3gvp")
-region = Rect2(96, 32, 32, 32)
+region = Rect2(96, 40, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu1g5"]
 atlas = ExtResource("2_u3gvp")
-region = Rect2(128, 32, 32, 32)
+region = Rect2(128, 40, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5su3"]
 atlas = ExtResource("2_u3gvp")
-region = Rect2(160, 32, 32, 32)
+region = Rect2(160, 40, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0uoc"]
 animations = [{
@@ -179,7 +178,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_ww8gr"]
@@ -194,32 +193,29 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxbhh"]
 
 [node name="spider" type="PathFollow3D"]
-script = ExtResource("1_ygg7j")
-
-[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_u3gvp")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
 animation = &"move"
-frame_progress = 0.68748903
+frame_progress = 0.68042034
 
-[node name="Area3D" type="Area3D" parent="Node3D"]
+[node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
-[node name="Sprite3D" parent="Node3D" instance=ExtResource("3_recip")]
+[node name="Sprite3D" parent="." instance=ExtResource("3_recip")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.23239419, 0)
 texture = SubResource("ViewportTexture_ecqyl")
 
 [node name="HitBox" type="Area3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_oxbhh")

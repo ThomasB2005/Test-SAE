@@ -1,9 +1,9 @@
 [gd_scene load_steps=41 format=3 uid="uid://cirwcm757p47n"]
 
 [ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/Entity/Allies/archer.gd" id="1_m2l2s"]
-[ext_resource type="Texture2D" uid="uid://ba03vmbtyvqas" path="res://Sprite/Turret/Long_Archer/Shot.png" id="2_p6vr4"]
-[ext_resource type="Texture2D" uid="uid://cr1q5re6yyn6q" path="res://Sprite/Turret/Long_Archer/Dead.png" id="3_xienk"]
-[ext_resource type="Texture2D" uid="uid://d3v6h5ycu82m1" path="res://Sprite/Turret/Long_Archer/Idle.png" id="4_8onls"]
+[ext_resource type="Texture2D" uid="uid://ba03vmbtyvqas" path="res://Sprite/Long_Archer/Shot.png" id="2_p6vr4"]
+[ext_resource type="Texture2D" uid="uid://cr1q5re6yyn6q" path="res://Sprite/Long_Archer/Dead.png" id="3_xienk"]
+[ext_resource type="Texture2D" uid="uid://d3v6h5ycu82m1" path="res://Sprite/Long_Archer/Idle.png" id="4_8onls"]
 [ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="5_skdmt"]
 [ext_resource type="AudioStream" uid="uid://bc0aibwa4813a" path="res://Sound/SFX/Archer/throw1.ogg" id="6_qsa1u"]
 [ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="7_jgll6"]
