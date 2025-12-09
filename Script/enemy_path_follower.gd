@@ -57,5 +57,5 @@ func _on_hitbox_area_entered(area: Area3D):
 			emit_signal("enemy_reached_end", damage_to_base)
 			queue_free()
 			
-	elif area.name == "HitBox" and target.team != team and not has_damaged_base:
+	elif area.name == "HitBox" and not has_damaged_base:
 		is_moving = false
