@@ -25,7 +25,7 @@ var is_boss = false
 var can_attack = true # Pour gérer le cooldown
 var current_target = null # Cible actuelle
 var facing_right = true # Orientation actuelle de l'entité
-var targets: Array = [] # Liste des cibles présentes dans la zone
+@export var targets: Array = [] # Liste des cibles présentes dans la zone
 
 func _ready():
 	if is_boss and sfx_spawn:
@@ -169,8 +169,6 @@ func die():
 			music.stop()
 	if sfx_death:
 		sfx_death.play()
-	else:
-		print("cénul")
 	print(name, " est mort")
 	if is_boss != true:
 		await get_tree().create_timer(2.0).timeout
