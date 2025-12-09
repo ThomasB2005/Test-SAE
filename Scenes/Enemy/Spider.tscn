@@ -209,11 +209,11 @@ animation = &"attack"
 frame = 4
 frame_progress = 1.0
 
-[node name="Area3D" type="Area3D" parent="Node3D"]
+[node name="AttackBox" type="Area3D" parent="Node3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AttackBox"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 

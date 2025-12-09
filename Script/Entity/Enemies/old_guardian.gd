@@ -23,6 +23,7 @@ func _ready():
 	attack_cd = 3
 	team = "enemie"
 	is_boss = true
+	type = "melee"
 
 	super._ready()
 	

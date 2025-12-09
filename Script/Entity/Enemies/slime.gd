@@ -12,6 +12,7 @@ func _ready():
 	damage = 2
 	attack_cd = 4
 	team = "enemie"
+	type = "melee"
 
 	super._ready()
 	

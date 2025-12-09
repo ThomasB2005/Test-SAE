@@ -5,6 +5,7 @@ extends Node3D
 @onready var detection_area = get_node_or_null("AttackBox")
 @export var maxHealth = 0 
 @export var team = "" # Ajouter une équipe ("ally", "enemy")
+@export var type = ""
 
 var animator: AnimatedSprite3D
 var sfx_attck: AudioStreamPlayer

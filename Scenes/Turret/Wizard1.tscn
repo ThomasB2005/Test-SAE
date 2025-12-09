@@ -193,10 +193,10 @@ texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_h0uoc")
 animation = &"idle"
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="AttackBox" type="Area3D" parent="."]
 script = SubResource("GDScript_ww8gr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackBox"]
 shape = SubResource("BoxShape3D_qhmas")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
