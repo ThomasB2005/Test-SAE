@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvplj3rb7fvqi"]
+[gd_scene load_steps=14 format=3 uid="uid://dvplj3rb7fvqi"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
@@ -17,6 +17,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_35cr0"]
+size = Vector3(1, 1, 0.4951172)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ifef"]
 paragraph_spacing = 2.0
@@ -65,6 +68,13 @@ auto_start = false
 
 [node name="Base" parent="." instance=ExtResource("5_2ifef")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 1)
+
+[node name="HitBox" type="Area3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2524414)
+shape = SubResource("BoxShape3D_35cr0")
 
 [node name="archer" parent="." instance=ExtResource("8_2ifef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.82558393, 1)
