@@ -233,4 +233,5 @@ bus = &"SFX"
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/HitBox"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0)
 shape = SubResource("BoxShape3D_oxbhh")

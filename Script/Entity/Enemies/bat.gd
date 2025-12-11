@@ -1,9 +1,13 @@
 extends "res://Script/Entity/entity.gd"
 
-@onready var slime: AnimatedSprite3D = $AnimatedSprite3D
+@onready var bat: AnimatedSprite3D = $AnimatedSprite3D
+@onready var attack_1: AudioStreamPlayer = $attack1
+@onready var hit: AudioStreamPlayer = $hit
 
 func _ready():
-	animator = slime # Liaison de la variable générique de la classe mère
+	animator = bat # Liaison de la variable générique de la classe mère
+	sfx_attck = attack_1
+	sfx_hit = hit
 	maxHealth = 20 # Initialisation des PV max
 	damage = 2
 	attack_cd = 2

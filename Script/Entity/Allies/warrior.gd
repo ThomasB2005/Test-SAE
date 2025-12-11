@@ -16,4 +16,12 @@ func _ready():
 	
 	super._ready()
 	
+	# S'assurer que la UnitHitBox est bien configurée pour être détectable
+	var unit_hitbox = get_node_or_null("UnitHitBox")
+	if unit_hitbox:
+		unit_hitbox.collision_layer = 1
+		unit_hitbox.collision_mask = 0
+		unit_hitbox.monitoring = false
+		unit_hitbox.monitorable = true
+	
 	animator.play("idle")

@@ -40,6 +40,12 @@ func _ready():
 		BossHealthBar.max_value = maxHealth
 		BossHealthBar.value = currentHealth
 	if detection_area:
+		# Configure collision layers pour être sûr que la détection fonctionne
+		detection_area.collision_layer = 1
+		detection_area.collision_mask = 1
+		detection_area.monitoring = true
+		detection_area.monitorable = true
+		
 		detection_area.area_entered.connect(_on_area_entered)
 		detection_area.area_exited.connect(_on_area_exited)
 
@@ -56,14 +62,11 @@ func _on_area_entered(area: Node3D):
 	var target = area.get_parent()
 	# Vérifier que c'est un ennemi valide
 	if target.has_method("take_damage") and target.is_alive and target.team != team:
-		print(name, " détecte ", target.name)
 		if not targets.has(target):
 			targets.append(target)
 		# Si on n'a pas de cible actuelle valide, en choisir une
 		if not is_instance_valid(current_target) or not current_target or not current_target.is_alive:
 			current_target = choose_target()
-			if current_target:
-				print(name, " vise maintenant ", current_target.name)
 
 func _on_area_exited(area: Node3D):
 	var target = area.get_parent()
@@ -73,9 +76,6 @@ func _on_area_exited(area: Node3D):
 	# Si c'était la cible actuelle, en choisir une autre
 	if target == current_target:
 		current_target = choose_target()
-		print(name, " perd la cible")
-		if current_target:
-			print(name, " change de cible vers ", current_target.name)
 
 func face_target(target: Node3D):
 	# Déterminer la direction vers la cible
@@ -88,8 +88,7 @@ func face_target(target: Node3D):
 	if should_face_right != facing_right:
 		facing_right = should_face_right
 		# Utiliser flip_h pour inverser le sprite
-		animator.flip_h = not facing_right  # flip_h = true quand on regarde à gauche
-		print(name, " se tourne vers la ", "DROITE" if facing_right else "GAUCHE")
+		animator.flip_h = not facing_right
 
 func choose_target() -> Node3D:
 	# Retourne la première cible valide et vivante dans la zone, sinon null
@@ -97,6 +96,14 @@ func choose_target() -> Node3D:
 		if is_instance_valid(t) and t.is_alive:
 			return t
 	return null
+
+func set_target_from_collision(unit: Node3D):
+	# Appelé par enemy_path_follower quand l'ennemi est bloqué par un warrior
+	if unit and unit.has_method("take_damage") and unit.get("is_alive") and unit.is_alive and unit.get("team") and unit.team != team:
+		if not targets.has(unit):
+			targets.append(unit)
+		if not current_target or not is_instance_valid(current_target) or not current_target.is_alive:
+			current_target = unit
 
 func attack(target: Node3D):
 	if not can_attack or not target.is_alive:
@@ -108,7 +115,6 @@ func attack(target: Node3D):
 	can_attack = false
 	if animator:
 		animator.play("attack")
-	print(name, " attaque ", target.name)
 	if sfx_attck:
 		await get_tree().create_timer(0.7).timeout
 		sfx_attck.play()
@@ -125,9 +131,8 @@ func attack(target: Node3D):
 		if targets.has(target):
 			targets.erase(target)
 		current_target = choose_target()
-		if current_target:
-			print(name, " change de cible vers ", current_target.name)
 	
+	# Play idle during cooldown
 	if animator:
 		animator.play("idle")
 	

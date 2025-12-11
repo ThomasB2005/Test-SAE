@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://creijo6dd7vik"]
+[gd_scene load_steps=13 format=3 uid="uid://creijo6dd7vik"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_u5lmt"]
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="2_8v540"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="6_game_manager"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="7_wave_manager"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="8_hwrsx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_base"]
+size = Vector3(1, 1, 0.4951172)
 
 [sub_resource type="Curve3D" id="Curve3D_gmn17"]
 _data = {
@@ -29,9 +32,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_base"]
-size = Vector3(1, 1, 0.4951172)
 
 [node name="Map19" type="Node3D"]
 

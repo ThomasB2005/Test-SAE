@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xqn8ige4ucmx"]
+[gd_scene load_steps=14 format=3 uid="uid://xqn8ige4ucmx"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_4i0no"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_jnko3"]

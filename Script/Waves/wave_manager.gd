@@ -446,8 +446,6 @@ func get_enemy_scene(enemy_type: String) -> PackedScene:
 			return load("res://Scenes/Enemy/Boss/OldGuardian.tscn")
 		"boss3":
 			return load("res://Scenes/Enemy/Boss/SkeletonSeeker.tscn")
-		"boss4":
-			return load("res://Scenes/Enemy/Boss/BringerOfDeath.tscn")
 		_:
 			push_error("Unknown enemy type: " + enemy_type)
 			return null

@@ -60,7 +60,8 @@ func _process(delta):
 			blocked_by = null
 			is_moving = true
 			var animator = get_node_or_null("Node3D/AnimatedSprite3D")
-			if animator:
+			# Only play move if not attacking
+			if animator and enemy_entity and enemy_entity.get("can_attack"):
 				animator.play("move")
 			print("Warrior died, enemy resuming movement")
 	
@@ -100,7 +101,10 @@ func _on_hitbox_area_entered(area: Area3D):
 		if unit and unit.get("is_alive"):
 			blocked_by = unit
 			is_moving = false
-			var animator = get_node_or_null("Node3D/AnimatedSprite3D")
-			if animator:
-				animator.play("idle")
+			# Don't force idle animation here, let entity.gd handle animations when stopped
 			print("Enemy stopped by warrior: ", unit.name)
+			
+			# Notifier le script entity.gd pour qu'il attaque cette cible
+			var enemy_entity = get_node_or_null("Node3D")
+			if enemy_entity and enemy_entity.has_method("set_target_from_collision"):
+				enemy_entity.set_target_from_collision(unit)
