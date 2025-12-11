@@ -11,6 +11,8 @@ signal enemy_died
 var has_damaged_base: bool = false
 var is_moving: bool = true
 var last_position: Vector3 = Vector3.ZERO
+var death_signal_emitted: bool = false
+var blocked_by: Node3D = null
 
 func _ready():
 	progress = 0
@@ -44,14 +46,25 @@ func _process(delta):
 	# Check if entity is alive before moving
 	var enemy_entity = get_node_or_null("Node3D")
 	if enemy_entity and enemy_entity.get("is_alive") != null:
-		if not enemy_entity.is_alive and is_moving:
+		if not enemy_entity.is_alive and not death_signal_emitted:
 			# Enemy just died, stop moving and emit signal
 			is_moving = false
 			emit_signal("enemy_died")
+			death_signal_emitted = true
 			print("Enemy died signal emitted")
 	
+	# Check if the blocking warrior is still alive
+	if blocked_by != null:
+		if not is_instance_valid(blocked_by) or not blocked_by.get("is_alive") or not blocked_by.is_alive:
+			# Warrior died or is invalid, resume movement
+			blocked_by = null
+			is_moving = true
+			var animator = get_node_or_null("Node3D/AnimatedSprite3D")
+			if animator:
+				animator.play("move")
+			print("Warrior died, enemy resuming movement")
+	
 	if is_moving:
-		var old_progress = progress
 		progress += speed * delta
 		
 		# Update facing direction based on horizontal movement
@@ -59,12 +72,14 @@ func _process(delta):
 		var direction = current_pos - last_position
 		
 		# Only change direction based on horizontal movement (x axis)
-		if abs(direction.x) > 0.01:  # Small threshold to avoid jitter
+		# But always update last_position
+		if abs(direction.x) > 0.001:  # Smaller threshold for better detection
 			var animator = get_node_or_null("Node3D/AnimatedSprite3D")
 			if animator:
 				# If moving right (positive x), don't flip. If moving left (negative x), flip
 				animator.flip_h = direction.x < 0
 		
+		# Always update last position even if we didn't change direction
 		last_position = current_pos
 
 func _on_hitbox_area_entered(area: Area3D):
@@ -81,4 +96,11 @@ func _on_hitbox_area_entered(area: Area3D):
 	# Stop only when hitting a UnitHitBox (melee units like warriors)
 	# This prevents slimes from blocking each other since they have regular HitBox
 	elif area.name == "UnitHitBox" and not has_damaged_base:
-		is_moving = false
+		var unit = area.get_parent()
+		if unit and unit.get("is_alive"):
+			blocked_by = unit
+			is_moving = false
+			var animator = get_node_or_null("Node3D/AnimatedSprite3D")
+			if animator:
+				animator.play("idle")
+			print("Enemy stopped by warrior: ", unit.name)
