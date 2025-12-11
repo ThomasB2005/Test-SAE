@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://ddtqbl61k6ixn"]
+[gd_scene load_steps=33 format=3 uid="uid://ddtqbl61k6ixn"]
 
 [ext_resource type="Script" uid="uid://c6uwgqerq40fr" path="res://Script/Entity/Allies/archer.gd" id="1_jud4p"]
 [ext_resource type="Texture2D" uid="uid://cmqr1ji4bexgg" path="res://Sprite/Archer/GandalfHardcore Archer black sheet.png" id="2_mf7qw"]
-[ext_resource type="PackedScene" path="res://Scenes/Turret/healthBar.tscn" id="3_mf7qw"]
+[ext_resource type="PackedScene" uid="uid://ylpue2vy2vof" path="res://healthBar.tscn" id="3_mf7qw"]
+[ext_resource type="AudioStream" uid="uid://s3akxdg7etuw" path="res://Sound/SFX/hit.ogg" id="5_tt67e"]
+[ext_resource type="AudioStream" uid="uid://bc0aibwa4813a" path="res://Sound/SFX/Archer/throw1.ogg" id="5_y1wqa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1wqa"]
 atlas = ExtResource("2_mf7qw")
@@ -185,9 +187,9 @@ script/source = "extends Area3D
 [sub_resource type="ViewportTexture" id="ViewportTexture_mf7qw"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a45n4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1wqa"]
 
-[node name="archer" type="CharacterBody3D"]
+[node name="archer" type="Node3D"]
 script = ExtResource("1_jud4p")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -198,7 +200,6 @@ sprite_frames = SubResource("SpriteFrames_m7fxw")
 animation = &"attack"
 
 [node name="Area3D" type="Area3D" parent="."]
-visible = false
 script = SubResource("GDScript_jud4p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -208,12 +209,21 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
 [node name="ArrowSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27066398, -0.46247756, 0)
-visible = false
 
 [node name="Sprite3D" parent="." instance=ExtResource("3_mf7qw")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
 texture = SubResource("ViewportTexture_mf7qw")
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tt67e")
+bus = &"SFX"
+
+[node name="throw1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y1wqa")
+bus = &"SFX"
+
+[node name="HitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(0.7999928, 0, 0.00339291, 0, 0.8, 0, -0.00339291, 0, 0.7999928, 0.21605647, 0.325899, 0.10936594)
-shape = SubResource("BoxShape3D_a45n4")
+shape = SubResource("BoxShape3D_y1wqa")

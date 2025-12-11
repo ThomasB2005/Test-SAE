@@ -1,3 +1,4 @@
+# res://Script/Entity/entity.gd
 extends Node3D
 
 @onready var healthBar = get_node_or_null("Sprite3D/SubViewport/Panel/HealthBar")
@@ -22,10 +23,10 @@ var cost = 0
 var reward = 0
 var score = 0
 var is_boss = false
-var can_attack = true # Pour gérer le cooldown
-var current_target = null # Cible actuelle
-var facing_right = true # Orientation actuelle de l'entité
-@export var targets: Array = [] # Liste des cibles présentes dans la zone
+var can_attack = true
+var current_target = null
+var facing_right = true
+@export var targets: Array = []
 
 func _ready():
 	if is_boss and sfx_spawn:
@@ -43,23 +44,19 @@ func _ready():
 		detection_area.area_entered.connect(_on_area_entered)
 		detection_area.area_exited.connect(_on_area_exited)
 
-func _process(delta):
-	# Attaquer la cible si elle existe et qu'on peut attaquer
+func _process(_delta):
 	if current_target and can_attack and is_alive:
 		attack(current_target)
 
 func _on_area_entered(area: Node3D):
-	# Vérifier que la zone détectée est une HitBox (pas une AttackBox)
 	if area.name != "HitBox":
 		return
 	
 	var target = area.get_parent()
-	# Vérifier que c'est un ennemi valide
 	if target.has_method("take_damage") and target.is_alive and target.team != team:
 		print(name, " détecte ", target.name)
 		if not targets.has(target):
 			targets.append(target)
-		# Si on n'a pas de cible actuelle valide, en choisir une
 		if not is_instance_valid(current_target) or not current_target or not current_target.is_alive:
 			current_target = choose_target()
 			if current_target:
@@ -67,10 +64,8 @@ func _on_area_entered(area: Node3D):
 
 func _on_area_exited(area: Node3D):
 	var target = area.get_parent()
-	# Retirer la cible de la liste
 	if targets.has(target):
 		targets.erase(target)
-	# Si c'était la cible actuelle, en choisir une autre
 	if target == current_target:
 		current_target = choose_target()
 		print(name, " perd la cible")
@@ -78,21 +73,15 @@ func _on_area_exited(area: Node3D):
 			print(name, " change de cible vers ", current_target.name)
 
 func face_target(target: Node3D):
-	# Déterminer la direction vers la cible
 	var direction_to_target = target.global_position - global_position
-	
-	# Déterminer si la cible est à gauche ou à droite
 	var should_face_right = direction_to_target.x > 0
 	
-	# Si l'orientation doit changer
 	if should_face_right != facing_right:
 		facing_right = should_face_right
-		# Utiliser flip_h pour inverser le sprite
-		animator.flip_h = not facing_right  # flip_h = true quand on regarde à gauche
+		animator.flip_h = not facing_right
 		print(name, " se tourne vers la ", "DROITE" if facing_right else "GAUCHE")
 
 func choose_target() -> Node3D:
-	# Retourne la première cible valide et vivante dans la zone, sinon null
 	for t in targets:
 		if is_instance_valid(t) and t.is_alive:
 			return t
@@ -102,7 +91,6 @@ func attack(target: Node3D):
 	if not can_attack or not target.is_alive:
 		return
 	
-	# Se tourner vers la cible avant d'attaquer
 	face_target(target)
 	
 	can_attack = false
@@ -116,11 +104,9 @@ func attack(target: Node3D):
 	if animator:
 		await animator.animation_finished
 	
-	
-	# Vérifier que la cible existe encore
 	if is_instance_valid(target) and target.is_alive:
 		target.take_damage(damage, self)
-	# Si la cible est morte après l'attaque ou n'est plus valide, la retirer et en choisir une autre
+	
 	if not (is_instance_valid(target) and target.is_alive):
 		if targets.has(target):
 			targets.erase(target)
@@ -131,10 +117,8 @@ func attack(target: Node3D):
 	if animator:
 		animator.play("idle")
 	
-	# Cooldown
 	await get_tree().create_timer(attack_cd).timeout
 	can_attack = true
-	
 
 func take_damage(amount, _attacker):
 	if not is_alive:
@@ -142,8 +126,7 @@ func take_damage(amount, _attacker):
 		
 	if sfx_hit:
 		sfx_hit.play()
-	else:
-		print("cénul")
+	
 	if is_boss != true:
 		currentHealth -= amount
 		if healthBar:

@@ -1,4 +1,4 @@
-extends "res://Script/Entity/entity.gd"
+extends "res://Script/turret.gd"
 
 @onready var warrior: AnimatedSprite3D = $AnimatedSprite3D
 @onready var swip_1: AudioStreamPlayer = $swip1
@@ -6,12 +6,13 @@ extends "res://Script/Entity/entity.gd"
 
 func _ready():
 	animator = warrior
-	#sfx_attck = swip_1
+	sfx_attck = swip_1
 	sfx_hit = hit
-	maxHealth = 40
-	damage = 15
-	attack_cd = 2
+	maxHealth = 60
+	damage = 20
+	attack_cd = 1.5
 	team = "ally"
+	cost = 75
 	type = "melee"
 	
 	super._ready()

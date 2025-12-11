@@ -1,3 +1,4 @@
+# res://Script/Resources/DamageTurretStrategy.gd
 class_name DamageTurretStrategy
 extends BaseTurretStrategy
 

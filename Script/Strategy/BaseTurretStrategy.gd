@@ -1,3 +1,4 @@
+# res://Script/Resources/BaseTurretStrategy.gd
 class_name BaseTurretStrategy
 extends Resource
 

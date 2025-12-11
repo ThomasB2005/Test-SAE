@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjn5feq5wc5f6"]
+[gd_scene load_steps=15 format=3 uid="uid://cjn5feq5wc5f6"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="5_dg61n"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
 [ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="8_2ifef"]
-[ext_resource type="Script" uid="uid://cj62hguvc26xo" path="res://GameManager.gd" id="8_duu0g"]
+[ext_resource type="Script" uid="uid://cj62hguvc26xo" path="res://Script/GameManager.gd" id="8_duu0g"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="9_2ifef"]
 [ext_resource type="PackedScene" uid="uid://c8i4hxus5wr6t" path="res://Scenes/Menu/Menu_pause.tscn" id="10_35cr0"]
 [ext_resource type="Script" uid="uid://ds5ypatsbox4r" path="res://Script/TurretPlacementManager.gd" id="10_sc8lg"]
+[ext_resource type="PackedScene" uid="uid://ccrp30h5ck65l" path="res://Scenes/Turret/Warrior.tscn" id="11_qktab"]
 
 [sub_resource type="Curve3D" id="Curve3D_si05j"]
 _data = {
@@ -33,7 +34,6 @@ cell_size = Vector3(1, 0.5, 1)
 data = {
 "cells": PackedInt32Array(0, 0, 1441793, 0, 1, 1441793, 1, 1, 1441793, 2, 1, 1441793, 2, 0, 1441793, 3, 0, 1441793, 4, 0, 1441793, 5, 0, 1441793, 5, 1, 1441793, 65535, 0, 1441795, 6, 1, 1441796, 0, 2, 1441794, 1, 2, 1441794, 2, 2, 1441794, 3, 2, 1441794, 4, 2, 1441794, 5, 2, 1441794, 3, 1, 1441794, 4, 1, 1441793, 0, 65535, 1441794, 1, 65535, 1441794, 1, 0, 1441794, 2, 65535, 1441794, 3, 65535, 1441794, 4, 65535, 1441794, 5, 65535, 1441794, 65535, 1, 1441792, 65535, 2, 1441792, 65535, 3, 1441792, 0, 3, 1441792, 1, 3, 1441792, 2, 3, 1441792, 3, 3, 1441792, 4, 3, 1441792, 5, 3, 1441792, 6, 3, 1441792, 6, 2, 1441792, 6, 0, 1441792, 6, 65535, 1441792, 6, 65534, 1441792, 5, 65534, 1441792, 4, 65534, 1441792, 3, 65534, 1441792, 2, 65534, 1441792, 1, 65534, 1441792, 0, 65534, 1441792, 65535, 65534, 1441792, 65535, 65535, 1441792)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Barrier" parent="GridMap" instance=ExtResource("6_clay5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 1.5256133)
@@ -87,10 +87,9 @@ game_manager = NodePath("../GameManager")
 
 [node name="TurretPlacementManager" type="Node3D" parent="."]
 script = ExtResource("10_sc8lg")
-valid_placement_color = null
-invalid_placement_color = null
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_35cr0")]
+turret_scenes = Array[PackedScene]([ExtResource("8_2ifef"), ExtResource("11_qktab")])
 
 [node name="archer2" parent="." groups=["turrets"] instance=ExtResource("8_2ifef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0578012, 0)

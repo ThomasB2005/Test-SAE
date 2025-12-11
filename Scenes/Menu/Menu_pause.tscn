@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8i4hxus5wr6t"]
+[gd_scene load_steps=15 format=3 uid="uid://c8i4hxus5wr6t"]
 
 [ext_resource type="Script" uid="uid://bj85p70h3yt1j" path="res://Script/menu_pause.gd" id="1_l1uji"]
 [ext_resource type="Resource" uid="uid://smw4b1grgnbv" path="res://Script/Resources/damage_upgrade.tres" id="2_5o7ct"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cf2hmllupgaum" path="res://Scenes/shop_slot.tscn" id="3_qffp2"]
 [ext_resource type="Texture2D" uid="uid://cerj4xpamei1a" path="res://Assets/Texture/noir.png" id="3_u2gt6"]
 [ext_resource type="Texture2D" uid="uid://d355ph646r0dc" path="res://Assets/Texture/bgtset.png" id="4_qffp2"]
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="5_fyy7f"]
+[ext_resource type="PackedScene" path="res://Scenes/turret_shop_slot.tscn" id="6_ik4eh"]
+[ext_resource type="PackedScene" uid="uid://ccrp30h5ck65l" path="res://Scenes/Turret/Warrior.tscn" id="6_r3y1v"]
 
 [sub_resource type="Animation" id="Animation_qffp2"]
 length = 0.001
@@ -41,6 +44,8 @@ grow_vertical = 2
 script = ExtResource("1_l1uji")
 upgrade_items = Array[ExtResource("2_kuv32")]([ExtResource("2_5o7ct")])
 shop_slot_scene = ExtResource("3_qffp2")
+turret_scenes = Array[PackedScene]([ExtResource("5_fyy7f"), ExtResource("6_r3y1v")])
+turret_slot_scene = ExtResource("6_ik4eh")
 
 [node name="Menupause" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -76,15 +81,19 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Continuer"
 
-[node name="Boutique" type="Button" parent="Menupause/VBoxContainer"]
+[node name="Turret" type="Button" parent="Menupause/VBoxContainer"]
 layout_mode = 2
-text = "Boutique"
+text = "Tourelles"
+
+[node name="Upgrade" type="Button" parent="Menupause/VBoxContainer"]
+layout_mode = 2
+text = "Améliorations"
 
 [node name="Quitter" type="Button" parent="Menupause/VBoxContainer"]
 layout_mode = 2
 text = "Quitter"
 
-[node name="Boutique" type="NinePatchRect" parent="."]
+[node name="PanelTurret" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,7 +108,60 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_u2gt6")
 
-[node name="GridContainer" type="GridContainer" parent="Boutique"]
+[node name="Label" type="Label" parent="PanelTurret"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 35.0
+grow_horizontal = 2
+text = "Tourelles"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="PanelTurret"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+
+[node name="retour" type="Button" parent="PanelTurret"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 35.0
+text = "Retour"
+
+[node name="PanelUpgrade" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.292
+offset_top = -154.0
+offset_right = 294.292
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u2gt6")
+
+[node name="GridContainer" type="GridContainer" parent="PanelUpgrade"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -113,55 +175,55 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 4
 
-[node name="slot" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot2" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot2" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot3" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot3" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot4" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot4" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot5" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot5" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot6" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot6" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot7" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot7" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot8" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot8" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot9" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot9" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot10" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot10" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot11" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot11" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot12" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot12" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot13" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot13" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot14" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot14" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot15" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot15" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="slot16" parent="Boutique/GridContainer" instance=ExtResource("3_qffp2")]
+[node name="slot16" parent="PanelUpgrade/GridContainer" instance=ExtResource("3_qffp2")]
 layout_mode = 2
 
-[node name="Description" type="NinePatchRect" parent="Boutique"]
+[node name="Description" type="NinePatchRect" parent="PanelUpgrade"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -181,7 +243,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="retour" type="Button" parent="Boutique"]
+[node name="retour" type="Button" parent="PanelUpgrade"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
@@ -193,6 +255,8 @@ libraries = {
 }
 
 [connection signal="pressed" from="Menupause/VBoxContainer/Continuer" to="." method="_on_continuer_pressed"]
-[connection signal="pressed" from="Menupause/VBoxContainer/Boutique" to="." method="_on_boutique_pressed"]
+[connection signal="pressed" from="Menupause/VBoxContainer/Turret" to="." method="_on_turret_pressed"]
+[connection signal="pressed" from="Menupause/VBoxContainer/Upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="Menupause/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]
-[connection signal="pressed" from="Boutique/retour" to="." method="_on_retour_pressed"]
+[connection signal="pressed" from="PanelTurret/retour" to="." method="_on_retour_turret_pressed"]
+[connection signal="pressed" from="PanelUpgrade/retour" to="." method="_on_retour_upgrade_pressed"]

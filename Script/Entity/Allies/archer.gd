@@ -12,7 +12,7 @@ func _ready():
 	damage = 30
 	attack_cd = 1
 	team = "ally"
-	cost = 5
+	cost = 50
 	type = "ranged"
 	
 	super._ready()
