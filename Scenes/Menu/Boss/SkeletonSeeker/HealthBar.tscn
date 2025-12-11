@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv3halvl65c80"]
+
+[ext_resource type="Texture2D" uid="uid://dddrmch5kowfm" path="res://Sprite/Bosses/HealthBar/SkeletonSeeker/Skeleton_SeekerHB.png" id="1_db1bd"]
+[ext_resource type="Texture2D" uid="uid://cv65fb7hmrqrc" path="res://Sprite/Bosses/HealthBar/Bar.png" id="2_uukte"]
+[ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="3_uukte"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqkuk"]
+font = ExtResource("3_uukte")
+font_size = 15
+font_color = Color(0.6261257, 0.6261257, 0.6261257, 1)
+
+[node name="HealthBar" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -429.0
+offset_top = 14.0
+offset_right = 71.0
+offset_bottom = 92.0
+grow_horizontal = 2
+scale = Vector2(1.64, 1.64)
+size_flags_horizontal = 4
+step = 0.01
+value = 100.0
+texture_under = ExtResource("1_db1bd")
+texture_progress = ExtResource("2_uukte")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -305.0
+offset_top = 39.0
+offset_right = 9.0
+offset_bottom = 65.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Skeleton Seeker"
+label_settings = SubResource("LabelSettings_fqkuk")
+metadata/_edit_use_anchors_ = true

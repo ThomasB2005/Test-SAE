@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbqh7bapguvdr"]
+
+[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="1_3qfw1"]
+[ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="2_dqn3b"]
+
+[node name="SandBox" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1857986, 0.35782933, 1.183069)
+
+[node name="slime" parent="." instance=ExtResource("2_dqn3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54739434, 0, 0)
+
+[node name="archer" parent="." instance=ExtResource("1_3qfw1")]

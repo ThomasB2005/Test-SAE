@@ -1,15 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://cql5iv3y1jyhq"]
+[gd_scene load_steps=16 format=3 uid="uid://cql5iv3y1jyhq"]
 
-[ext_resource type="Script" uid="uid://bijl5n5vr53db" path="res://Script/settings.gd" id="1_fnv2m"]
+[ext_resource type="Script" uid="uid://bijl5n5vr53db" path="res://Script/Menu/settings.gd" id="1_fnv2m"]
+[ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="2_nqrdv"]
+[ext_resource type="Texture2D" uid="uid://yeip7k7pho0y" path="res://Sprite/Button/ENG/back.jpg" id="2_wr6dk"]
+[ext_resource type="Texture2D" uid="uid://bmlq5qh3230et" path="res://Sprite/Button/ENG/back_pressed.jpg" id="3_3lowq"]
+[ext_resource type="Texture2D" uid="uid://cf84hjsvxeyok" path="res://Sprite/Button/ENG/back_hover.jpg" id="4_ekohe"]
+[ext_resource type="Texture2D" uid="uid://b55ft4qgnis70" path="res://Sprite/Button/ENG/save.jpg" id="5_mt151"]
+[ext_resource type="Texture2D" uid="uid://db48hlprv7h0r" path="res://Sprite/Button/ENG/save_pressed.jpg" id="6_nqrdv"]
+[ext_resource type="Texture2D" uid="uid://cw2qm51uh21pi" path="res://Sprite/Button/ENG/save_hover.jpg" id="7_clvy6"]
+[ext_resource type="AudioStream" uid="uid://gn11h03xjt3a" path="res://Sound/UI/click.ogg" id="9_clvy6"]
 
 [sub_resource type="Gradient" id="Gradient_vsb4k"]
-colors = PackedColorArray(0, 0.2573496, 0.30592385, 1, 0, 0.25882354, 0.30588236, 1)
+colors = PackedColorArray(0.19215687, 0.13725491, 0.11764706, 1, 0.19215687, 0.13725491, 0.11764706, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lti8b"]
 gradient = SubResource("Gradient_vsb4k")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
-font_size = 48
+font = ExtResource("2_nqrdv")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqrdv"]
+font = ExtResource("2_nqrdv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_clvy6"]
+font = ExtResource("2_nqrdv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j06k2"]
+font = ExtResource("2_nqrdv")
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -34,53 +52,95 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 127.0
-offset_right = 20.0
-offset_bottom = 150.0
+offset_left = -198.0
+offset_top = 149.0
+offset_right = 198.0
+offset_bottom = 201.0
 grow_horizontal = 2
-text = "Paramètres"
+text = "SETTINGS"
 label_settings = SubResource("LabelSettings_ouk20")
 
 [node name="vbcButtons" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 466.0
-offset_top = 326.0
-offset_right = 710.0
-offset_bottom = 588.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -96.0
+offset_right = 122.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 19
 
 [node name="lblVolumePrincipal" type="Label" parent="vbcButtons"]
 layout_mode = 2
-text = "Volume principal :"
+text = "Master Volume :"
+label_settings = SubResource("LabelSettings_nqrdv")
 
 [node name="hslVolumePrincipal" type="HSlider" parent="vbcButtons"]
 layout_mode = 2
+max_value = 1.0
+step = 0.01
 
 [node name="lblVolumeMusic" type="Label" parent="vbcButtons"]
 layout_mode = 2
-text = "Volume de la musique :"
+text = "Music Volume :"
+label_settings = SubResource("LabelSettings_clvy6")
 
 [node name="hslVolumeMusic" type="HSlider" parent="vbcButtons"]
 layout_mode = 2
+max_value = 1.0
+step = 0.01
 
 [node name="lblVolumeSFX" type="Label" parent="vbcButtons"]
 layout_mode = 2
-text = "Volume des effets sonors :"
+text = "SFX Volume :"
+label_settings = SubResource("LabelSettings_j06k2")
 
 [node name="hslVolumeSFX" type="HSlider" parent="vbcButtons"]
 layout_mode = 2
+max_value = 1.0
+step = 0.01
 
-[node name="btnSaveSettings" type="Button" parent="vbcButtons"]
-layout_mode = 2
-text = "Sauvegarder les modifications"
-
-[node name="btnBack" type="Button" parent="."]
+[node name="btnBack" type="TextureButton" parent="."]
 layout_mode = 1
-offset_left = 874.0
-offset_top = 26.0
-offset_right = 1118.0
-offset_bottom = 57.0
-text = "Retour"
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 88.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_wr6dk")
+texture_pressed = ExtResource("3_3lowq")
+texture_hover = ExtResource("4_ekohe")
+
+[node name="btnSave" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -119.0
+offset_right = 100.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_mt151")
+texture_pressed = ExtResource("6_nqrdv")
+texture_hover = ExtResource("7_clvy6")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_clvy6")
+bus = &"SFX"
 
 [connection signal="button_down" from="btnBack" to="." method="_on_btn_back_button_down"]
+[connection signal="button_down" from="btnSave" to="." method="_on_btn_save_button_down"]

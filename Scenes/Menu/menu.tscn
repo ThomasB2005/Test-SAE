@@ -1,14 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cridkipgasbls"]
+[gd_scene load_steps=16 format=3 uid="uid://cridkipgasbls"]
 
-[ext_resource type="Script" uid="uid://c7vk836w17ha0" path="res://Script/menu.gd" id="1_rwxi6"]
+[ext_resource type="Script" uid="uid://cepgudcsloexa" path="res://Script/Menu/menu.gd" id="1_rwxi6"]
+[ext_resource type="FontFile" uid="uid://c0aswbmvhqq0m" path="res://Righteous.ttf" id="2_qok0p"]
+[ext_resource type="Texture2D" uid="uid://bot3ssmts7aul" path="res://Sprite/Button/ENG/start.jpg" id="3_hgg7c"]
+[ext_resource type="Texture2D" uid="uid://bls5khwsntw4v" path="res://Sprite/Button/ENG/start_pressed.jpg" id="4_3fcxt"]
+[ext_resource type="AudioStream" uid="uid://gn11h03xjt3a" path="res://Sound/UI/click.ogg" id="5_8inha"]
+[ext_resource type="Texture2D" uid="uid://bo52rn6qaeefa" path="res://Sprite/Button/ENG/start_hover.jpg" id="5_u2ioa"]
+[ext_resource type="Texture2D" uid="uid://bhpeayk2f8yph" path="res://Sprite/Button/ENG/settings.jpg" id="6_wxa3f"]
+[ext_resource type="Texture2D" uid="uid://bondr70aqhgav" path="res://Sprite/Button/ENG/settings_pressed.jpg" id="7_0401g"]
+[ext_resource type="Texture2D" uid="uid://bhqjegfmt744t" path="res://Sprite/Button/ENG/settings_hover.jpg" id="8_lnqkc"]
+[ext_resource type="Texture2D" uid="uid://dwsxjhyjf7fbh" path="res://Sprite/Button/ENG/quit.jpg" id="9_wv7rd"]
+[ext_resource type="Texture2D" uid="uid://3otpvjbcrgwe" path="res://Sprite/Button/ENG/quit_pressed.jpg" id="10_k0qon"]
+[ext_resource type="Texture2D" uid="uid://evnvbctdaywc" path="res://Sprite/Button/ENG/quit_hover.jpg" id="11_jqvb7"]
 
 [sub_resource type="Gradient" id="Gradient_vsb4k"]
-colors = PackedColorArray(0, 0.2573496, 0.30592385, 1, 0, 0.25882354, 0.30588236, 1)
+colors = PackedColorArray(0.19215687, 0.13725491, 0.11764706, 1, 0.19215687, 0.13725491, 0.11764706, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lti8b"]
 gradient = SubResource("Gradient_vsb4k")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
+font = ExtResource("2_qok0p")
 font_size = 48
 
 [node name="Menu" type="Control"]
@@ -39,29 +51,53 @@ offset_top = 127.0
 offset_right = 20.0
 offset_bottom = 150.0
 grow_horizontal = 2
-text = "Tower Defense"
+text = "DAWNKEEP"
 label_settings = SubResource("LabelSettings_ouk20")
 
 [node name="vbcButtons" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 466.0
-offset_top = 359.0
-offset_right = 710.0
-offset_bottom = 490.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -51.0
+offset_right = 183.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 19
+alignment = 1
 
-[node name="btnStart" type="Button" parent="vbcButtons"]
+[node name="btnStart" type="TextureButton" parent="vbcButtons"]
 layout_mode = 2
-text = "Commencer"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_hgg7c")
+texture_pressed = ExtResource("4_3fcxt")
+texture_hover = ExtResource("5_u2ioa")
 
-[node name="btnSettings" type="Button" parent="vbcButtons"]
+[node name="btnSettings" type="TextureButton" parent="vbcButtons"]
 layout_mode = 2
-text = "Paramètres"
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_wxa3f")
+texture_pressed = ExtResource("7_0401g")
+texture_hover = ExtResource("8_lnqkc")
 
-[node name="btnQuit" type="Button" parent="vbcButtons"]
+[node name="btnQuit" type="TextureButton" parent="vbcButtons"]
 layout_mode = 2
-text = "Quitter"
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_wv7rd")
+texture_pressed = ExtResource("10_k0qon")
+texture_hover = ExtResource("11_jqvb7")
 
+<<<<<<< HEAD
+=======
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8inha")
+bus = &"SFX"
+
+>>>>>>> origin/beta
 [connection signal="button_down" from="vbcButtons/btnStart" to="." method="_on_btn_start_button_down"]
 [connection signal="button_down" from="vbcButtons/btnSettings" to="." method="_on_btn_settings_button_down"]
 [connection signal="button_down" from="vbcButtons/btnQuit" to="." method="_on_btn_quit_button_down"]

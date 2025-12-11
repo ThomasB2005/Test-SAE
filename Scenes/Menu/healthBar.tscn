@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://mljbx83fn2o0"]
+
+[ext_resource type="Texture2D" uid="uid://dpp4acqdpp63i" path="res://Sprite/HealthBar/EntityHB.png" id="1_cmi8g"]
+[ext_resource type="Texture2D" uid="uid://doi3atbcmdhbt" path="res://Sprite/HealthBar/EntityBar.png" id="2_m420w"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jud4p"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jud4p"]
+
+[node name="Sprite3D" type="Sprite3D"]
+billboard = 1
+texture = SubResource("ViewportTexture_jud4p")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(200, 16)
+
+[node name="Panel" type="Panel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jud4p")
+
+[node name="HealthBar" type="TextureProgressBar" parent="SubViewport/Panel"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 16.0
+value = 100.0
+texture_under = ExtResource("1_cmi8g")
+texture_progress = ExtResource("2_m420w")

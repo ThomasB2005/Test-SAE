@@ -17,7 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
+BgMusic="*res://Scenes/Music/bg_music.tscn"
+GameManager="*res://Script/GameManager.gd"
+<<<<<<<HEADGameManager="res://GameManager.gd"
 
 [file_customization]
 
@@ -29,3 +31,11 @@ folder_colors={
 "res://Script/": "orange",
 "res://Sprite/": "pink"
 }
+
+[global_group]
+
+turrets="groupe pour les tourrel"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

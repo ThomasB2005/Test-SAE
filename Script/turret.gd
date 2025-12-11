@@ -1,59 +1,89 @@
-# res://Script/turret.gd
-extends "res://Script/entity.gd"
+extends "res://Script/Entity/entity.gd"
 
-# ────── SÉLECTION VISUELLE ET CLIC ──────
-@onready var selection_ring = $SelectionRing   # ← Ajoute ce nœud dans la scène (voir plus bas)
-var is_selected : bool = false
+# Système de sélection
+var is_selected: bool = false
+var selection_indicator: MeshInstance3D
+var clickable_body: StaticBody3D
 
 func _ready() -> void:
-	super._ready()  # garde tout le _ready() de entity.gd
+	super._ready()
 	
-	# On crée une Area2D + collision si elle n'existe pas déjà
-	if not has_node("ClickArea"):
-		var area = Area2D.new()
-		area.name = "ClickArea"
-		add_child(area)
-		
-		var collision = CollisionShape2D.new()
-		area.add_child(collision)
-		var shape = CircleShape2D.new()
-		shape.radius = 40  # ajuste selon la taille de ta tourelle
-		collision.shape = shape
-		
-		# Connexion des signaux
-		area.mouse_entered.connect(_on_mouse_entered)
-		area.mouse_exited.connect(_on_mouse_exited)
-		area.input_event.connect(_on_input_event)
+	# Créer l'indicateur de sélection
+	create_selection_indicator()
 	
-	# Cache le cercle au début
-	if selection_ring:
-		selection_ring.visible = false
+	# Créer la zone cliquable avec StaticBody3D (plus fiable)
+	create_clickable_body()
 
-func _on_mouse_entered() -> void:
-	if selection_ring and not is_selected:
-		selection_ring.visible = true
-		selection_ring.modulate = Color(0, 1, 1, 0.5)  # cyan au survol
+func create_selection_indicator() -> void:
+	# Créer un anneau visuel pour montrer la sélection
+	selection_indicator = MeshInstance3D.new()
+	var cylinder = CylinderMesh.new()
+	cylinder.top_radius = 0.6
+	cylinder.bottom_radius = 0.6
+	cylinder.height = 0.05
+	selection_indicator.mesh = cylinder
+	
+	# Matériau lumineux pour l'anneau
+	var material = StandardMaterial3D.new()
+	material.albedo_color = Color(0, 1, 0, 0.5)  # Vert semi-transparent
+	material.emission_enabled = true
+	material.emission = Color(0, 1, 0)
+	material.emission_energy = 2.0
+	selection_indicator.material_override = material
+	
+	add_child(selection_indicator)
+	selection_indicator.position.y = 0.1
+	selection_indicator.visible = false
 
-func _on_mouse_exited() -> void:
-	if selection_ring and not is_selected:
-		selection_ring.visible = false
+func create_clickable_body() -> void:
+	# StaticBody3D est plus fiable pour les input_event
+	clickable_body = StaticBody3D.new()
+	clickable_body.name = "ClickableBody"
+	
+	# Configurer pour recevoir les inputs
+	clickable_body.input_ray_pickable = true
+	
+	# Configurer les layers (layer 32 pour éviter conflits)
+	clickable_body.collision_layer = 1 << 31  # Layer 32
+	clickable_body.collision_mask = 0
+	
+	var collision = CollisionShape3D.new()
+	var shape = BoxShape3D.new()
+	shape.size = Vector3(1, 1.5, 1)
+	collision.shape = shape
+	collision.position.y = 0.5  # Centrer la collision sur la tourelle
+	
+	clickable_body.add_child(collision)
+	add_child(clickable_body)
+	
+	# Connecter le signal
+	clickable_body.input_event.connect(_on_body_input_event)
+	
+	print("✅ StaticBody cliquable créé pour ", name)
 
-func _on_input_event(viewport, event, shape_idx) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		GameManager.selected_turret = self
-		is_selected = true
-		_update_selection_ring()
-		print("TOURELLE SÉLECTIONNÉE → ", name)
+func _on_body_input_event(_camera: Node, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("✅ Clic détecté sur tourelle: ", name)
+		if GameManager:
+			GameManager.select_turret(self)
+		else:
+			push_error("GameManager introuvable!")
 
-func _update_selection_ring() -> void:
-	if selection_ring:
-		selection_ring.visible = true
-		selection_ring.modulate = Color(0, 1, 0, 0.8)  # vert fixe
+func select() -> void:
+	is_selected = true
+	if selection_indicator:
+		selection_indicator.visible = true
+	print("✨ Tourelle sélectionnée: ", name)
 
-# Optionnel : désélectionner en cliquant ailleurs (à mettre dans ton niveau principal)
-# func _unhandled_input(event):
-#     if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-#         if GameManager.selected_turret and GameManager.selected_turret != self:
-#             GameManager.selected_turret.is_selected = false
-#             GameManager.selected_turret._update_selection_ring()
-#             GameManager.selected_turret = null
+func deselect() -> void:
+	is_selected = false
+	if selection_indicator:
+		selection_indicator.visible = false
+	print("⬛ Tourelle désélectionnée: ", name)
+
+# Méthode pour appliquer une amélioration
+func apply_upgrade(item: Item) -> void:
+	if item.strategy:
+		if item.strategy.has_method("apply_to_turret"):
+			item.strategy.apply_to_turret(self)
+		print(name, " amélioré avec ", item.title)

@@ -1,0 +1,21 @@
+extends Node
+class_name WaveMap25Endless
+
+# Map 25 Endless Mode - Infinite waves with scaling difficulty
+# Progression: enemy8-9 + bat + boss5 every 10 waves (hardest endless mode)
+
+static func get_waves() -> Array[Wave]:
+	var waves: Array[Wave] = []
+	
+	waves.append(Wave.new(1, [{"enemy_type":"enemy8","count":24},{"enemy_type":"enemy9","count":12}], 1.0, 4.0))
+	waves.append(Wave.new(2, [{"enemy_type":"enemy9","count":26},{"enemy_type":"bat","count":12}], 0.9, 4.0))
+	waves.append(Wave.new(3, [{"enemy_type":"enemy9","count":28},{"enemy_type":"bat","count":14}], 0.8, 4.0))
+	waves.append(Wave.new(4, [{"enemy_type":"enemy9","count":30},{"enemy_type":"bat","count":16}], 0.7, 4.0))
+	waves.append(Wave.new(5, [{"enemy_type":"enemy9","count":32},{"enemy_type":"bat","count":18}], 0.6, 4.0))
+	waves.append(Wave.new(6, [{"enemy_type":"enemy9","count":28},{"enemy_type":"bat","count":14}], 0.7, 4.0))
+	waves.append(Wave.new(7, [{"enemy_type":"enemy9","count":30},{"enemy_type":"bat","count":16}], 0.6, 4.0))
+	waves.append(Wave.new(8, [{"enemy_type":"enemy9","count":32},{"enemy_type":"bat","count":18}], 0.6, 4.0))
+	waves.append(Wave.new(9, [{"enemy_type":"enemy9","count":34},{"enemy_type":"bat","count":20}], 0.5, 4.0))
+	waves.append(Wave.new(10, [{"enemy_type":"enemy9","count":22},{"enemy_type":"boss5","count":1}], 0.5, 4.0))
+	
+	return waves

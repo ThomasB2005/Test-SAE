@@ -11,8 +11,6 @@ script = ExtResource("1_wovta")
 
 [node name="Enemy" parent="." instance=ExtResource("2_xeo28")]
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0.2498169, -0.00036621094)
 shape = SubResource("BoxShape3D_m1htj")

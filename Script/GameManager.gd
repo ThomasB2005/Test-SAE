@@ -26,6 +26,7 @@ signal hp_changed(new_hp)
 signal gold_changed(new_gold)
 signal game_over(reason)
 signal wave_completed(wave_number)
+signal turret_selected(turret)            # ← NOUVEAU: pour notifier la sélection
 
 # ─────────────────────────────────────
 # GODOT CALLBACKS
@@ -70,21 +71,46 @@ func add_gold(amount: int):
 	gold += amount
 	emit_signal("gold_changed", gold)
 	print("+$", amount, " → Or total: ", gold)
+	update_ui()
 
 func spend_gold(amount: int) -> bool:
 	if gold >= amount:
 		gold -= amount
 		emit_signal("gold_changed", gold)
+		update_ui()
 		return true
 	return false
 
+# ─────────────────────────────────────
+# SÉLECTION DE TOURELLE (NOUVEAU)
+# ─────────────────────────────────────
 func select_turret(turret: Node):
+	# Désélectionner l'ancienne tourelle
+	if selected_turret and selected_turret.has_method("deselect"):
+		selected_turret.deselect()
+	
+	# Si on clique sur la même tourelle, on désélectionne
 	if selected_turret == turret:
-		selected_turret = null          # Clic sur la même = désélection
+		selected_turret = null
+		emit_signal("turret_selected", null)
+		print("❌ Tourelle désélectionnée")
 	else:
+		# Sinon, on sélectionne la nouvelle tourelle
 		selected_turret = turret
-	print("Tourelle sélectionnée :", selected_turret)
+		if selected_turret.has_method("select"):
+			selected_turret.select()
+		emit_signal("turret_selected", selected_turret)
+		print("✅ Tourelle sélectionnée: ", selected_turret.name)
 
+func deselect_turret():
+	if selected_turret and selected_turret.has_method("deselect"):
+		selected_turret.deselect()
+	selected_turret = null
+	emit_signal("turret_selected", null)
+
+# ─────────────────────────────────────
+# GAME OVER
+# ─────────────────────────────────────
 func end_game(reason: String):
 	if is_game_over: return
 	is_game_over = true

@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvqwx6vdkd6sr"]
+
+[ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_gfs4p"]
+[ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_lako4"]
+[ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="3_cqajg"]
+[ext_resource type="Script" uid="uid://b0lqgpc5ir5xx" path="res://Script/spawner.gd" id="4_spawner"]
+[ext_resource type="PackedScene" uid="uid://djcdo3durjbty" path="res://Scenes/Enemy/Enemy.tscn" id="5_enemy"]
+[ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="6_game_manager"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="6_jqi33"]
+[ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="7_wave_manager"]
+
+[sub_resource type="Curve3D" id="Curve3D_o7jlk"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.993315, 0, -3.0127306, 0, 0, 0, 0, 0, 0, -0.9574934, 0, -3.0127306, 0, 0, 0, 0, 0, 0, -1.0079418, 0, -1.0116357, 0, 0, 0, 0, 0, 0, -2.050529, 0, -1.0452672, 0, 0, 0, 0, 0, 0, -2.0168967, 0, -0.0026801387, 0, 0, 0, 0, 0, 0, -3.059484, 0, 0.030951781, 0, 0, 0, 0, 0, 0, -3.0426688, 0, 1.981599, 0, 0, 0, 0, 0, 0, -0.04943335, 0, 1.9311512, 0, 0, 0, 0, 0, 0, 0.03464544, 0, 0.09821527, 0, 0, 0, 0, 0, 0, 2.0861888, 0, 0.014136001, 0, 0, 0, 0, 0, 0, 2.0693727, 0, -1.9869591),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_hbsdt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.993315, 0, -2.9622827, 0, 0, 0, 0, 0, 0, -5.985455, 0, -3.0127306, 0, 0, 0, 0, 0, 0, -6.0190873, 0, 6.0174212, 0, 0, 0, 0, 0, 0, -1.9832646, 0, 6.0342364, 0, 0, 0, 0, 0, 0, -1.9832646, 0, 1.981599, 0, 0, 0, 0, 0, 0, 0.03464544, 0, 1.9984151, 0, 0, 0, 0, 0, 0, 0.017830253, 0, 0.014136001, 0, 0, 0, 0, 0, 0, 2.0357413, 0, 0.030951781, 0, 0, 0, 0, 0, 0, 2.0357413, 0, -2.037407),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="Map5" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.125, 0.5)
+mesh_library = ExtResource("1_gfs4p")
+cell_size = Vector3(1, 0.5, 1)
+data = {
+"cells": PackedInt32Array(65531, 65532, 1, 65532, 65532, 1, 65533, 65532, 1, 65534, 65532, 1, 65534, 65533, 1, 65534, 65534, 1, 65533, 65534, 1, 65533, 65535, 1, 65532, 65535, 1, 65532, 0, 1, 65532, 1, 1, 65533, 1, 1, 65534, 1, 1, 65535, 1, 1, 65535, 0, 1, 65535, 65535, 1, 0, 65535, 1, 1, 65535, 1, 1, 65534, 1, 1, 65533, 3, 65530, 65532, 4, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65532, 5, 1, 65531, 5, 1, 65530, 5, 1, 65529, 5, 1, 65529, 4, 1, 65529, 3, 1, 65529, 2, 1, 65529, 1, 1, 65529, 0, 1, 65529, 65535, 1, 65529, 65534, 1, 65529, 65533, 1, 65529, 65532, 1, 65533, 0, 2, 65534, 0, 2, 65534, 65535, 2, 65532, 65533, 2, 65532, 65534, 2, 65530, 65535, 2, 65530, 0, 2, 65530, 1, 2, 65530, 2, 2, 65530, 3, 2, 65530, 4, 0, 65531, 4, 0, 65532, 4, 2, 65531, 3, 0, 65531, 2, 0, 65532, 2, 0, 65532, 3, 0, 65531, 1, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65531, 65533, 0, 65530, 65533, 0, 65530, 65534, 0, 65533, 65533, 0, 65528, 65531, 0, 65528, 65532, 0, 65528, 65533, 0, 65528, 65534, 0, 65528, 65535, 0, 65528, 0, 0, 65528, 1, 0, 65528, 2, 0, 65528, 3, 0, 65528, 4, 0, 65528, 5, 0, 65528, 6, 0, 65529, 6, 0, 65530, 6, 0, 65531, 6, 0, 65532, 6, 0, 65533, 6, 0, 65534, 6, 0, 65534, 5, 0, 65534, 4, 0, 65534, 3, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 2, 65533, 0, 2, 65532, 0, 1, 65532, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 65535, 65534, 0, 65535, 65533, 0, 65535, 65532, 0, 65535, 65531, 0, 65534, 65531, 0, 65533, 65531, 0, 65532, 65531, 0, 65531, 65531, 0, 65530, 65531, 0, 65529, 65531, 0)
+}
+
+[node name="Camera3D" type="Camera3D" parent="GridMap"]
+transform = Transform3D(-4.371139e-08, 0.8660255, -0.4999999, 0, 0.49999994, 0.86602545, 1, 3.7855177e-08, -2.185569e-08, -5.318675, 5.3740478, 1.0556383)
+projection = 1
+size = 10.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GridMap"]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, -9.251042, 7.731289, -4.515249)
+
+[node name="Base" parent="." instance=ExtResource("3_cqajg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -2)
+
+[node name="Enemy_spawn" parent="." node_paths=PackedStringArray("path_nodes", "game_manager") instance=ExtResource("2_lako4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5, 0, -3)
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_enemy")
+path_nodes = [NodePath("Path3D"), NodePath("Path3D2")]
+game_manager = NodePath("../GameManager")
+auto_start = false
+
+[node name="Path3D" type="Path3D" parent="Enemy_spawn"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.0000005, 0, -2.9999995)
+curve = SubResource("Curve3D_o7jlk")
+
+[node name="Path3D2" type="Path3D" parent="Enemy_spawn"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.0000005, 0, -2.9999995)
+curve = SubResource("Curve3D_hbsdt")
+
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
+script = ExtResource("6_game_manager")
+wave_manager = NodePath("../WaveManager")
+ui_label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+
+[node name="Label" type="Label" parent="GameManager/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
+script = ExtResource("7_wave_manager")
+spawners = [NodePath("../Enemy_spawn")]
+game_manager = NodePath("../GameManager")
+map_type = "map5"
+
+[node name="Background" parent="." instance=ExtResource("6_jqi33")]
+transform = Transform3D(-4.371139e-08, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 1, 3.090862e-08, -3.090862e-08, 7, -7.174141, 1.2096252)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvplj3rb7fvqi"]
+[gd_scene load_steps=13 format=3 uid="uid://cjn5feq5wc5f6"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="5_dg61n"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
 [ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="8_2ifef"]
-[ext_resource type="Script" uid="uid://cj62hguvc26xo" path="res://Script/GameManager.gd" id="8_duu0g"]
+[ext_resource type="Script" uid="uid://cj62hguvc26xo" path="res://GameManager.gd" id="8_duu0g"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="9_2ifef"]
 [ext_resource type="PackedScene" uid="uid://c8i4hxus5wr6t" path="res://Scenes/Menu/Menu_pause.tscn" id="10_35cr0"]
 
@@ -64,8 +64,7 @@ auto_start = false
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 1)
 
 [node name="archer" parent="." instance=ExtResource("8_2ifef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1)
-maxHealth = null
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.4972436, 1)
 
 [node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
 script = ExtResource("8_duu0g")
@@ -85,3 +84,6 @@ spawners = [NodePath("../Path3D/Enemy_spawn")]
 game_manager = NodePath("../GameManager")
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_35cr0")]
+
+[node name="archer2" parent="." instance=ExtResource("8_2ifef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0578012, 0)
