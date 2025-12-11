@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://cirwcm757p47n"]
 
-[ext_resource type="Script" uid="uid://4uj8pxf5vmw5" path="res://Script/Entity/Enemies/long_archer.gd" id="1_m2l2s"]
+[ext_resource type="Script" uid="uid://c7gjch17bmfw2" path="res://Script/Entity/Allies/long_archer.gd" id="1_m2l2s"]
 [ext_resource type="Texture2D" uid="uid://ba03vmbtyvqas" path="res://Sprite/Long_Archer/Shot.png" id="2_p6vr4"]
 [ext_resource type="Texture2D" uid="uid://cr1q5re6yyn6q" path="res://Sprite/Long_Archer/Dead.png" id="3_xienk"]
 [ext_resource type="Texture2D" uid="uid://d3v6h5ycu82m1" path="res://Sprite/Long_Archer/Idle.png" id="4_8onls"]
