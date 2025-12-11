@@ -37,6 +37,9 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_base"]
+size = Vector3(1, 1, 0.4951172)
+
 [node name="Map20" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -99,8 +102,22 @@ curve = SubResource("Curve3D_jr0k3")
 [node name="Base" parent="." instance=ExtResource("3_8pycr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -2)
 
+[node name="BaseHitBox" type="Area3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/BaseHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2524414)
+shape = SubResource("BoxShape3D_base")
+
 [node name="Base2" parent="." instance=ExtResource("3_8pycr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 1)
+
+[node name="BaseHitBox" type="Area3D" parent="Base2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base2/BaseHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2524414)
+shape = SubResource("BoxShape3D_base")
 
 [node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
 script = ExtResource("6_game_manager")

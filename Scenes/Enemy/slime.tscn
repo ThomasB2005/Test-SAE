@@ -332,9 +332,11 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qooi"]
 
 [node name="slime" type="PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44154778, 0)
 script = ExtResource("1_thw7m")
 
 [node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4515967, 0)
 script = ExtResource("5_pqdc7")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]

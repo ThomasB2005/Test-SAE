@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvplj3rb7fvqi"]
+[gd_scene load_steps=13 format=3 uid="uid://dvplj3rb7fvqi"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjfm5yrv03dnp" path="res://Library/tile_library.tres" id="1_y8x80"]
 [ext_resource type="PackedScene" uid="uid://bofqlxdsww1ul" path="res://Assets/Enemy_spawn.glb" id="2_clay5"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://y0mymxpnfmuu" path="res://Assets/Base.glb" id="5_2ifef"]
 [ext_resource type="PackedScene" uid="uid://ja47hhae7qme" path="res://Scenes/Enemy/slime.tscn" id="5_dg61n"]
 [ext_resource type="PackedScene" uid="uid://dijgbt3hymb8j" path="res://Assets/Barrier.glb" id="6_clay5"]
-[ext_resource type="PackedScene" uid="uid://ddtqbl61k6ixn" path="res://Scenes/Turret/archer.tscn" id="8_2ifef"]
 [ext_resource type="Script" uid="uid://c8saeu4ulhqdq" path="res://Script/game_manager.gd" id="8_duu0g"]
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="9_2ifef"]
-[ext_resource type="PackedScene" uid="uid://immidmo6cfoa" path="res://Scenes/Turret/Warrior.tscn" id="11_qktab"]
 
 [sub_resource type="Curve3D" id="Curve3D_si05j"]
 _data = {
@@ -56,7 +54,7 @@ size = 6.0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7510424, 7.606289, 1.0152483)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2058543, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.13621223, 2)
 curve = SubResource("Curve3D_si05j")
 
 [node name="Enemy_spawn" parent="Path3D" node_paths=PackedStringArray("path_node", "game_manager") instance=ExtResource("2_clay5")]
@@ -77,9 +75,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2524414)
 shape = SubResource("BoxShape3D_35cr0")
 
-[node name="archer" parent="." instance=ExtResource("8_2ifef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.82558393, 1)
-
 [node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
 script = ExtResource("8_duu0g")
 wave_manager = NodePath("../WaveManager")
@@ -96,6 +91,3 @@ label_settings = SubResource("LabelSettings_2ifef")
 script = ExtResource("9_2ifef")
 spawners = [NodePath("../Path3D/Enemy_spawn")]
 game_manager = NodePath("../GameManager")
-
-[node name="warrior" parent="." instance=ExtResource("11_qktab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3865695, 1)

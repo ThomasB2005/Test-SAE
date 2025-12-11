@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cs80bcxars8no"]
+[gd_scene load_steps=17 format=3 uid="uid://cs80bcxars8no"]
 
 [ext_resource type="PackedScene" uid="uid://bxqa2pkby23y" path="res://Assets/End_tile.glb" id="1_dtarm"]
 [ext_resource type="PackedScene" uid="uid://slc0eh0ha02g" path="res://Assets/Path_tile.glb" id="2_br3tv"]
@@ -13,16 +13,19 @@
 [ext_resource type="Script" uid="uid://cet2dwem37oun" path="res://Script/Waves/wave_manager.gd" id="11_map2"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/background.tscn" id="12_kgi2c"]
 
-[sub_resource type="Curve3D" id="Curve3D_5yc7q"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_base"]
+size = Vector3(1, 1, 0.4951172)
+
+[sub_resource type="Curve3D" id="Curve3D_kgi2c"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.998664, 0, 0.99374133, 0, 0, 0, 0, 0, 0, 3.0025876, 0, 0.98319167, 0, 0, 0, 0, 0, 0, 2.992038, 0, 4.0320153, 0, 0, 0, 0, 0, 0, 0.97707105, 0, 4.0214663, 0, 0, 0, 0, 0, 0, 0.99817014, 0, 0.99374133, 0, 0, 0, 0, 0, 0, -0.014587641, 0, 1.0148404, 0, 0, 0, 0, 0, 0, 0.02761054, 0, 0.0020821956),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.045378685, 0, 0.014713645, 0, 0, 0, 0, 0, 0, -2.9889076, 0, 0.05141878, 0, 0, 0, 0, 0, 0, -2.9644372, 0, 3.0612354, 0, 0, 0, 0, 0, 0, -5.0810976, 0, 3.1101756, 0, 0, 0, 0, 0, 0, -4.995453, 0, 0.039183736, 0, 0, 0, 0, 0, 0, -6.0109596, 0, 0.05141878, 0, 0, 0, 0, 0, 0, -6.0231943, 0, -1.0497338),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
 
-[sub_resource type="Curve3D" id="Curve3D_7sy4k"]
+[sub_resource type="Curve3D" id="Curve3D_5mtg6"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6.0092125, 0, 3.0192578, 0, 0, 0, 0, 0, 0, 4.9964542, 0, 2.9770591, 0, 0, 0, 0, 0, 0, 5.0070047, 0, 3.9370697, 0, 0, 0, 0, 0, 0, 0.9665215, 0, 3.979268, 0, 0, 0, 0, 0, 0, 0.9665215, 0, 0.99374133, 0, 0, 0, 0, 0, 0, -0.0040385723, 0, 0.972642, 0, 0, 0, 0, 0, 0, 0.02761054, 0, 0.01263174),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.02803135, 0, 2.0457284, 0, 0, 0, 0, 0, 0, -0.98236275, 0, 2.0334933, 0, 0, 0, 0, 0, 0, -0.98236275, 0, 3.0857053, 0, 0, 0, 0, 0, 0, -2.9644372, 0, 3.036765, 0, 0, 0, 0, 0, 0, -2.976673, 0, -0.021991372, 0, 0, 0, 0, 0, 0, -5.96202, 0, 0.039183736, 0, 0, 0, 0, 0, 0, -5.9742546, 0, -1.1109087),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
@@ -93,6 +96,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
 
 [node name="Base" parent="GridMap" instance=ExtResource("4_kgi2c")]
+
+[node name="BaseHitBox" type="Area3D" parent="GridMap/Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Base/BaseHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2524414)
+shape = SubResource("BoxShape3D_base")
 
 [node name="Tower_tile" parent="GridMap" instance=ExtResource("5_5mtg6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
@@ -199,27 +209,30 @@ size = 7.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7510424, 7.606289, 1.0152483)
 
-[node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_5yc7q")
-
-[node name="Enemy_spawn" parent="Path3D" node_paths=PackedStringArray("path_node", "game_manager") instance=ExtResource("7_efttf")]
+[node name="Enemy_spawn" parent="." node_paths=PackedStringArray("path_node", "path_nodes", "game_manager") instance=ExtResource("7_efttf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
 script = ExtResource("8_hidya")
 enemy_scene = ExtResource("9_mmw27")
-path_node = NodePath("..")
-game_manager = NodePath("../../GameManager")
+path_node = NodePath("")
+path_nodes = [NodePath("Path3D")]
+game_manager = NodePath("../GameManager")
 auto_start = false
 
-[node name="Path3D2" type="Path3D" parent="."]
-curve = SubResource("Curve3D_7sy4k")
+[node name="Path3D" type="Path3D" parent="Enemy_spawn"]
+curve = SubResource("Curve3D_kgi2c")
 
-[node name="Enemy_spawn2" parent="Path3D2" node_paths=PackedStringArray("path_node", "game_manager") instance=ExtResource("7_efttf")]
+[node name="Enemy_spawn2" parent="." node_paths=PackedStringArray("path_node", "path_nodes", "game_manager") instance=ExtResource("7_efttf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
 script = ExtResource("8_hidya")
 enemy_scene = ExtResource("9_mmw27")
-path_node = NodePath("..")
-game_manager = NodePath("../../GameManager")
+path_node = NodePath("")
+path_nodes = [NodePath("Path3D2")]
+game_manager = NodePath("../GameManager")
 auto_start = false
+
+[node name="Path3D2" type="Path3D" parent="Enemy_spawn2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+curve = SubResource("Curve3D_5mtg6")
 
 [node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("wave_manager", "ui_label")]
 script = ExtResource("10_map2")
@@ -235,7 +248,7 @@ label_settings = SubResource("LabelSettings_map2")
 
 [node name="WaveManager" type="Node3D" parent="." node_paths=PackedStringArray("spawners", "game_manager")]
 script = ExtResource("11_map2")
-spawners = [NodePath("../Path3D/Enemy_spawn"), NodePath("../Path3D2/Enemy_spawn2")]
+spawners = [NodePath("../Enemy_spawn"), NodePath("../Enemy_spawn2")]
 game_manager = NodePath("../GameManager")
 map_type = "map2"
 

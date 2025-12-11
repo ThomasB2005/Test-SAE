@@ -23,6 +23,9 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_base"]
+size = Vector3(1, 1, 0.4951172)
+
 [sub_resource type="LabelSettings" id="LabelSettings_map3"]
 paragraph_spacing = 2.0
 outline_size = 5
@@ -67,6 +70,13 @@ auto_start = false
 
 [node name="Base" parent="." instance=ExtResource("5_f8qog")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="BaseHitBox" type="Area3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/BaseHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2524414)
+shape = SubResource("BoxShape3D_base")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7510424, 7.606289, 1.0152483)

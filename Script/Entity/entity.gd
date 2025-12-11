@@ -49,8 +49,8 @@ func _process(delta):
 		attack(current_target)
 
 func _on_area_entered(area: Node3D):
-	# Vérifier que la zone détectée est une HitBox (pas une AttackBox)
-	if area.name != "HitBox":
+	# Vérifier que la zone détectée est une HitBox ou UnitHitBox (pas une AttackBox)
+	if area.name != "HitBox" and area.name != "UnitHitBox":
 		return
 	
 	var target = area.get_parent()
