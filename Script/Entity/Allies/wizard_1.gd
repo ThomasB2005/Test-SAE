@@ -11,7 +11,7 @@ func _ready():
 	maxHealth = 30 # Initialisation des PV max
 	damage = 2
 	attack_cd = 4
-	team = "enemie"
+	team = "ally"
 	type = "ranged"
 
 	super._ready()

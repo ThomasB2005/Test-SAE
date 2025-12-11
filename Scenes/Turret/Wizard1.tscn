@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://bfg6aghxh6mil"]
 
-[ext_resource type="Script" uid="uid://cvusic5g5mrov" path="res://Script/Entity/Enemies/wizard_1.gd" id="1_4utbh"]
+[ext_resource type="Script" uid="uid://cvusic5g5mrov" path="res://Script/Entity/Allies/wizard_1.gd" id="1_4utbh"]
 [ext_resource type="Texture2D" uid="uid://b7vfu4uqoscmf" path="res://Sprite/Wizards/Wizard1/Attack.png" id="2_tgmr8"]
 [ext_resource type="Texture2D" uid="uid://bs7si6boytgo5" path="res://Sprite/Wizards/Wizard1/Death.png" id="3_6kjec"]
 [ext_resource type="Texture2D" uid="uid://c6jnhrwawuv18" path="res://Sprite/Wizards/Wizard1/Idle.png" id="4_srtru"]
