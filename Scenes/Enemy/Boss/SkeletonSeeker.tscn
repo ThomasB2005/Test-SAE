@@ -261,9 +261,6 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 stream = ExtResource("4_a12jw")
 bus = &"SFX"
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0, 0.06142506, 1.1031507)
-
 [node name="HealthBar" parent="Node3D" instance=ExtResource("7_bb5sf")]
 
 [node name="Attack" type="AudioStreamPlayer" parent="Node3D"]

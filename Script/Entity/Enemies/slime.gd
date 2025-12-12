@@ -9,7 +9,7 @@ func _ready():
 	sfx_attck = attack_1
 	sfx_hit = hit
 	maxHealth = 30 # Initialisation des PV max
-	damage = 2
+	damage = 5
 	attack_cd = 4
 	team = "enemie"
 	type = "melee"
